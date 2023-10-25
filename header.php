@@ -27,42 +27,44 @@
                 <span class="burger-menu__line"></span>
             </button>
         </div>
-        <div class="cb-menu-box">
-            <div class="cb-menu-backdrop"></div>
-            <div class="cb-menu-fill"></div>
-            <div class="cb-menu-content">
-                <div class="cb-menu-body">
-                    <div class="cb-menu-container">
-                        <div class="cb-menu-grid">
-                            <div class="cb-menu-grid-col -left">
-                                <div class="cb-menu-title">Social</div>
-                                <div class="cb-menu-socials" data-cursor="-opaque">
-                                    <a class="cb-menu-social" href="" target="_blank" rel="noopener"><em><span data-text="LinkedIn">LinkedIn</span></em></a>
-                                    <a class="cb-menu-social" href="" target="_blank" rel="noopener"><em><span data-text="Behance">Behance</span></em></a>
-                                    <a class="cb-menu-social" href="" target="_blank" rel="noopener"><em><span data-text="Dribbble">Dribbble</span></em></a>
-                                    <a class="cb-menu-social" href="" target="_blank" rel="noopener"><em><span data-text="Instagram">Instagram</span></em></a>
-                                    <a class="cb-menu-social" href="" target="_blank" rel="noopener"><em><span data-text="YouTube">YouTube</span></em></a>
-                                    <a class="cb-menu-social" href="" target="_blank" rel="noopener"><em><span data-text="Twitter">Twitter</span></em></a>
-                                    <a class="cb-menu-social" href="" target="_blank" rel="noopener"><em><span data-text="GitHub">GitHub</span></em></a>
+        <div class="cb-menu-box menu-box">
+            <div class="cb-menu-backdrop menu-box__backdrop"></div>
+            <div class="cb-menu-fill menu-box__fill" ></div>
+            <div class="cb-menu-content menu-box__content">
+                <div class="cb-menu-body menu-box__body">
+                    <div class="cb-menu-container menu-box__container">
+                        <div class="cb-menu-grid menu-box__grid">
+                            <div class="cb-menu-grid-col -left menu-box__col">
+                                <div class="cb-menu-title menu-box__title">Social</div>
+                                <div class="cb-menu-socials menu-box__socials" data-cursor="-opaque">
+                                    <a class="cb-menu-social menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="LinkedIn">LinkedIn</span></em></a>
+                                    <a class="cb-menu-social menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="Behance">Behance</span></em></a>
+                                    <a class="cb-menu-social menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="Dribbble">Dribbble</span></em></a>
+                                    <a class="cb-menu-social menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="Instagram">Instagram</span></em></a>
+                                    <a class="cb-menu-social menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="YouTube">YouTube</span></em></a>
+                                    <a class="cb-menu-social menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="Twitter">Twitter</span></em></a>
+                                    <a class="cb-menu-social menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="GitHub">GitHub</span></em></a>
                                 </div>
                             </div>
-                            <div class="cb-menu-grid-col -right">
-                                <div class="cb-menu-title">Menu</div>
-                                <div class="cb-menu-navs" role="navigation" data-cursor="-opaque">
-                                    <div class="cb-menu-nav"><a href=""><em><span data-text="What we do">What we do</span></em></a></div>
-                                    <div class="cb-menu-nav"><a href=""><em><span data-text="Projects">Projects</span></em></a></div>
-                                    <div class="cb-menu-nav"><a href=""><em><span data-text="Company">Company</span></em></a></div>
-                                    <div class="cb-menu-nav"><a href=""><em><span data-text="Tutorials">Tutorials</span></em></a></div>
-                                    <div class="cb-menu-nav"><a href=""><em><span data-text="Contacts">Contacts</span></em></a></div>
+                            <div class="cb-menu-grid-col -right menu-box__col">
+                                <div class="cb-menu-title menu-box__title">Menu</div>
+                                <div class="cb-menu-navs menu-box__navs" role="navigation" data-cursor="-opaque">
+                                    <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link" href=""><em><span data-text="What we do">What we do</span></em></a></div>
+                                    <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Projects">Projects</span></em></a></div>
+                                    <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Company">Company</span></em></a></div>
+                                    <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Tutorials">Tutorials</span></em></a></div>
+                                    <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Contacts">Contacts</span></em></a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="cb-menu-footer">
-                    <div class="cb-menu-container">
-                        <div class="cb-menu-title -sm">Get in touch</div>
-                        <div class="cb-menu-mail"><a href="mailto:agussetiawaniputu@gmail.com"><span>agussetiawaniputu@gmail.com</span></a></div>
+                <div class="cb-menu-footer menu-box__footer">
+                    <div class="cb-menu-container menu-box__container">
+                        <div class="cb-menu-title -sm menu-box__title">Get in touch</div>
+                        <div class="cb-menu-mail menu-box__mail">
+                            <a class="cb-menu-mail menu-box__mail-link" href="mailto:agussetiawaniputu@gmail.com"><span>agussetiawaniputu@gmail.com</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
