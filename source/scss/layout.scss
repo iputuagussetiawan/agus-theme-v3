@@ -1,0 +1,20 @@
+@use '_config.scss' as *;
+@use './components/sidemenubox/_sideMenuBox.scss' as *;
+
+
+// |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| //
+// | Timedoor New Standard                   | //
+// |_________________________________________| //
+
+.ratio-item {
+    @extend %ratioItem;
+}
+
+// default styling, please delete when making theme for wordpress
+.navbar-brand {
+    width: 150px;
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
