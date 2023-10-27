@@ -2,7 +2,8 @@ import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 class Navbar {
-    constructor() {
+    constructor(el) {
+        this.el = el;
         this.opened = false;
         this.toggleBtn = document.querySelector(".burger-menu__button");
         this.menu=document.querySelector(".cb-menu")
@@ -14,6 +15,7 @@ class Navbar {
         this.tlOpen = this.tlShow();
     }
     onInit() {
+        console.log(this.el)
         try {
             this.bindToggle();
             return Promise.resolve();
@@ -31,7 +33,10 @@ class Navbar {
     }
     bindToggle() {
         this.toggleBtn.addEventListener("click", () => this.toggle());
-        // this.backdrop.addEventListener("click", () => this.hide());
+        this.backdrop.addEventListener("click", () => this.hide());
+        this.tlClose.eventCallback("onComplete", () => {
+            this.box.classList.remove("-visible");
+        });
     }
     toggle() {
         this.opened ? this.hide() : this.show();
