@@ -59,3 +59,12 @@
     border-radius: 50%;
     transition: transform 0.4s;
 }
+
+@keyframes cb-fx-rotating-360 {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

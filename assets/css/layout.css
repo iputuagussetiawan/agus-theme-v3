@@ -48,6 +48,9 @@
   left: -20px;
   bottom: -20px;
 }
+.burger-menu__button:hover {
+  color: #fff;
+}
 .burger-menu__line {
   display: block;
   position: relative;
@@ -685,6 +688,14 @@
   transition: transform 0.4s;
 }
 
+@keyframes cb-fx-rotating-360 {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .navbar-brand {
   width: 150px;
 }

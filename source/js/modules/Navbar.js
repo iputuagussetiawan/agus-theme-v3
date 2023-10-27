@@ -1,6 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
+import MouseFollower from "mouse-follower";
+MouseFollower.registerGSAP(gsap);
 class Navbar {
     constructor(el) {
         this.el = el;
@@ -13,9 +15,16 @@ class Navbar {
         this.content = document.querySelector(".cb-menu-content");
         this.tlClose = this.tlHide();
         this.tlOpen = this.tlShow();
+
+        this.cursor = new MouseFollower({
+            stateDetection: {
+                '-pointer': 'a,button',
+                '-opaque': '.my-image',
+                '-hidden': '.my-input'
+            }
+        });
     }
     onInit() {
-        console.log(this.el)
         try {
             this.bindToggle();
             return Promise.resolve();
@@ -37,6 +46,17 @@ class Navbar {
         this.tlClose.eventCallback("onComplete", () => {
             this.box.classList.remove("-visible");
         });
+        this.el.addEventListener("mouseenter", () => {
+            if (this.classList.contains("-inverse") && this.cursor) {
+                this.cursor.addState("-inverse");
+            }
+        });
+        window.addEventListener("keyup", (e) => {
+            if ("Escape" === e.key) {
+                this.toggle();
+            }
+        });
+        this.registerMagnetic(this.toggleBtn, { leaveSpeed: 2, leaveEase: "elastic.out(1,0.25)" })
     }
     toggle() {
         this.opened ? this.hide() : this.show();
@@ -71,5 +91,45 @@ class Navbar {
         tl.set(this.box, { display: "none" });
         return tl;
     }
+
+    registerMagnetic(elm, options){
+        let cursorPosition;
+        const param = {
+            box: elm,
+            xDelta: 0.1,
+            yDelta: 0.1,
+            moveSpeed: 0.3,
+            leaveSpeed: 0.3,
+            moveEase: "power1.out",
+            leaveEase: "power1.out",
+            overwrite: true,
+            ...options,
+        };
+        const rePosition = (xPosition , yPosition, params) => {
+            gsap.to(elm, {
+                x: xPosition,
+                y: yPosition,
+                overwrite: param.overwrite,
+                onStart: () => {
+                    gsap.set(elm, { willChange: "transform" });
+                },
+                onComplete: () => {
+                    gsap.set(elm, { willChange: "auto" });
+                },
+                ...params,
+            });
+        };
+        param.box.addEventListener("mouseenter", () => {
+            cursorPosition = elm.getBoundingClientRect();
+        });
+        param.box.addEventListener("mousemove", (event) => {
+            const currentXPosition = (event.clientX - cursorPosition.left - cursorPosition.width / 2) * param.xDelta;
+            const currentYPosition = (event.clientY - cursorPosition.top - cursorPosition.height / 2) * param.yDelta;
+            rePosition(currentXPosition, currentYPosition, { duration: param.moveSpeed, ease: param.moveEase });
+        });
+        param.box.addEventListener("mouseleave", () => {
+            rePosition(0, 0, { duration: param.leaveSpeed, ease: param.leaveEase });
+        });
+    };
 }
 export default Navbar
