@@ -10,8 +10,34 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_Navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Navbar */ "./source/js/modules/Navbar.js");
-/* harmony import */ var mouse_follower__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mouse-follower */ "./node_modules/mouse-follower/dist/index.module.js");
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var _modules_Magnetic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Magnetic */ "./source/js/modules/Magnetic.js");
+/* harmony import */ var mouse_follower__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mouse-follower */ "./node_modules/mouse-follower/dist/index.module.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+
+
+
+
+mouse_follower__WEBPACK_IMPORTED_MODULE_2__["default"].registerGSAP(gsap__WEBPACK_IMPORTED_MODULE_3__["default"]);
+var cbMenu = document.querySelector(".cb-menu");
+var navbar = new _modules_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"](cbMenu);
+navbar.onInit();
+var magneticElm = document.querySelector(".magnetic");
+var magnetic = new _modules_Magnetic__WEBPACK_IMPORTED_MODULE_1__["default"](magneticElm);
+magnetic.onInit();
+
+/***/ }),
+
+/***/ "./source/js/modules/Magnetic.js":
+/*!***************************************!*\
+  !*** ./source/js/modules/Magnetic.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -22,28 +48,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
-
-
-mouse_follower__WEBPACK_IMPORTED_MODULE_1__["default"].registerGSAP(gsap__WEBPACK_IMPORTED_MODULE_2__["default"]);
-var cbMenu = document.querySelector(".cb-menu");
-var navbar = new _modules_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"](cbMenu);
-// const cursor = new MouseFollower({
-//     stateDetection: {
-//         '-pointer': 'a,button',
-//         '-opaque': '.my-image',
-//         '-hidden': '.my-input'
-//     }
-// });
-// const el = document.querySelector('.my-skewing');
-
-// el.addEventListener('mouseenter', () => {
-//     cursor.setSkewing(3);
-// });
-
-// el.addEventListener('mouseleave', () => {
-//     cursor.removeSkewing();
-// });
-navbar.onInit();
 var Magnetic = /*#__PURE__*/function () {
   function Magnetic(el) {
     _classCallCheck(this, Magnetic);
@@ -86,17 +90,17 @@ var Magnetic = /*#__PURE__*/function () {
         overwrite: true
       }, options);
       var rePosition = function rePosition(xPosition, yPosition, params) {
-        gsap__WEBPACK_IMPORTED_MODULE_2__["default"].to(elm, _objectSpread({
+        gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.to(elm, _objectSpread({
           x: xPosition,
           y: yPosition,
           overwrite: param.overwrite,
           onStart: function onStart() {
-            gsap__WEBPACK_IMPORTED_MODULE_2__["default"].set(elm, {
+            gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(elm, {
               willChange: "transform"
             });
           },
           onComplete: function onComplete() {
-            gsap__WEBPACK_IMPORTED_MODULE_2__["default"].set(elm, {
+            gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(elm, {
               willChange: "auto"
             });
           }
@@ -123,9 +127,7 @@ var Magnetic = /*#__PURE__*/function () {
   }]);
   return Magnetic;
 }();
-var magneticElm = document.querySelector(".magnetic");
-var magnetic = new Magnetic(magneticElm);
-magnetic.onInit();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Magnetic);
 
 /***/ }),
 
