@@ -17,11 +17,13 @@ class Navbar {
         this.tlOpen = this.tlShow();
 
         this.cursor = new MouseFollower({
-            stateDetection: {
-                '-pointer': 'a,button',
-                '-opaque': '.my-image',
-                '-hidden': '.my-input'
-            }
+            skewing: 1.5,
+            skewingText: 2,
+            skewingIcon: 2,
+            skewingMedia: 2,
+            skewingDelta: 0.001,
+            skewingDeltaMax: 0.15,
+            stickDelta: 0.15,
         });
     }
     onInit() {
