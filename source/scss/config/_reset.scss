@@ -2,16 +2,10 @@
 
 body {
 	position: relative;
-	font-family:$primary-font;
-	cursor: none;
-	
+	font-family:$secondary-font;
 	&.no-scroll {
 		overflow: hidden;
 	}
-
-	// & * {
-	// 	cursor: none !important;
-	// }
 }
 
 ::-webkit-scrollbar {
@@ -37,7 +31,6 @@ body {
 
 
 a {
-	transition: 0.4s ease;
 	text-decoration: none;
 	&:hover {
 		text-decoration: none;
