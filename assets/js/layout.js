@@ -151,7 +151,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 /* harmony import */ var gsap_ScrollToPlugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollToPlugin */ "./node_modules/gsap/ScrollToPlugin.js");
-/* harmony import */ var mouse_follower__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mouse-follower */ "./node_modules/mouse-follower/dist/index.module.js");
+/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
+/* harmony import */ var mouse_follower__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mouse-follower */ "./node_modules/mouse-follower/dist/index.module.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -163,9 +164,11 @@ function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _ty
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
-gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollToPlugin__WEBPACK_IMPORTED_MODULE_1__.ScrollToPlugin);
 
-mouse_follower__WEBPACK_IMPORTED_MODULE_2__["default"].registerGSAP(gsap__WEBPACK_IMPORTED_MODULE_0__.gsap);
+gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollToPlugin__WEBPACK_IMPORTED_MODULE_1__.ScrollToPlugin);
+gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger);
+
+mouse_follower__WEBPACK_IMPORTED_MODULE_3__["default"].registerGSAP(gsap__WEBPACK_IMPORTED_MODULE_0__.gsap);
 var Navbar = /*#__PURE__*/function () {
   function Navbar(el) {
     _classCallCheck(this, Navbar);
@@ -179,7 +182,7 @@ var Navbar = /*#__PURE__*/function () {
     this.content = document.querySelector(".cb-menu-content");
     this.tlClose = this.tlHide();
     this.tlOpen = this.tlShow();
-    this.cursor = new mouse_follower__WEBPACK_IMPORTED_MODULE_2__["default"]({
+    this.cursor = new mouse_follower__WEBPACK_IMPORTED_MODULE_3__["default"]({
       skewing: 1.5,
       skewingText: 2,
       skewingIcon: 2,
@@ -194,6 +197,7 @@ var Navbar = /*#__PURE__*/function () {
     value: function onInit() {
       try {
         this.bindToggle();
+        this.magicInverse();
         return Promise.resolve();
       } catch (error) {
         return Promise.reject(error);
@@ -223,7 +227,7 @@ var Navbar = /*#__PURE__*/function () {
         _this.box.classList.remove("-visible");
       });
       this.el.addEventListener("mouseenter", function () {
-        if (_this.classList.contains("-inverse") && _this.cursor) {
+        if (_this.el.classList.contains("-inverse") && _this.cursor) {
           _this.cursor.addState("-inverse");
         }
       });
@@ -247,6 +251,7 @@ var Navbar = /*#__PURE__*/function () {
     value: function show() {
       this.opened = true;
       this.menu.classList.add("-open");
+      this.cursor.addState("-open");
       this.tlClose.pause();
       this.tlOpen.play(0);
     }
@@ -256,6 +261,7 @@ var Navbar = /*#__PURE__*/function () {
       var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       this.opened = false;
       this.menu.classList.remove("-open");
+      this.cursor.removeState("-open");
       this.tlOpen.pause();
       this.tlClose.play(0);
     }
@@ -330,6 +336,23 @@ var Navbar = /*#__PURE__*/function () {
         display: "none"
       });
       return tl;
+    }
+  }, {
+    key: "magicInverse",
+    value: function magicInverse() {
+      var _this2 = this;
+      document.querySelectorAll("[data-menu-inverse]").forEach(function (e) {
+        gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger.create({
+          trigger: e,
+          start: "top top+=50px",
+          end: "bottom top+=70px",
+          toggleClass: {
+            targets: _this2.el,
+            className: "-inverse"
+          },
+          refreshPriority: -99999
+        });
+      });
     }
   }, {
     key: "registerMagnetic",

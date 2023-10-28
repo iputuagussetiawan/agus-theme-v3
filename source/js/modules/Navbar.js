@@ -1,6 +1,9 @@
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger)
+
 import MouseFollower from "mouse-follower";
 MouseFollower.registerGSAP(gsap);
 class Navbar {
@@ -29,6 +32,7 @@ class Navbar {
     onInit() {
         try {
             this.bindToggle();
+            this.magicInverse();
             return Promise.resolve();
         } catch (error) {
             return Promise.reject(error);
@@ -49,7 +53,7 @@ class Navbar {
             this.box.classList.remove("-visible");
         });
         this.el.addEventListener("mouseenter", () => {
-            if (this.classList.contains("-inverse") && this.cursor) {
+            if (this.el.classList.contains("-inverse") && this.cursor) {
                 this.cursor.addState("-inverse");
             }
         });
@@ -66,12 +70,14 @@ class Navbar {
     show() {
         this.opened = true;
         this.menu.classList.add("-open");
+        this.cursor.addState("-open");
         this.tlClose.pause();
         this.tlOpen.play(0);
     }
     hide(t = false) {
         this.opened = false;
         this.menu.classList.remove("-open");
+        this.cursor.removeState("-open");
         this.tlOpen.pause();
         this.tlClose.play(0);
     }
@@ -93,6 +99,18 @@ class Navbar {
         tl.set(this.box, { display: "none" });
         return tl;
     }
+
+    magicInverse(){
+        document.querySelectorAll("[data-menu-inverse]").forEach(e => {
+            ScrollTrigger.create({
+                trigger: e,
+                start: "top top+=50px",
+                end: "bottom top+=70px",
+                toggleClass: { targets: this.el, className: "-inverse" },
+                refreshPriority: -99999
+            });
+        });
+    };
 
     registerMagnetic(elm, options){
         let cursorPosition;

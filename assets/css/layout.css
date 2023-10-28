@@ -663,6 +663,24 @@
   transition-duration: 0s, 0s;
 }
 
+.cb-menu.-inverse .burger-menu__button {
+  color: #fff;
+}
+
+@media (pointer: fine) {
+  .cb-menu.-inverse .burger-menu__button:hover {
+    color: #000;
+  }
+}
+.cb-menu.-open .burger-menu__button {
+  color: #000;
+}
+
+@media (pointer: fine) {
+  .cb-menu.-open .burger-menu__button:hover {
+    color: #fff;
+  }
+}
 @keyframes burger_menu-open-top {
   0% {
     opacity: 1;
@@ -1315,6 +1333,10 @@
 .mf-cursor.-menu.-active:before,
 .cb-menu.-open .cb-menu-toggle button.mf-cursor.-menu:before {
   transform: scale(1.2);
+}
+
+.mf-cursor.-inverse.-open {
+  color: #000;
 }
 
 /*# sourceMappingURL=layout.css.map*/
