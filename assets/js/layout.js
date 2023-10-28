@@ -11,131 +11,26 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_Navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Navbar */ "./source/js/modules/Navbar.js");
 /* harmony import */ var _modules_Magnetic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Magnetic */ "./source/js/modules/Magnetic.js");
-/* harmony import */ var mouse_follower__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mouse-follower */ "./node_modules/mouse-follower/dist/index.module.js");
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+/* harmony import */ var _sections_SectionFeatures__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sections/SectionFeatures */ "./source/js/sections/SectionFeatures.js");
+/* harmony import */ var mouse_follower__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mouse-follower */ "./node_modules/mouse-follower/dist/index.module.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
 
 
 
 
 
-gsap__WEBPACK_IMPORTED_MODULE_3__["default"].registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_4__.ScrollTrigger);
-mouse_follower__WEBPACK_IMPORTED_MODULE_2__["default"].registerGSAP(gsap__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+gsap__WEBPACK_IMPORTED_MODULE_4__["default"].registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_5__.ScrollTrigger);
+mouse_follower__WEBPACK_IMPORTED_MODULE_3__["default"].registerGSAP(gsap__WEBPACK_IMPORTED_MODULE_4__["default"]);
 var cbMenu = document.querySelector(".cb-menu");
 var navbar = new _modules_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"](cbMenu);
 navbar.onInit();
 var magneticElm = document.querySelector(".magnetic");
 var magnetic = new _modules_Magnetic__WEBPACK_IMPORTED_MODULE_1__["default"](magneticElm);
 magnetic.onInit();
-var SectionFeatured = /*#__PURE__*/function () {
-  function SectionFeatured(el) {
-    _classCallCheck(this, SectionFeatured);
-    this.el = el;
-    this.header = this.el.querySelector(".cb-featured-header");
-    this.item = this.el.querySelectorAll(".cb-featured-item");
-  }
-  _createClass(SectionFeatured, [{
-    key: "onInit",
-    value: function onInit() {
-      try {
-        var t = this;
-        return Promise.resolve(document.fonts.ready).then(function () {
-          t.bindVideoPlay();
-          t.magicShow();
-        });
-      } catch (t) {
-        return Promise.reject(t);
-      }
-    }
-  }, {
-    key: "bindVideoPlay",
-    value: function bindVideoPlay() {
-      this.item.forEach(function (t) {
-        var e = t.querySelector("video");
-        t.addEventListener("mouseenter", function () {
-          return e.play();
-        });
-        t.addEventListener("mouseleave", function () {
-          return e.pause();
-        });
-      });
-    }
-  }, {
-    key: "magicShow",
-    value: function magicShow() {
-      //this.header && kc(this.header.firstElementChild, { type: "lines", stagger: 0.2 });
-      this.item.length && stagerFadeUp(this.item);
-    }
-  }]);
-  return SectionFeatured;
-}();
-var stagerFadeUp = function stagerFadeUp(elm) {
-  var animeParam = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var scrollParam = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  var params = _objectSpread({
-    onEnter: function onEnter(elm) {
-      return fadeUp(elm, animeParam);
-    },
-    once: true
-  }, scrollParam);
-  gsap__WEBPACK_IMPORTED_MODULE_3__["default"].set(elm, {
-    opacity: 0
-  });
-  return gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_4__.ScrollTrigger.batch(elm, params);
-};
-var fadeUp = function fadeUp(elm) {
-  var animeParam = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var params = _objectSpread({
-    fromY: 70,
-    toY: 0,
-    fromX: 0,
-    toX: 0,
-    duration: 2,
-    opacityDuration: 1,
-    stagger: 0.1,
-    ease: "expo.out"
-  }, animeParam);
-  var tl = new gsap__WEBPACK_IMPORTED_MODULE_3__["default"].timeline();
-  gsap__WEBPACK_IMPORTED_MODULE_3__["default"].set(elm, {
-    opacity: 0,
-    y: params.fromY
-  });
-  tl.set(elm, {
-    willChange: 'transform'
-  });
-  tl.fromTo(elm, {
-    opacity: 0
-  }, {
-    opacity: 1,
-    duration: params.opacityDuration,
-    stagger: params.stagger
-  }, 0);
-  tl.fromTo(elm, {
-    y: params.fromY,
-    x: params.fromX
-  }, {
-    y: params.toY,
-    x: params.toX,
-    duration: params.duration,
-    stagger: params.stagger,
-    ease: params.ease
-  }, 0);
-  tl.set(elm, {
-    willChange: 'auto'
-  });
-  return tl;
-};
 var cbFeaturedElm = document.querySelector(".cb-featured");
-var sectionFeatured = new SectionFeatured(cbFeaturedElm);
+var sectionFeatured = new _sections_SectionFeatures__WEBPACK_IMPORTED_MODULE_2__["default"](cbFeaturedElm);
 sectionFeatured.onInit();
 
 /***/ }),
@@ -285,11 +180,13 @@ var Navbar = /*#__PURE__*/function () {
     this.tlClose = this.tlHide();
     this.tlOpen = this.tlShow();
     this.cursor = new mouse_follower__WEBPACK_IMPORTED_MODULE_2__["default"]({
-      stateDetection: {
-        '-pointer': 'a,button',
-        '-opaque': '.my-image',
-        '-hidden': '.my-input'
-      }
+      skewing: 1.5,
+      skewingText: 2,
+      skewingIcon: 2,
+      skewingMedia: 2,
+      skewingDelta: 0.001,
+      skewingDeltaMax: 0.15,
+      stickDelta: 0.15
     });
   }
   _createClass(Navbar, [{
@@ -487,6 +384,133 @@ var Navbar = /*#__PURE__*/function () {
   return Navbar;
 }();
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Navbar);
+
+/***/ }),
+
+/***/ "./source/js/sections/SectionFeatures.js":
+/*!***********************************************!*\
+  !*** ./source/js/sections/SectionFeatures.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+gsap__WEBPACK_IMPORTED_MODULE_0__["default"].registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger);
+var SectionFeatures = /*#__PURE__*/function () {
+  function SectionFeatures(el) {
+    var _this = this;
+    _classCallCheck(this, SectionFeatures);
+    _defineProperty(this, "stagerFadeUp", function (elm) {
+      var animeParam = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var scrollParam = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      var params = _objectSpread({
+        onEnter: function onEnter(elm) {
+          return _this.fadeUp(elm, animeParam);
+        },
+        once: true
+      }, scrollParam);
+      gsap__WEBPACK_IMPORTED_MODULE_0__["default"].set(elm, {
+        opacity: 0
+      });
+      return gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger.batch(elm, params);
+    });
+    _defineProperty(this, "fadeUp", function (elm) {
+      var animeParam = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var params = _objectSpread({
+        fromY: 70,
+        toY: 0,
+        fromX: 0,
+        toX: 0,
+        duration: 2,
+        opacityDuration: 1,
+        stagger: 0.1,
+        ease: "expo.out"
+      }, animeParam);
+      var tl = new gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline();
+      gsap__WEBPACK_IMPORTED_MODULE_0__["default"].set(elm, {
+        opacity: 0,
+        y: params.fromY
+      });
+      tl.set(elm, {
+        willChange: 'transform'
+      });
+      tl.fromTo(elm, {
+        opacity: 0
+      }, {
+        opacity: 1,
+        duration: params.opacityDuration,
+        stagger: params.stagger
+      }, 0);
+      tl.fromTo(elm, {
+        y: params.fromY,
+        x: params.fromX
+      }, {
+        y: params.toY,
+        x: params.toX,
+        duration: params.duration,
+        stagger: params.stagger,
+        ease: params.ease
+      }, 0);
+      tl.set(elm, {
+        willChange: 'auto'
+      });
+      return tl;
+    });
+    this.el = el;
+    this.header = this.el.querySelector(".cb-featured-header");
+    this.item = this.el.querySelectorAll(".cb-featured-item");
+  }
+  _createClass(SectionFeatures, [{
+    key: "onInit",
+    value: function onInit() {
+      try {
+        var t = this;
+        return Promise.resolve(document.fonts.ready).then(function () {
+          t.bindVideoPlay();
+          t.magicShow();
+        });
+      } catch (t) {
+        return Promise.reject(t);
+      }
+    }
+  }, {
+    key: "bindVideoPlay",
+    value: function bindVideoPlay() {
+      this.item.forEach(function (t) {
+        var e = t.querySelector("video");
+        t.addEventListener("mouseenter", function () {
+          return e.play();
+        });
+        t.addEventListener("mouseleave", function () {
+          return e.pause();
+        });
+      });
+    }
+  }, {
+    key: "magicShow",
+    value: function magicShow() {
+      //this.header && kc(this.header.firstElementChild, { type: "lines", stagger: 0.2 });
+      this.item.length && this.stagerFadeUp(this.item);
+    }
+  }]);
+  return SectionFeatures;
+}();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SectionFeatures);
 
 /***/ }),
 

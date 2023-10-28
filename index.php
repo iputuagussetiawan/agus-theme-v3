@@ -4,7 +4,7 @@ get_header();
 
 ?>
 
-<!-- <section class="cb-featured">
+<section class="cb-featured">
     <div class="cb-featured-fill -top -primary" data-menu-inverse=""></div>
     <div class="cb-featured-content -rt" data-cursor="-inverse">
         <div class="cb-featured-container -lg">
@@ -146,7 +146,7 @@ get_header();
             </div>
         </div>
     </div>
-</section> -->
+</section>
 
 <div class="container">
     <!-- <div data-cursor="-hidden">Hover me to hide cursor!</div>
