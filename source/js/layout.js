@@ -15,9 +15,6 @@ const magnetic = new Magnetic(magneticElm);
 magnetic.onInit();
 
 
-<<<<<<< HEAD
-=======
 const cbFeaturedElm = document.querySelector(".cb-featured");
 const sectionFeatured = new SectionFeatures(cbFeaturedElm);
 sectionFeatured.onInit()
->>>>>>> header
