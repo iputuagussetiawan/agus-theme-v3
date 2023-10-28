@@ -73,6 +73,24 @@
     transition-duration: 0s, 0s;
 }
 
+.cb-menu.-inverse .burger-menu__button {
+    color: #fff;
+}
+@media (pointer: fine) {
+    .cb-menu.-inverse .burger-menu__button:hover {
+        color: #000;
+    }
+}
+
+.cb-menu.-open .burger-menu__button {
+    color: #000;
+}
+@media (pointer: fine) {
+    .cb-menu.-open .burger-menu__button:hover {
+        color: #fff;
+    }
+}
+
 
 @keyframes burger_menu-open-top {
     0% {

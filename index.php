@@ -3,48 +3,7 @@
 get_header(); 
 
 ?>
-<!-- <header class="cb-tophead">
-    <div class="cb-tophead-fill"></div>
-    <div class="cb-tophead-content">
-        <div class="cb-tophead-container -lg">
-            <div class="cb-tophead-title">
-                <h1>
-                    <div>
-                        <div>We</div>
-                    </div> 
-                    <em>
-                        <div>
-                            <div>
-                                develop
-                            </div>
-                        </div>
-                    </em>
-                    <br>
-                    <span style="white-space:nowrap">
-                        <video src="//cdn.cuberto.com/cb/home/hero/1.mp4" preload="auto" autoplay="" playsinline="" loop="" muted="">
 
-                        </video>
-                        <div>
-                            <div>digital</div>
-                        </div>
-                    </span> 
-                    <div> 
-                        <div> products</div>
-                    </div>
-                    <br>
-                    <span>
-                        <div>
-                            <div>from</div>
-                        </div> 
-                        <div>
-                            <div>scratch</div>
-                        </div>
-                    </span>
-                </h1>
-            </div>
-        </div>
-    </div>
-</header> -->
 <section class="cb-featured">
     <div class="cb-featured-fill -top -primary" data-menu-inverse=""></div>
     <div class="cb-featured-content -rt" data-cursor="-inverse">
@@ -188,6 +147,7 @@ get_header();
         </div>
     </div>
 </section>
+
 <div class="container">
     <!-- <div data-cursor="-hidden">Hover me to hide cursor!</div>
     <div data-cursor="-inverse">Hover me to inverse cursor!</div>

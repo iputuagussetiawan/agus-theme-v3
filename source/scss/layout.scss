@@ -1,4 +1,5 @@
 @use '_config.scss' as *;
+@use './sections/_section-feature.scss' as *;
 @use './config/_reset.scss' as *;
 //@use './sections/_section-feature.scss' as *;
 @use './components/sidemenubox/_sideMenuBox.scss' as *;
@@ -54,4 +55,8 @@
 .mf-cursor.-menu.-active:before,
 .cb-menu.-open .cb-menu-toggle button.mf-cursor.-menu:before {
     transform: scale(1.2);
+}
+
+.mf-cursor.-inverse.-open{
+    color: #000;
 }
