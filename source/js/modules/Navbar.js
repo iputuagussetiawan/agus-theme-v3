@@ -15,13 +15,19 @@ class Navbar {
         this.content = document.querySelector(".cb-menu-content");
         this.tlClose = this.tlHide();
         this.tlOpen = this.tlShow();
-
         this.cursor = new MouseFollower({
-            stateDetection: {
-                '-pointer': 'a,button',
-                '-opaque': '.my-image',
-                '-hidden': '.my-input'
-            }
+            // stateDetection: {
+            //     '-pointer': 'a,button',
+            //     '-opaque': '.my-image',
+            //     '-hidden': '.my-input'
+            // },
+            skewing: 1.5,
+            skewingText: 2,
+            skewingIcon: 2,
+            skewingMedia: 2,
+            skewingDelta: 0.001,
+            skewingDeltaMax: 0.15,
+            stickDelta: 0.15,
         });
     }
     onInit() {
@@ -90,6 +96,18 @@ class Navbar {
         tl.fromTo(this.content, { opacity: 1 }, { opacity: 0, duration: 0.1 }, 0);
         tl.set(this.box, { display: "none" });
         return tl;
+    }
+
+    magicInverse = () => {
+        document.querySelectorAll("[data-menu-inverse]").forEach((e) => {
+            ta.create({
+                trigger: e,
+                start: "top top+=50px",
+                end: "bottom top+=70px",
+                toggleClass: { targets: this.el, className: "-inverse" },
+                refreshPriority: -99999
+            });
+        });
     }
 
     registerMagnetic(elm, options){

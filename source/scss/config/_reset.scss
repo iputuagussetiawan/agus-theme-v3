@@ -1,0 +1,45 @@
+@use "../config/_variable.scss" as *;
+
+body {
+	position: relative;
+	font-family:$primary-font;
+	cursor: none;
+	
+	&.no-scroll {
+		overflow: hidden;
+	}
+
+	& * {
+		cursor: none !important;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 100px;
+}
+
+
+::-webkit-scrollbar-thumb {
+	background: #c1c1c1;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+	cursor: pointer;
+}
+
+
+a {
+	transition: 0.4s ease;
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}

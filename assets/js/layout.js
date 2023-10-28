@@ -145,10 +145,10 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
@@ -158,7 +158,22 @@ gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollToPlugin__WEBPA
 mouse_follower__WEBPACK_IMPORTED_MODULE_2__["default"].registerGSAP(gsap__WEBPACK_IMPORTED_MODULE_0__.gsap);
 var Navbar = /*#__PURE__*/function () {
   function Navbar(el) {
+    var _this = this;
     _classCallCheck(this, Navbar);
+    _defineProperty(this, "magicInverse", function () {
+      document.querySelectorAll("[data-menu-inverse]").forEach(function (e) {
+        ta.create({
+          trigger: e,
+          start: "top top+=50px",
+          end: "bottom top+=70px",
+          toggleClass: {
+            targets: _this.el,
+            className: "-inverse"
+          },
+          refreshPriority: -99999
+        });
+      });
+    });
     this.el = el;
     this.opened = false;
     this.toggleBtn = document.querySelector(".burger-menu__button");
@@ -170,11 +185,18 @@ var Navbar = /*#__PURE__*/function () {
     this.tlClose = this.tlHide();
     this.tlOpen = this.tlShow();
     this.cursor = new mouse_follower__WEBPACK_IMPORTED_MODULE_2__["default"]({
-      stateDetection: {
-        '-pointer': 'a,button',
-        '-opaque': '.my-image',
-        '-hidden': '.my-input'
-      }
+      // stateDetection: {
+      //     '-pointer': 'a,button',
+      //     '-opaque': '.my-image',
+      //     '-hidden': '.my-input'
+      // },
+      skewing: 1.5,
+      skewingText: 2,
+      skewingIcon: 2,
+      skewingMedia: 2,
+      skewingDelta: 0.001,
+      skewingDeltaMax: 0.15,
+      stickDelta: 0.15
     });
   }
   _createClass(Navbar, [{
@@ -200,24 +222,24 @@ var Navbar = /*#__PURE__*/function () {
   }, {
     key: "bindToggle",
     value: function bindToggle() {
-      var _this = this;
+      var _this2 = this;
       this.toggleBtn.addEventListener("click", function () {
-        return _this.toggle();
+        return _this2.toggle();
       });
       this.backdrop.addEventListener("click", function () {
-        return _this.hide();
+        return _this2.hide();
       });
       this.tlClose.eventCallback("onComplete", function () {
-        _this.box.classList.remove("-visible");
+        _this2.box.classList.remove("-visible");
       });
       this.el.addEventListener("mouseenter", function () {
-        if (_this.classList.contains("-inverse") && _this.cursor) {
-          _this.cursor.addState("-inverse");
+        if (_this2.classList.contains("-inverse") && _this2.cursor) {
+          _this2.cursor.addState("-inverse");
         }
       });
       window.addEventListener("keyup", function (e) {
         if ("Escape" === e.key) {
-          _this.toggle();
+          _this2.toggle();
         }
       });
       this.registerMagnetic(this.toggleBtn, {

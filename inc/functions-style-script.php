@@ -32,10 +32,8 @@ add_action( 'login_enqueue_scripts', 'tmdr_login_css' );
  * No need to change anything, just change the google_font_url variable to your theme font
  */
 function tmdr_add_google_fonts() {
-    $google_font_url = 'https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap';
-    
+    $google_font_url = 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,500&family=Roboto:wght@100;300;400;500;700&display=swap';
     $onloadVal = "this.media='all'";
-    
     echo '
     <link rel="preconnect" href = "https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as = "style" href="' . $google_font_url .  '" />

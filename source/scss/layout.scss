@@ -1,10 +1,11 @@
 @use '_config.scss' as *;
+@use './config/_reset.scss' as *;
+@use './sections/_section-feature.scss' as *;
 @use './components/sidemenubox/_sideMenuBox.scss' as *;
 @use './components/buttons/_button-primary-outline.scss' as *;
 @use './components/buttons/_button-floating-contact.scss' as *;
 @import "~mouse-follower/dist/mouse-follower.min.css";
 
-.cb-cursor
 // |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| //
 // | Timedoor New Standard                   | //
 // |_________________________________________| //
@@ -32,9 +33,9 @@
         background: #fff;
     }
 }
-.mf-cursor.-pointer:before {
-    transform: scale(0.15);
-}
+// .mf-cursor.-pointer:before {
+//     transform: scale(0.15);
+// }
 .mf-cursor.-pointer.-active:before,
 .cb-menu.-open .cb-menu-toggle button.mf-cursor.-pointer:before {
     transform: scale(0.1);

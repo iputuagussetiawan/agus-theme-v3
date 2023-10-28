@@ -86,3 +86,5 @@ class Magnetic {
 const magneticElm = document.querySelector(".magnetic");
 const magnetic = new Magnetic(magneticElm);
 magnetic.onInit();
+
+
