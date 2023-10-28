@@ -1,5 +1,6 @@
 {
     "/assets/js/layout.js": "/assets/js/layout.js",
+    "/assets/js/page/home.js": "/assets/js/page/home.js",
     "/assets/css/layout.css": "/assets/css/layout.css",
     "/assets/css/tmdr-admin.css": "/assets/css/tmdr-admin.css"
 }

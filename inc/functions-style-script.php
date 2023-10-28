@@ -60,12 +60,12 @@ function tmdr_script_enqueue() {
     
     // example code to add CSS and JS to Page Template
     // example is for page-home.php page template
-    /*
+    
     if (is_page_template('page-home.php')) {
-        tmdr_print_css('nameCss', 'page/filePath.css');
-        tmdr_print_js('nameJs', 'page/filePath.js')
+        // tmdr_print_css('homeCss', 'page/home.css');
+        tmdr_print_js('homeJs', 'page/home.js');
     }
-    */
+    
     
     // example code to add CSS and JS to Singular Page
     /*
