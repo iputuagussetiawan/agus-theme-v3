@@ -3,6 +3,7 @@
 body {
 	position: relative;
 	font-family:$secondary-font;
+	margin: 0px;
 	&.no-scroll {
 		overflow: hidden;
 	}
