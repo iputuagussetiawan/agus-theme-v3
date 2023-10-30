@@ -135,7 +135,7 @@ const Rc = (t, e, n, i, r, s, o) => {
     let H = yc(t).display === "flex";
     let V = t.style.display;
 
-    if (z > -1) k = k.split("++").join("");
+    // if (z > -1) k = k.split("++").join("");
 
     if (H) t.style.display = "block";
 
@@ -527,6 +527,9 @@ class GU  {
         this.title = this.el.querySelector(".cb-tophead-title");
     }
     onInit() {
+        console.log(this.fill)
+        console.log(this.header)
+        console.log(this.title.firstElementChild)
         try {
             this.handleEnter();
             return Promise.resolve();
