@@ -62,8 +62,13 @@ function tmdr_script_enqueue() {
     // example is for page-home.php page template
     
     if (is_page_template('page-home.php')) {
-        // tmdr_print_css('homeCss', 'page/home.css');
+        tmdr_print_css('homeCss', 'page/home.css');
         tmdr_print_js('homeJs', 'page/home.js');
+    }
+
+    if (is_page_template('page-whatwedo.php')) {
+        tmdr_print_css('whatWeDoCss', 'page/whatWeDo.css');
+        tmdr_print_js('whatWeDoJs', 'page/whatWeDo.js');
     }
     
     

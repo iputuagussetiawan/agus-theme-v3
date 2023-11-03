@@ -3,7 +3,7 @@
     <div class="cb-tophead-content">
         <div class="cb-tophead-container -lg">
             <div class="cb-tophead-title">
-                <h1>We Develop digital products from scratch</h1>
+                <h1 class="header">We Develop digital products from scratch</h1>
             </div>
         </div>
     </div>

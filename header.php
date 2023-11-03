@@ -11,15 +11,15 @@
     <?php wp_head(); ?>
 </head>
 
-<body>
+<body data-barba="wrapper">
     <?php wp_body_open(); ?>
     <nav class="cb-menu">
         <div class="cb-menu-logo">
-            <a href="" aria-label="Cuberto" tabindex="-1">
-                <!-- <svg class="cb-svgsprite -logo">
-                    <use xlink:href="/assets/sprites/svgsprites.svg#logo"></use>
-                </svg> -->
-            </a>
+            <?php
+                if(function_exists('the_custom_logo')) {
+                    the_custom_logo();
+                }
+            ?>
         </div>
         <div class="burger-menu">
             <button class="burger-menu__button" aria-label="Menu" tabindex="0" data-cursor="-menu" data-cursor-stick="">
@@ -49,7 +49,7 @@
                             <div class="cb-menu-grid-col -right menu-box__col">
                                 <div class="cb-menu-title menu-box__title">Menu</div>
                                 <div class="cb-menu-navs menu-box__navs" role="navigation" data-cursor="-opaque">
-                                    <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link" href=""><em><span data-text="What we do">What we do</span></em></a></div>
+                                    <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link" href="http://localhost/iputuagussetiawan.com/what-we-do/"><em><span data-text="What we do">What we do</span></em></a></div>
                                     <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Projects">Projects</span></em></a></div>
                                     <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Company">Company</span></em></a></div>
                                     <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Tutorials">Tutorials</span></em></a></div>

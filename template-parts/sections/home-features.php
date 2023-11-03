@@ -3,17 +3,7 @@
     <div class="cb-featured-content -rt" data-cursor="-inverse">
         <div class="cb-featured-container -lg">
             <div class="cb-featured-header">
-                <h2>
-                    <div>
-                        <div>Featured</div>
-                    </div>
-                    <div>
-                        <div>
-                            <video src="//cdn.cuberto.com/cb/home/featured/header.mp4" preload="auto" autoplay="" playsinline="" loop="" muted=""></video>
-                            <em>projects</em>
-                        </div>
-                    </div>
-                </h2>
+                <h2 class="cb-featured-header-title">Featured projects</h2>
             </div>
             <div class="cb-featured-items">
                 <div class="cb-featured-col -left">

@@ -1,6 +1,9 @@
 {
     "/assets/js/layout.js": "/assets/js/layout.js",
     "/assets/js/page/home.js": "/assets/js/page/home.js",
+    "/assets/js/page/whatWeDo.js": "/assets/js/page/whatWeDo.js",
     "/assets/css/layout.css": "/assets/css/layout.css",
-    "/assets/css/tmdr-admin.css": "/assets/css/tmdr-admin.css"
+    "/assets/css/tmdr-admin.css": "/assets/css/tmdr-admin.css",
+    "/assets/css/page/whatWeDo.css": "/assets/css/page/whatWeDo.css",
+    "/assets/css/page/home.css": "/assets/css/page/home.css"
 }

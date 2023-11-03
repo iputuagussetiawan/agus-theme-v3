@@ -1,0 +1,1 @@
+{"version":3,"file":"assets/css/page/whatWeDo.css","mappings":"AAAA;EACI;AACJ,C","sources":["webpack:///./source/scss/pages/whatWeDo.scss"],"sourcesContent":["body{\r\n    background-color: red;\r\n}"],"names":[],"sourceRoot":""}
