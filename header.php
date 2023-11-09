@@ -13,6 +13,9 @@
 
 <body data-barba="wrapper">
     <?php wp_body_open(); ?>
+    <div class="load-container">
+        <div class="loading-screen"></div>
+    </div>
     <nav class="cb-menu">
         <div class="cb-menu-logo">
             <?php

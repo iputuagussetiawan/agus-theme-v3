@@ -7,7 +7,7 @@
             </div>
             <div class="cb-featured-items">
                 <div class="cb-featured-col -left">
-                    <a class="cb-featured-item" href="/projects/puntopago/" data-cursor-text="Explore">
+                    <a class="cb-featured-item" href="" data-cursor-text="Explore">
                         <div class="cb-featured-preview">
                             <div class="cb-featured-preview-media -image">
                                 <picture>
@@ -20,7 +20,7 @@
                         </div>
                         <div class="cb-featured-caption">Punto Pago</div>
                     </a>
-                    <a class="cb-featured-item" href="/projects/riyadh/" data-cursor-text="Explore">
+                    <a class="cb-featured-item" href="" data-cursor-text="Explore">
                         <div class="cb-featured-preview -sm">
                             <div class="cb-featured-preview-media -image">
                                 <picture>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="cb-featured-caption">Riyadh</div>
                     </a>
-                    <a class="cb-featured-item" href="/projects/qvino/" data-cursor-text="Explore">
+                    <a class="cb-featured-item" href="" data-cursor-text="Explore">
                         <div class="cb-featured-preview">
                             <div class="cb-featured-preview-media">
                                 <picture>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="cb-featured-caption">Qvino</div>
                     </a>
-                    <a class="cb-featured-item" href="/projects/potion/" data-cursor-text="Explore">
+                    <a class="cb-featured-item" href="" data-cursor-text="Explore">
                         <div class="cb-featured-preview -sm">
                             <div class="cb-featured-preview-media -image">
                                 <picture>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="cb-featured-caption">Potion</div>
                     </a>
-                    <a class="cb-featured-item" href="/projects/ferrumpipe/" data-cursor-text="Explore">
+                    <a class="cb-featured-item" href="" data-cursor-text="Explore">
                         <div class="cb-featured-preview -sm">
                             <div class="cb-featured-preview-media -image">
                                 <picture>
@@ -74,7 +74,7 @@
                     </a>
                 </div>
                 <div class="cb-featured-col -right">
-                    <a class="cb-featured-item" href="/projects/flipaclip/" data-cursor-text="Explore">
+                    <a class="cb-featured-item" href="" data-cursor-text="Explore">
                         <div class="cb-featured-preview -sm">
                             <div class="cb-featured-preview-media -image">
                                 <picture>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="cb-featured-caption">Flipaclip</div>
                     </a>
-                    <a class="cb-featured-item" href="/projects/zelt/" data-cursor-text="Explore">
+                    <a class="cb-featured-item" href="" data-cursor-text="Explore">
                         <div class="cb-featured-preview">
                             <div class="cb-featured-preview-media -image">
                                 <picture>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="cb-featured-caption">Zelt</div>
                     </a>
-                    <a class="cb-featured-item" href="/projects/cisco/" data-cursor-text="Explore">
+                    <a class="cb-featured-item" href="" data-cursor-text="Explore">
                         <div class="cb-featured-preview -sm">
                             <div class="cb-featured-preview-media -image">
                                 <picture>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="cb-featured-caption">Cisco</div>
                     </a>
-                    <a class="cb-featured-item" href="/projects/magma/" data-cursor-text="Explore">
+                    <a class="cb-featured-item" href="" data-cursor-text="Explore">
                         <div class="cb-featured-preview">
                             <div class="cb-featured-preview-media -image">
                                 <picture>

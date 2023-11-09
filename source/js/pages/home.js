@@ -1,24 +1,11 @@
-// import Navbar from './modules/Navbar'
-// import Magnetic from './modules/Magnetic'
-// import SectionFeatures from './sections/SectionFeatures'
-// import MouseFollower from "mouse-follower";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "../modules/splitText";
 import SectionFeatures from '../sections/SectionFeatures'
+import barba from '@barba/core';
 
 const cbFeaturedElm = document.querySelector(".cb-featured");
 const sectionFeatured = new SectionFeatures(cbFeaturedElm);
 sectionFeatured.onInit()
-
-import barba from '@barba/core';
-
-function onEnterAnime(elm){
-    console.log(elm)
-}
-function onLeaveAnime(){
-    console.log('On Leave from home')
-}
 
 function Uc (elm, e = {}){
     const n = {
@@ -38,13 +25,42 @@ function Uc (elm, e = {}){
 };
 
 
+function delay(n) {
+    n = n || 2000;
+    return new Promise((done) => {
+        setTimeout(() => {
+            done();
+        }, n);
+    });
+}
+
+function pageTransition() {
+    var tl = gsap.timeline();
+    tl.to(".loading-screen", {
+        duration: 1.2,
+        width: "100%",
+        left: "0%",
+        ease: "Expo.easeInOut",
+    });
+
+    tl.to(".loading-screen", {
+        duration: 1,
+        width: "100%",
+        left: "100%",
+        ease: "Expo.easeInOut",
+        delay: 0.3,
+    });
+    tl.set(".loading-screen", { left: "-100%" });
+}
+
 
 barba.init({
+    sync: true,
     views: [{
         namespace: 'home',
         beforeLeave() {
         },
-        beforeEnter() {
+        async beforeEnter() {
             const text = new SplitText(".header");
             var  textAnim=document.querySelectorAll(".aki__word");
             Uc(textAnim);
@@ -60,47 +76,20 @@ barba.init({
     }],
     transitions: [{
         name: 'opacity-transition',
-        leave(data) {   
-            return gsap.to(data.current.container, {
-                opacity: 0
-            });
+        async leave(data) {
+            const done = this.async();
+            pageTransition();
+            await delay(1000);
+            done();
         },
-        enter(data) {
-            return gsap.from(data.next.container, {
-                opacity: 0
-            });
-        }
+
+        // async enter(data) {
+        //     contentAnimation();
+        // },
+
+        // async once(data) {
+        //     contentAnimation();
+        // },
     }]
 });
-
-
-
-
-
-
-
-
-
-
-// gsap.set(text.chars, {
-//     perspective: "500",
-//     transformOrigin: "50% 1em",
-//     transformStyle: 'preserve-3d',
-// })
-
-// timeline.staggerFromTo(
-//     text.chars,
-//     0.5,
-//     {
-//         opacity:0,
-//         rotateY: 45,
-//         rotateZ: 360
-//     },
-//     {
-//         opacity:1,
-//         rotateY: 0,
-//         rotateZ: 0
-//     },
-//     0.01
-// )
 

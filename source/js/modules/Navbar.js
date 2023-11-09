@@ -14,6 +14,7 @@ class Navbar {
         this.menu=document.querySelector(".cb-menu")
         this.box = document.querySelector(".cb-menu-box");
         this.backdrop = document.querySelector(".cb-menu-backdrop");
+        this.menuLinks=document.querySelectorAll(".menu-box__nav-link")
         this.fill = document.querySelector(".cb-menu-fill");
         this.content = document.querySelector(".cb-menu-content");
         this.tlClose = this.tlHide();
@@ -32,6 +33,7 @@ class Navbar {
         try {
             this.bindToggle();
             this.magicInverse();
+            this.menuLinkClick();
             return Promise.resolve();
         } catch (error) {
             return Promise.reject(error);
@@ -63,8 +65,17 @@ class Navbar {
         });
         this.registerMagnetic(this.toggleBtn, { leaveSpeed: 2, leaveEase: "elastic.out(1,0.25)" })
     }
+
     toggle() {
         this.opened ? this.hide() : this.show();
+    }
+    menuLinkClick(){
+        this.menuLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                //console.log('testes main menu')
+                this.hide();
+            });
+        });
     }
     show() {
         this.opened = true;

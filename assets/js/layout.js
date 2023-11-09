@@ -173,6 +173,7 @@ var Navbar = /*#__PURE__*/function () {
     this.menu = document.querySelector(".cb-menu");
     this.box = document.querySelector(".cb-menu-box");
     this.backdrop = document.querySelector(".cb-menu-backdrop");
+    this.menuLinks = document.querySelectorAll(".menu-box__nav-link");
     this.fill = document.querySelector(".cb-menu-fill");
     this.content = document.querySelector(".cb-menu-content");
     this.tlClose = this.tlHide();
@@ -193,6 +194,7 @@ var Navbar = /*#__PURE__*/function () {
       try {
         this.bindToggle();
         this.magicInverse();
+        this.menuLinkClick();
         return Promise.resolve();
       } catch (error) {
         return Promise.reject(error);
@@ -240,6 +242,17 @@ var Navbar = /*#__PURE__*/function () {
     key: "toggle",
     value: function toggle() {
       this.opened ? this.hide() : this.show();
+    }
+  }, {
+    key: "menuLinkClick",
+    value: function menuLinkClick() {
+      var _this2 = this;
+      this.menuLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          //console.log('testes main menu')
+          _this2.hide();
+        });
+      });
     }
   }, {
     key: "show",
@@ -335,14 +348,14 @@ var Navbar = /*#__PURE__*/function () {
   }, {
     key: "magicInverse",
     value: function magicInverse() {
-      var _this2 = this;
+      var _this3 = this;
       document.querySelectorAll("[data-menu-inverse]").forEach(function (e) {
         gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger.create({
           trigger: e,
           start: "top top+=50px",
           end: "bottom top+=70px",
           toggleClass: {
-            targets: _this2.el,
+            targets: _this3.el,
             className: "-inverse"
           },
           refreshPriority: -99999
