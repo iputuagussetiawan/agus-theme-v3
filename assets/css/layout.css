@@ -44,27 +44,193 @@ a:hover {
   text-decoration: none;
 }
 
-.loading-screen {
-  position: relative;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  background-color: #4bedc2;
-  width: 0%;
-  height: 100%;
+/* ------------------------- Colors -------------------------------------------------- */
+:root {
+  --color-dark: #1C1D20;
+  --color-dark-dark: #141517;
+  --color-light: #FFFFFF;
+  --color-blue: #455CE9;
+  --color-blue-dark: #334BD3;
+  --color-gray: #999D9E;
+  --color-lightgray: #E9EAEB;
+  --color-white: #FFFFFF;
+  --color-border: rgba(28, 29, 32, 0.175);
+  --color-border-solid: #D2D2D2;
+  --color-border-light: rgba(255, 255, 255, 0.2);
+  --color-border-solid-light: #545557;
+  --color-text: #1C1D20;
+  --color-text-light: #FFF;
+  --alert-error: #ff4444;
+  --alert-success: #24C958;
+  --animation-primary: all .5s cubic-bezier(.7, 0, .3, 1);
+  --animation-fast: all .3s cubic-bezier(.7, 0, .3, 1);
+  --animation-smooth: all .7s cubic-bezier(.7, 0, .3, 1);
+  --animation-slow: all .9s cubic-bezier(.7, 0, .3, 1);
+  --section-padding: clamp(5em, 21vh, 12em);
+  --container-padding: clamp(2.5em, 8vw, 8em);
+  --gap-padding: clamp(1.5em, 4vw, 2.5em);
 }
 
-.load-container {
+.rounded-div-wrap {
+  width: 100%;
+  top: 0;
+  position: relative;
+  height: 10vh;
+  overflow: hidden;
+}
+
+.rounded-div {
+  width: 150%;
+  content: "";
+  display: block;
+  position: absolute;
+  background: var(--color-white);
+  height: 750%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -86.666%);
+  z-index: 1;
+}
+
+/* ------------------------- Page Transition -------------------------------------------------- */
+.no-scroll-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  z-index: 10;
-  pointer-events: none;
+  z-index: 900;
+  display: none;
 }
 
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 800;
+  pointer-events: none;
+  background: transparent;
+}
+
+.loading-screen {
+  position: relative;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  will-change: top;
+}
+
+.loading-screen,
+.loading-container .rounded-div-wrap.top .rounded-div,
+.loading-container .rounded-div-wrap.bottom .rounded-div {
+  background: var(--color-dark-dark);
+}
+
+.loading-container .rounded-div-wrap.top .rounded-div,
+.loading-container .rounded-div-wrap.bottom .rounded-div {
+  height: 745%;
+}
+
+.loading-container .rounded-div-wrap.top {
+  top: 0;
+  position: absolute;
+  transform: translateY(-99%) scale(1, -1);
+  z-index: 2;
+  height: 0vh;
+  will-change: height;
+}
+
+.loading-container .rounded-div-wrap.bottom {
+  top: unset;
+  bottom: 0;
+  position: absolute;
+  transform: translateY(99%);
+  z-index: 2;
+  height: 0vh;
+  will-change: height;
+}
+
+.loading-container .loading-words {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: block;
+  will-change: opacity;
+}
+
+.loading-container .loading-words h2 {
+  margin: 0;
+  padding: 0;
+  color: var(--color-white);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  padding-left: 0.6em;
+  white-space: nowrap;
+  padding-right: 0.4em;
+  will-change: opacity;
+  font-size: 72px;
+}
+
+.loading-container .loading-words h2.jap {
+  font-size: calc(clamp(3.25em, 5vw, 4.5em) * 0.65);
+  transform: translate(-50%, 10%);
+}
+
+.loading-container .dot {
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-white);
+  left: 0;
+  top: 47%;
+  bottom: auto;
+  width: calc(clamp(16px, 1.2vw, 19px) / 1.65);
+  height: calc(clamp(16px, 1.2vw, 19px) / 1.65);
+  transform: translate(0, 0) scale(1);
+}
+
+.loading-container .loading-words h2.active {
+  display: block;
+}
+
+.loading-container .loading-words .home-active,
+.loading-container .loading-words .home-active-last {
+  opacity: 0;
+  display: none;
+}
+
+.loading-fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 90;
+  background: #FFF;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.once-in {
+  will-change: transform;
+}
+
+@media screen and (max-width: 540px) {
+  .loading-container .dot {
+    top: 42%;
+  }
+}
 .burger-menu {
   position: fixed;
   top: 2.25rem;

@@ -13,9 +13,12 @@
 
 <body data-barba="wrapper">
     <?php wp_body_open(); ?>
-    <div class="load-container">
+    <!-- <div class="load-container">
         <div class="loading-screen"></div>
-    </div>
+    </div> -->
+    <?php 
+        get_template_part('template-parts/loading', 'screen');
+    ?>
     <nav class="cb-menu">
         <div class="cb-menu-logo">
             <?php
