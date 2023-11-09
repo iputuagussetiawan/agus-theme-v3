@@ -334,8 +334,8 @@ var SectionFeatures = /*#__PURE__*/function () {
       return tl;
     });
     this.el = el;
-    this.header = this.el.querySelector(".cb-featured-header");
-    this.item = this.el.querySelectorAll(".cb-featured-item");
+    this.header = this.el.querySelector(".featured__header");
+    this.item = this.el.querySelectorAll(".card-featured");
   }
   _createClass(SectionFeatures, [{
     key: "onInit",
@@ -9957,7 +9957,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
-var cbFeaturedElm = document.querySelector(".cb-featured");
+var cbFeaturedElm = document.querySelector(".featured");
 var sectionFeatured = new _sections_SectionFeatures__WEBPACK_IMPORTED_MODULE_1__["default"](cbFeaturedElm);
 sectionFeatured.onInit();
 function Uc(elm) {

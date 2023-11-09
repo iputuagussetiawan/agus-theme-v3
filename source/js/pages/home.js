@@ -3,7 +3,7 @@ import { SplitText } from "../modules/splitText";
 import SectionFeatures from '../sections/SectionFeatures'
 import barba from '@barba/core';
 
-const cbFeaturedElm = document.querySelector(".cb-featured");
+const cbFeaturedElm = document.querySelector(".featured");
 const sectionFeatured = new SectionFeatures(cbFeaturedElm);
 sectionFeatured.onInit()
 

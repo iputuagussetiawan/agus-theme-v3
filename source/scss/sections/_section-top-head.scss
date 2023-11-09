@@ -1,16 +1,46 @@
 @use 'sass:math';
 @use '../_config.scss' as *;
-.cb-tophead-title {
-    font-weight: 300;
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    max-width: 81%;
 
-    h1{
+.tophead{
+    &__title {
         font-weight: 300;
+        font-size: 60px;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        max-width: 81%;
+        h1{
+            font-weight: 300;
+        }
     }
+
+    &__container
+    {
+        padding: 0 6.6666666667vw;
+
+        &.-lg{
+            padding: 0 4vw;
+        }
+    }
+
+    @media (min-width: 768px) {
+        &__container
+        {
+            padding: 0 3.125vw;
+            &.-lg{
+                padding: 0 10.625vw;
+            }
+        }
+    }
+
+    @media (min-width: 1920px) {
+        &__container{
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+    }
+
 }
+
 
 .aki__line{
     position: relative;

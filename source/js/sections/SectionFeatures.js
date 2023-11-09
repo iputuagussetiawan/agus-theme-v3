@@ -4,8 +4,8 @@ gsap.registerPlugin(ScrollTrigger)
 class SectionFeatures {
     constructor(el) {
         this.el=el;
-        this.header = this.el.querySelector(".cb-featured-header");
-        this.item = this.el.querySelectorAll(".cb-featured-item");
+        this.header = this.el.querySelector(".featured__header");
+        this.item = this.el.querySelectorAll(".card-featured");
     }
     onInit() {
         try {
