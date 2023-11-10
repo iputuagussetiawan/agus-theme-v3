@@ -24,6 +24,16 @@ function delay(n) {
     });
 }
 
+function initNextWord(data) {
+    // update Text Loading https://github.com/barbajs/barba/issues/507
+    let parser = new DOMParser();
+    let dom = parser.parseFromString(data.next.html, 'text/html');
+    let nextProjects = dom.querySelector('.loading-words');
+
+    console.log(nextProjects)
+    document.querySelector('.loading-words').innerHTML = nextProjects.innerHTML;
+}
+
 function initLoaderHome() { 
     var tl = gsap.timeline();
     tl.set(".loading-screen", { 
@@ -291,8 +301,8 @@ function pageTransitionOut(e) {
     // console.log('out animation')
     // console.log(e)
 	// var tl = gsap.timeline();
-    let LoadingActiveLast=document.querySelector('.home-active-last')
-    LoadingActiveLast.innerHTML=e.namespace;
+    // let LoadingActiveLast=document.querySelector('.home-active-last')
+    // LoadingActiveLast.innerHTML=e.namespace;
 }
 
 function initPageTransitions() {
@@ -317,10 +327,10 @@ function initPageTransitions() {
                 // animate loading screen away
                 //console.log(data.next)
                 pageTransitionOut(data.next);
+                initNextWord(data);
             },
             async beforeEnter(data) {
                 // initScript(); 
-                // initLoaderHome();
             },
         }, 
         {
