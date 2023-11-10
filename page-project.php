@@ -1,12 +1,12 @@
 <?php
 /*
-    Template Name: WhatWeDo
+    Template Name: project
 */
 get_header();
 ?>
-<main class="page-whatwedo" data-barba="container" data-pageTitle="What We do" data-barba-namespace="whatwedo">
+<main class="page-project" data-barba="container" data-pageTitle="Our Project" data-barba-namespace="project">
     <div class="container">
-        <h1>Hallow From What We Do</h1>
+        <h1>Hallow From Our Project</h1>
     </div>
     <?php
         // get_template_part('template-parts/sections/home', 'banner');

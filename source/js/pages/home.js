@@ -3,8 +3,6 @@ import { SplitText } from "../modules/splitText";
 import SectionFeatures from '../sections/SectionFeatures'
 import barba from '@barba/core';
 
-
-
 function initSectionFeatured(){
     let cbFeaturedElm = document.querySelector(".featured");
     let sectionFeatured = new SectionFeatures(cbFeaturedElm);
@@ -414,8 +412,8 @@ function pageTransitionOut(e) {
     // console.log('out animation')
     // console.log(e)
 	var tl = gsap.timeline();
-    let LoadingActiveLast=document.querySelector('.home-active-last')
-    LoadingActiveLast.innerHTML=e.namespace;
+    // let LoadingActiveLast=document.querySelector('.home-active-last')
+    // LoadingActiveLast.innerHTML=e.namespace;
     if (window.innerWidth > 540) { 
         tl.set("main .once-in", {
             y: "50vh",
