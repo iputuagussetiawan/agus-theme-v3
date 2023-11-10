@@ -56,7 +56,7 @@
                                 <div class="cb-menu-title menu-box__title">Menu</div>
                                 <div class="cb-menu-navs menu-box__navs" role="navigation" data-cursor="-opaque">
                                     <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link" href="http://localhost/iputuagussetiawan.com/what-we-do/"><em><span data-text="What we do">What we do</span></em></a></div>
-                                    <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Projects">Projects</span></em></a></div>
+                                    <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href="http://localhost/iputuagussetiawan.com/project/"><em><span data-text="Projects">Projects</span></em></a></div>
                                     <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Company">Company</span></em></a></div>
                                     <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Tutorials">Tutorials</span></em></a></div>
                                     <div class="cb-menu-nav menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Contacts">Contacts</span></em></a></div>
