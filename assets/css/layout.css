@@ -991,4 +991,12 @@ a:hover {
   color: #000;
 }
 
+img {
+  transition: filter 0.5s;
+}
+
+.lazy-img {
+  filter: blur(20px);
+}
+
 /*# sourceMappingURL=layout.css.map*/

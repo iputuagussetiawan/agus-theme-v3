@@ -64,3 +64,13 @@
 .mf-cursor.-inverse .mf-cursor-text{
     color: #000;
 } 
+
+
+
+img {
+    transition: filter 0.5s;
+}
+  
+.lazy-img {
+    filter: blur(20px);
+}
