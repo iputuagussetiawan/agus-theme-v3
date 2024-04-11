@@ -1,6 +1,7 @@
 @use '_config.scss' as *;
 @use './config/_reset.scss' as *;
 @use './components/_loading-screen.scss' as *;
+@use './components/_header.scss' as *;
 @use './components/sidemenubox/_sideMenuBox.scss' as *;
 @use './components/buttons/_button-primary-outline.scss' as *;
 @use './components/buttons/_button-floating-contact.scss' as *;
@@ -17,7 +18,9 @@
 // default styling, please delete when making theme for wordpress
 .navbar-brand {
     display: inline-block;
-    width: 150px;
+    width: 114px;
+    height: 58px;
+    margin-right: 32px;
     img {
         width: 100%;
         height: auto;

@@ -1,0 +1,26 @@
+.custom-menu{
+    display: flex;
+}
+
+.main-menu{
+    display: flex;
+    margin: 0px;
+    list-style: none;
+    padding: 0px;
+    align-items: center;
+    gap: 8px;
+
+    &__link{
+        padding: 12px 24px;
+        font-weight: 500;
+        color: #111111;
+        transition: 0.4s ease;
+        border-radius: 50px;
+
+        &:hover{
+            background-color:#111111;
+            color: #fff;
+        }
+    }
+
+}

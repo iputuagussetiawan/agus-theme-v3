@@ -12,11 +12,11 @@ class Navbar {
         this.opened = false;
         this.toggleBtn = document.querySelector(".burger-menu__button");
         this.menu=document.querySelector(".cb-menu")
-        this.box = document.querySelector(".cb-menu-box");
-        this.backdrop = document.querySelector(".cb-menu-backdrop");
+        this.box = document.querySelector(".menu-box");
+        this.backdrop = document.querySelector(".menu-box__backdrop");
         this.menuLinks=document.querySelectorAll(".menu-box__nav-link")
-        this.fill = document.querySelector(".cb-menu-fill");
-        this.content = document.querySelector(".cb-menu-content");
+        this.fill = document.querySelector(".menu-box__fill");
+        this.content = document.querySelector(".menu-box__content");
         this.tlClose = this.tlHide();
         this.tlOpen = this.tlShow();
         this.cursor = new MouseFollower({

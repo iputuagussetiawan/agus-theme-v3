@@ -65,6 +65,30 @@ a:hover {
   pointer-events: none;
 }
 
+.custom-menu {
+  display: flex;
+}
+
+.main-menu {
+  display: flex;
+  margin: 0px;
+  list-style: none;
+  padding: 0px;
+  align-items: center;
+  gap: 8px;
+}
+.main-menu__link {
+  padding: 12px 24px;
+  font-weight: 500;
+  color: #111111;
+  transition: 0.4s ease;
+  border-radius: 50px;
+}
+.main-menu__link:hover {
+  background-color: #111111;
+  color: #fff;
+}
+
 .burger-menu {
   position: fixed;
   top: 2.25rem;
@@ -121,8 +145,8 @@ a:hover {
 }
 @media (min-width: 768px) {
   .burger-menu {
-    top: 3.9rem;
-    right: 5rem;
+    top: 24px;
+    right: 32px;
   }
 }
 
@@ -777,7 +801,9 @@ a:hover {
 }
 .navbar-brand {
   display: inline-block;
-  width: 150px;
+  width: 114px;
+  height: 58px;
+  margin-right: 32px;
 }
 .navbar-brand img {
   width: 100%;

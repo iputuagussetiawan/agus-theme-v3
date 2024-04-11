@@ -61,9 +61,12 @@ barba.init({
         beforeLeave() {
         },
         async beforeEnter() {
-            const text = new SplitText(".header");
-            var  textAnim=document.querySelectorAll(".aki__word");
-            Uc(textAnim);
+            // const text = new SplitText(".header");
+            // var  textAnim=document.querySelectorAll(".aki__word");
+            // Uc(textAnim);
+            // sectionFeatured.onInit()
+            console.log('testees From Home')
+            pageTransition();
         }
         }, {
         namespace: 'whatwedo',
