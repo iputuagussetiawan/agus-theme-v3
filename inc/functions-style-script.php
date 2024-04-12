@@ -56,7 +56,7 @@ function tmdr_script_enqueue() {
     tmdr_print_css('layoutCss', 'layout.css');
     
     // Global JS
-    tmdr_print_js('layoutJS', 'layout.js');
+    //tmdr_print_js('layoutJS', 'layout.js');
     
     // example code to add CSS and JS to Page Template
     // example is for page-home.php page template

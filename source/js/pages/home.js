@@ -1,17 +1,25 @@
+//1.Import
 import gsap from "gsap";
+import App from '../App';
 import { SplitText } from "../modules/splitText";
 import SectionFeatures from '../sections/SectionFeatures'
 import SectionPortfolio from '../sections/SectionPortfolio'
 import barba from '@barba/core';
 
+//2.Initialization
+const app=new App();
 const featuredElm = document.querySelector(".featured");
 const portfolioElm = document.querySelector(".portfolio");
 const sectionFeatured = new SectionFeatures(featuredElm);
 const sectionPortfolio = new SectionPortfolio(portfolioElm);
-
 sectionFeatured.onInit()
 sectionPortfolio.onInit()
 
+//2.Event
+document.addEventListener("DOMContentLoaded", () => {
+});
+
+//3.Function
 function Uc (elm, e = {}){
     const n = {
         type: "words", 
