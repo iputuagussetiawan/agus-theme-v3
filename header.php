@@ -27,7 +27,12 @@
         <ul class="main-menu">
             <li class="main-menu__item">
                 <a href="" class="main-menu__link">
-                    Beranda
+                    Home
+                </a>
+            </li>
+            <li class="main-menu__item">
+                <a href="" class="main-menu__link">
+                    About me
                 </a>
             </li>
             <li class="main-menu__item">

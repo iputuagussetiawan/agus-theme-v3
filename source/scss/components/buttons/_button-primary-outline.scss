@@ -19,13 +19,12 @@
     text-indent: inherit;
     text-decoration: none;
     overflow: hidden;
-    padding: 1.4rem 2rem;
+    padding: 16px 42px;
     transform: translateZ(0);
     border-radius: 1000px;
     font-weight: 500;
-    font-size: 1.4rem;
+    font-size: 24px;
     line-height: 110%;
-    text-transform: uppercase;
     transition: transform 0.3s;
 
     &:focus,
@@ -83,7 +82,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
+        right: 1px;
         bottom: 1px;
         z-index: 3;
         border: 1px solid;
@@ -138,7 +137,7 @@
     }
 
     @media (min-width: 768px), (orientation: landscape) {
-        font-size: 2.4rem;
+        font-size: 24px;
 
         &.-intro {
             margin: 0 0 0 0.2em;

@@ -463,5 +463,16 @@
                 </div>
             </div>
         </div>
+        <div class="portfolio__action">
+            <a class="btn-primary-outline" href="">
+                <span class="btn-primary-outline__border"></span>
+                <span class="btn-primary-outline__ripple">
+                    <span></span>
+                </span>
+                <span class="btn-primary-outline__title">
+                    <span data-text="View All">View All</span>
+                </span>
+            </a>
+        </div>
     </div>
 </section>

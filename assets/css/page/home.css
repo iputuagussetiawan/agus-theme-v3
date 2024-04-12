@@ -275,5 +275,9 @@
   gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
+.portfolio__action {
+  margin-top: 42px;
+  text-align: center;
+}
 
 /*# sourceMappingURL=home.css.map*/
