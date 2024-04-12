@@ -1,5 +1,11 @@
 @use "../config/_variable.scss" as *;
 
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
 	position: relative;
 	font-family:$secondary-font;
@@ -8,6 +14,12 @@ body {
 		overflow: hidden;
 	}
 }
+
+img,
+svg {
+  	vertical-align: middle;
+}
+
 
 ::-webkit-scrollbar {
 	width: 10px;

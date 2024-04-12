@@ -1,5 +1,8 @@
+@use '../components/navbar/_navbar-search.scss' as *;
 .custom-menu{
     display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
 .main-menu{

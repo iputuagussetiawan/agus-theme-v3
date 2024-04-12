@@ -1,5 +1,7 @@
 @use '_config.scss' as *;
+@use './config/_init-bootstrap.scss' as *;
 @use './config/_reset.scss' as *;
+@use './sections/_section-global.scss' as *;
 @use './components/_loading-screen.scss' as *;
 @use './components/_header.scss' as *;
 @use './components/sidemenubox/_sideMenuBox.scss' as *;
@@ -11,8 +13,16 @@
 // | Timedoor New Standard                   | //
 // |_________________________________________| //
 
+
+  
+
 .ratio-item {
     @extend %ratioItem;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
 }
 
 // default styling, please delete when making theme for wordpress
@@ -20,7 +30,6 @@
     display: inline-block;
     width: 114px;
     height: 58px;
-    margin-right: 32px;
     img {
         width: 100%;
         height: auto;

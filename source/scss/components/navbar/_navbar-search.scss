@@ -1,0 +1,27 @@
+@use '../../_config.scss' as *;
+
+.nav-search{
+    position: relative;
+    width: 70%;
+
+    &__icon-container{
+        position: absolute;
+        top: 14px;
+        left: 10px;
+    }
+
+
+    &__input{
+        width: 100%;
+        padding: 12px 32px 12px 42px;
+        border: 1px solid #F1F1F1;
+        background-color: #F1F1F1;
+        font-size: 14px;
+        letter-spacing: 2px;
+        border-radius: 50px;
+        &:focus{
+            outline: none;
+
+        }
+    }
+}

@@ -1,10 +1,7 @@
-<header class="cb-tophead tophead">
-    <div class="cb-tophead-fill tophead__fill"></div>
-    <div class="cb-tophead-content tophead__content">
-        <div class="cb-tophead-container tophead__container -lg">
-            <div class="cb-tophead-title tophead__title">
-                <h1 class="header">We Develop digital products from scratch</h1>
-            </div>
+<header class="topHead">
+    <div class="container topHead__container">
+        <div class="topHead__title-wrapper">
+            <h1 class="topHead__title">We Develop digital products from scratch</h1>
         </div>
     </div>
 </header>
