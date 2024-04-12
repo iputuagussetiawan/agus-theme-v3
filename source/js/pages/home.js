@@ -1,11 +1,16 @@
 import gsap from "gsap";
 import { SplitText } from "../modules/splitText";
 import SectionFeatures from '../sections/SectionFeatures'
+import SectionPortfolio from '../sections/SectionPortfolio'
 import barba from '@barba/core';
 
-const cbFeaturedElm = document.querySelector(".featured");
-const sectionFeatured = new SectionFeatures(cbFeaturedElm);
+const featuredElm = document.querySelector(".featured");
+const portfolioElm = document.querySelector(".portfolio");
+const sectionFeatured = new SectionFeatures(featuredElm);
+const sectionPortfolio = new SectionPortfolio(portfolioElm);
+
 sectionFeatured.onInit()
+sectionPortfolio.onInit()
 
 function Uc (elm, e = {}){
     const n = {
