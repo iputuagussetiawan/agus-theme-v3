@@ -91,6 +91,7 @@ class Navbar {
         this.tlOpen.pause();
         this.tlClose.play(0);
     }
+    
     tlShow() {
         const tl = new gsap.timeline({ paused: true });
         tl.set(this.box, { display: "block" }, 0);

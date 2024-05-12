@@ -1,14 +1,60 @@
  
-    <footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <h2 class="footer__title">
+                    Let's Work Together
+                </h2>
+            </div>
+            <div class="footer__info">
+                <div class="footer__info-left">
+                    <a class="btn-primary-outline" href="mailto:agussetiawaniputu@gmail.com">
+                        <span class="btn-primary-outline__border"></span>
+                        <span class="btn-primary-outline__ripple">
+                            <span></span>
+                        </span>
+                        <span class="btn-primary-outline__title">
+                            <span data-text="agussetiawaniputu@gmail.com">agussetiawaniputu@gmail.com</span>
+                        </span>
+                    </a>
+                    <a class="btn-primary-outline" href="">
+                        <span class="btn-primary-outline__border"></span>
+                        <span class="btn-primary-outline__ripple">
+                            <span></span>
+                        </span>
+                        <span class="btn-primary-outline__title">
+                            <span data-text="+62 81237772015">+62 81237772015</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="footer__info-right">
+                    <div class="footer__social-media">
+                        <div class="footer__social-media-label">
+                            Social Media
+                        </div>
+                        <ul class="footer__social-media-listing">
+                            <li class="footer__social-media-item">
+                                <a href="" class="footer__social-media-link">Facebook</a>
+                            </li>
+                            <li class="footer__social-media-item">
+                                <a href="" class="footer__social-media-link">Instagram</a>
+                            </li>
+                            <li class="footer__social-media-item">
+                                <a href="" class="footer__social-media-link">Whatsapp</a>
+                            </li>
+                            <li class="footer__social-media-item">
+                                <a href="" class="footer__social-media-link">LinkedIn</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copyright">
+            © <?php echo date('Y')?> AG'Design. All rights reserved.
+            </div>
+        </div>
+
     </footer>
-    <a class="cb-intouch magnetic" href="/contacts/" data-cursor="-inverse" aria-label="Contact us" tabindex="-1" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-        <div class="cb-intouch-border">
-            <div class="cb-intouch-text" style="background-image:url(<?php echo get_template_directory_uri()."/assets/images/contact-floating.svg"?>)"></div>
-        </div>
-        <div class="cb-intouch-video magnetic__elm">
-            <video src="<?php echo get_template_directory_uri()."/assets/video/floating-button-contact.mp4";?>" autoplay="" playsinline="" loop="" muted=""></video>
-        </div>
-    </a>
 
     <?php wp_footer(); ?>
 
