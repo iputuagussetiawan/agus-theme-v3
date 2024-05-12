@@ -710,6 +710,58 @@ a:hover {
   color: #fff;
 }
 
+.footer {
+  padding: 120px 0px 24px 0px;
+  background-color: #222;
+  color: #fff;
+}
+.footer .btn-primary-outline__title span:after {
+  color: #222;
+}
+.footer__top {
+  border-bottom: 1px solid #fff;
+  margin-bottom: 80px;
+  padding-bottom: 32px;
+}
+.footer__title {
+  font-size: 90px;
+  font-weight: 300;
+}
+.footer__info {
+  margin-bottom: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer__info-left {
+  display: flex;
+  gap: 24px;
+}
+.footer__social-media-listing {
+  list-style: none;
+  padding: 0px;
+}
+.footer__social-media-item {
+  display: inline-block;
+  margin-right: 32px;
+}
+.footer__social-media-item:last-child {
+  margin-right: 0px;
+}
+.footer__social-media-link {
+  color: #fff;
+}
+.footer__social-media-label {
+  margin-bottom: 18px;
+  color: #7B7C7D;
+  font-weight: 400;
+}
+.footer__copyright {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 300;
+}
+
 .burger-menu {
   position: fixed;
   top: 2.25rem;

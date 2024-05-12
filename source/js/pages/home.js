@@ -2,21 +2,24 @@
 import gsap from "gsap";
 import App from '../App';
 import { SplitText } from "../modules/splitText";
-import SectionFeatures from '../sections/SectionFeatures'
+import MasonryLayout from "../modules/MasonryLayout";
+//import SectionFeatures from '../sections/SectionFeatures'
 import SectionPortfolio from '../sections/SectionPortfolio'
 import barba from '@barba/core';
 
 //2.Initialization
 const app=new App();
-const featuredElm = document.querySelector(".featured");
+const masonryLayout=new MasonryLayout();
+//const featuredElm = document.querySelector(".featured");
 const portfolioElm = document.querySelector(".portfolio");
-const sectionFeatured = new SectionFeatures(featuredElm);
+//const sectionFeatured = new SectionFeatures(featuredElm);
 const sectionPortfolio = new SectionPortfolio(portfolioElm);
-sectionFeatured.onInit()
+// sectionFeatured.onInit()
 sectionPortfolio.onInit()
 
 //2.Event
 document.addEventListener("DOMContentLoaded", () => {
+    masonryLayout.fetchMasonry('masonry', 'card-portfolio', 4)
 });
 
 //3.Function
@@ -109,34 +112,3 @@ barba.init({
     }]
 });
 
-
-
-// var elem = document.querySelector('.grid');
-// var msnry = new Masonry( elem, {
-//     // options
-//     itemSelector: '.grid-item',
-//     columnWidth: 100
-// });
-let fecthMasonry = function (container, items, columns) {
-    let CONTAINER_EL = document.querySelector("#" + container);
-    let WRAPPER_CONTAINER_EL = CONTAINER_EL.parentNode;
-    let ITEMS_ELS = document.querySelectorAll("." + items);
-    CONTAINER_EL.parentNode.removeChild(CONTAINER_EL);
-    let NEW_CONTAINER_EL = document.createElement('div');
-    NEW_CONTAINER_EL.setAttribute('id', container);
-    NEW_CONTAINER_EL.classList.add('masonry-layout', "columns-" + columns);
-    WRAPPER_CONTAINER_EL.appendChild(NEW_CONTAINER_EL);
-    for (let i = 1; i <= columns; i++) {
-        let COLUMN = document.createElement('div');
-        COLUMN.classList.add("masonry-column-" + i);
-        NEW_CONTAINER_EL.appendChild(COLUMN);
-    }
-    let countColumn = 1;
-    ITEMS_ELS.forEach(function (item) {
-        let col = document.querySelector("#" + container + " > .masonry-column-" + countColumn);
-        col.appendChild(item);
-        countColumn = countColumn < columns ? countColumn + 1 : 1;
-    });
-};
-
-fecthMasonry('masonry', 'card-portfolio', 4);
