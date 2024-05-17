@@ -1,5 +1,10 @@
- 
-    <footer class="footer">
+
+    <footer class="footer footer-wrap footer-footer-wrap">
+        <div class="footer-rounded-div" >
+            <div class="rounded-div-wrap">
+                <div class="rounded-div"></div>
+            </div>
+        </div>
         <div class="container">
             <div class="footer__top">
                 <h2 class="footer__title">

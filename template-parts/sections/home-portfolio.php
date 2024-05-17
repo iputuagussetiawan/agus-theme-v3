@@ -4,6 +4,10 @@
             Portfolio
         </h2>
 
+        <div class="section-description">
+        Helping brands to stand out in the digital era. Together we will set the new status quo. No nonsense, always on the cutting edge.
+        </div>
+
         <div class="portfolio__inner">
             <div class="wrapper-masonry">
                 <div id="masonry">

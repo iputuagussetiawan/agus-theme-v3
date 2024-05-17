@@ -115,51 +115,114 @@ barba.init({
 });
 
 function initScrollLetters() {
-
     let direction = 1; // 1 = forward, -1 = backward scroll
-  
-      const roll1 = roll(".rollingText", {duration: 18}),
-              roll2 = roll(".rollingText02", {duration: 10}, true),
-  
-      scroll = ScrollTrigger.create({
-          trigger: document.querySelector('[data-scroll-container]'),
-          onUpdate(self) {
-          if (self.direction !== direction) {
-              direction *= -1;
-              gsap.to([roll1, roll2], {timeScale: direction, overwrite: true});
-          }
-          }
-      });
-  
+        const roll1 = roll(".rollingText", {duration: 18}),
+            roll2 = roll(".rollingText02", {duration: 10}, true),
+
+        scroll = ScrollTrigger.create({
+            trigger: document.querySelector('[data-scroll-container]'),
+            onUpdate(self) {
+            if (self.direction !== direction) {
+                direction *= -1;
+                gsap.to([roll1, roll2], {timeScale: direction, overwrite: true});
+            }
+            }
+        });
+
     // helper function that clones the targets, places them next to the original, then animates the xPercent in a loop to make it appear to roll across the screen in a seamless loop.
     function roll(targets, vars, reverse) {
-      vars = vars || {};
-      vars.ease || (vars.ease = "none");
-      const tl = gsap.timeline({
-              repeat: -1,
-              onReverseComplete() { 
+        vars = vars || {};
+        vars.ease || (vars.ease = "none");
+        const tl = gsap.timeline({
+                repeat: -1,
+                onReverseComplete() { 
                 this.totalTime(this.rawTime() + this.duration() * 10); // otherwise when the playhead gets back to the beginning, it'd stop. So push the playhead forward 10 iterations (it could be any number)
-              }
+                }
             }), 
             elements = gsap.utils.toArray(targets),
             clones = elements.map(el => {
-              let clone = el.cloneNode(true);
-              el.parentNode.appendChild(clone);
-              return clone;
+                let clone = el.cloneNode(true);
+                el.parentNode.appendChild(clone);
+                return clone;
             }),
             positionClones = () => elements.forEach((el, i) => gsap.set(clones[i], {position: "absolute", overwrite: false, top: el.offsetTop, left: el.offsetLeft + (reverse ? -el.offsetWidth : el.offsetWidth)}));
-      positionClones();
-      elements.forEach((el, i) => tl.to([el, clones[i]], {xPercent: reverse ? 100 : -100, ...vars}, 0));
-      window.addEventListener("resize", () => {
+        positionClones();
+        elements.forEach((el, i) => tl.to([el, clones[i]], {xPercent: reverse ? 100 : -100, ...vars}, 0));
+        window.addEventListener("resize", () => {
         let time = tl.totalTime(); // record the current time
         tl.totalTime(0); // rewind and clear out the timeline
         positionClones(); // reposition
         tl.totalTime(time); // jump back to the proper time
-      });
-      return tl;
+        });
+        return tl;
     }
-  
-  }
+}
+initScrollLetters()
 
-  initScrollLetters()
+if (document.querySelector(".span-lines.animate")) {
+    document.querySelectorAll(".span-lines.animate").forEach((triggerElement, index) => {
+        const targetElements = triggerElement.querySelectorAll(".span-line-inner");
+        const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: triggerElement,
+            toggleActions: 'play none none reset', 
+            start: "0% 100%",
+            end: "100% 0%"
+        }
+        });
+        if (targetElements.length > 0) {
+        tl.from(targetElements, {
+            y: "100%",
+            stagger: 0.01,
+            ease: "power3.out",
+            duration: 1,
+            delay: 0
+        });
+        }
+    });
+}
+
+
+if (document.querySelector(".fade-in.animate")) {
+    document.querySelectorAll(".fade-in.animate").forEach((triggerElement, index) => {
+        const targetElement = triggerElement;
+        const tl = gsap.timeline({
+            scrollTrigger: {
+            trigger: triggerElement,
+            toggleActions: 'play none none reset',
+            start: "0% 110%",
+            end: "100% 0%",
+            }
+        });
+        if (targetElement) {
+            tl.from(targetElement, {
+                y: "2em",
+                opacity: 0,
+                ease: "expo.out",
+                duration: 1.75,
+                delay: 0
+            });
+        }
+    });
+}
+
+
+if (document.querySelector(".footer-footer-wrap")) {
+    document.querySelectorAll(".footer-footer-wrap").forEach((triggerElement, index) => {
+        const targetElementRound = document.querySelectorAll(".footer-rounded-div .rounded-div-wrap");
+        const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: triggerElement,
+            start: "100 100%",
+            end: "100% 100%",
+            scrub: 0,
+            markers:true,
+        }
+        });
+        tl.to(targetElementRound, {
+            height: 0,
+            ease: "none"
+        }, 0)
+    });
+}
 
