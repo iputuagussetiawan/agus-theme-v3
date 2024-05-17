@@ -79,3 +79,33 @@
 .mf-cursor.-inverse .mf-cursor-text{
     color: #000;
 } 
+
+
+.topHead__inner{
+    overflow-x: hidden;
+}
+
+
+.wrapperRollingText {
+    position: relative;
+    white-space: nowrap;
+    border-top: 1px solid #6f6f6f;
+    
+}
+.rollingText {
+    position: relative;
+    font-size: 6vw;
+    display: inline-block;
+    padding-left: 10px;
+}
+.wrapperRollingText02 {
+    position: relative;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+.rollingText02 {
+    font-size: 6vw;
+    display: inline-block;
+    padding-left: 13px;
+}
+
