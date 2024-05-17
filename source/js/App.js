@@ -1,5 +1,6 @@
 
 //1.Import
+import { Tooltip, Toast, Popover } from 'bootstrap';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from './modules/Navbar'

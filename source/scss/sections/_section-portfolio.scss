@@ -33,6 +33,11 @@
         --columns: 4;
     }
 
+    &__header{
+        max-width: 50%;
+        margin-bottom: 80px;
+    }
+
     &__grid{
         display: grid;
         margin: 0px auto;

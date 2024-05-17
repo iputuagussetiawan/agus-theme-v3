@@ -14,3 +14,5 @@ include_once 'inc/functions-theme-setup.php';
 // ======================================
 // Functions Partial -- end
 // ======================================
+
+add_theme_support( 'post-thumbnails' ); 

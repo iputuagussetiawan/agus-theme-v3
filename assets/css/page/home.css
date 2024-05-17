@@ -292,6 +292,10 @@
 .portfolio .masonry-layout.columns-4 {
   --columns: 4;
 }
+.portfolio__header {
+  max-width: 50%;
+  margin-bottom: 80px;
+}
 .portfolio__grid {
   display: grid;
   margin: 0px auto;

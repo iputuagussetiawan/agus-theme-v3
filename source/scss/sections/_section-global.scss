@@ -5,3 +5,7 @@
     font-size: 72px;
     font-weight: 300;
 }
+
+.section-description{
+    font-size: clamp(1.55em, 2.3vw, 2.5em);
+}

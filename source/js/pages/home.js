@@ -21,7 +21,10 @@ sectionPortfolio.onInit()
 
 //2.Event
 document.addEventListener("DOMContentLoaded", () => {
-    masonryLayout.fetchMasonry('masonry', 'card-portfolio', 4)
+    //masonryLayout.fetchMasonry('masonry', 'card-portfolio', 4)
+    masonryLayout.fetchMasonry('masonry1', 'card-portfolio', 4)
+    // masonryLayout.fetchMasonry('masonry2', 'card-portfolio', 4)
+    // masonryLayout.fetchMasonry('masonry3', 'card-portfolio', 4)
 });
 
 //3.Function
@@ -34,7 +37,7 @@ function Uc (elm, e = {}){
         ...e,
     };
     const tl = new gsap.timeline();
-    gsap.set(elm, { overflow: "hidden", verticalAlign: "top", padding: "1.7rem", margin: "-0.15em" });
+    gsap.set(elm, { overflow: "hidden", verticalAlign: "top" });
     gsap.set(elm, { y: "200%" });
     tl.set(elm, { willChange: "transform" }, 0);
     tl.fromTo(elm, { y: "200%" }, { y: "0%", duration: n.duration, stagger: n.stagger, ease: n.ease }, 0);
@@ -83,7 +86,6 @@ barba.init({
             var  textAnim=document.querySelectorAll(".aki__word");
             Uc(textAnim);
             // sectionFeatured.onInit()
-            console.log('testees From Home')
             //pageTransition();
         }
         }, {
@@ -224,4 +226,13 @@ if (document.querySelector(".footer-footer-wrap")) {
         }, 0)
     });
 }
+
+
+function portfolio(){
+    const portfolioText = new SplitText(".portfolio  .section-description");
+    var  textAnim=document.querySelectorAll(".aki__word");
+    Uc(textAnim);
+}
+
+portfolio()
 

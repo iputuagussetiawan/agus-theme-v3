@@ -31,12 +31,7 @@ function tmdr_theme_required_plugins() {
             'required'         => true,
         ),
         
-        // Classic editor
-        array(
-            'name'             => 'Classic Editor',
-            'slug'             => 'classic-editor',
-            'required'         => true,
-        ),
+
         
         // Duplicator
         array(
@@ -52,12 +47,6 @@ function tmdr_theme_required_plugins() {
             'required'         => false,
         ),
         
-        // Wordfrence
-        array(
-            'name'             => 'Wordfence Security – Firewall, Malware Scan, and Login Security',
-            'slug'             => 'wordfence',
-            'required'         => false,
-        ),
         
         // Polylang
         array(
@@ -101,13 +90,7 @@ function tmdr_theme_required_plugins() {
             'slug'             => 'svg-support',
             'required'         => true,
         ),
-        
-        // White Label CMS
-        array(
-            'name'             => 'White Label CMS',
-            'slug'             => 'white-label-cms',
-            'required'         => false,
-        ),
+    
         
         // WPS Hide Login
         array(
@@ -130,19 +113,6 @@ function tmdr_theme_required_plugins() {
             'required'         => false,
         ),
         
-        // Flamingo
-        array(
-            'name'             => 'Flamingo',
-            'slug'             => 'flamingo',
-            'required'         => false,
-        ),
-        
-        // Heartbeat Control
-        array(
-            'name'             => 'Heartbeat Control',
-            'slug'             => 'heartbeat-control',
-            'required'         => true,
-        ),
         
     );
     

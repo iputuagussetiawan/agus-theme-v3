@@ -84,7 +84,7 @@ export class SplitText {
                 {
                     style: "position:relative; display:inline-block;",
                 },
-                `${this.#options.globalClass}`,
+                // `${this.#options.globalClass}`,
                 `${this.#options.wordClass}`
                 );
 
