@@ -216,7 +216,6 @@ if (document.querySelector(".footer-footer-wrap")) {
             start: "100 100%",
             end: "100% 100%",
             scrub: 0,
-            markers:true,
         }
         });
         tl.to(targetElementRound, {

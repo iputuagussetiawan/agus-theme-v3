@@ -24,7 +24,7 @@
                 }
             ?>
         </div>
-        <ul class="main-menu">
+        <ul class="main-menu" data-cursor="-opaque">
             <li class="main-menu__item">
                 <a href="" class="main-menu__link">
                     Home
