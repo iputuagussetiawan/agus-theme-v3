@@ -21,10 +21,7 @@ sectionPortfolio.onInit()
 
 //2.Event
 document.addEventListener("DOMContentLoaded", () => {
-    //masonryLayout.fetchMasonry('masonry', 'card-portfolio', 4)
-    masonryLayout.fetchMasonry('masonry1', 'card-portfolio', 4)
-    // masonryLayout.fetchMasonry('masonry2', 'card-portfolio', 4)
-    // masonryLayout.fetchMasonry('masonry3', 'card-portfolio', 4)
+    portfolio()
 });
 
 //3.Function
@@ -232,7 +229,15 @@ function portfolio(){
     const portfolioText = new SplitText(".portfolio  .section-description");
     var  textAnim=document.querySelectorAll(".aki__word");
     Uc(textAnim);
+
+    let masonryContainer=document.querySelectorAll('.wrapper-masonry')
+    let masonryContainerTotal=masonryContainer.length
+    for (let i = 0; i < masonryContainerTotal; i++) {
+        masonryLayout.fetchMasonry(`masonry${i}`, 'card-portfolio', 4);
+    }
 }
 
-portfolio()
+
+
+
 

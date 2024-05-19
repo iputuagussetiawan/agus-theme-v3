@@ -15,7 +15,7 @@
                     $args = array(
                         'post_type' => 'portfolio',
                         'taxonomy'  => 'portfolio-category',
-                        'hide_empty' => false,
+                        'hide_empty' => true,
                     );
                     $categories = get_terms($args);
                     $iMenuTab = 0;
@@ -47,469 +47,75 @@
                         $contentTabClass='';
                     }
                 ?>
-                        <div class="tab-pane fade <?php echo $contentTabClass; ?>" id="pills-<?php echo  $category->term_id ?>" role="tabpanel" aria-labelledby="pills-<?php echo  $category->term_id ?>-tab">
-                            <div class="row mt-lg-5 justify-content-center align-items-center">
-                                <div class="accordion accordion-flush accordion-custom" id="accordionFlushExample<?php echo  $category->term_id ?>">
-                                    <div id="masonry<?php echo $iContentTab?>">
-                                        <?php
-                                        $Portfolios = new WP_Query(array(
-                                            'posts_per_page' => -1,
-                                            'post_type' => 'portfolio',
-                                            'tax_query' => array(
-                                                array(
-                                                    'taxonomy' => 'portfolio-category',
-                                                    'terms' =>  $category->term_id,
-                                                    'field' => 'term_id',
-                                                )
-                                            ),
-                                            'order' => 'ASC'
-                                        ));
-                                        $accourdionNumber=0;
-                                        if ($Portfolios->have_posts()) :
-                                            while ($Portfolios->have_posts()) :
-                                                $Portfolios->the_post();
-                                                $portfoliosID= get_the_ID();
-                                                $portfolioLink = get_permalink( $portfoliosID );
-                                                $portfolioTitle = get_the_title($portfoliosID);
-                                                $portfolioContent = get_the_content($portfoliosID);
-                                        ?>
-                                            <div class="card-portfolio">
-                                                <div class="card-portfolio__image-container">
-                                                    <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                                                </div>
-                                                <div class="card-portfolio__info-container">
-                                                    <h3 class="card-portfolio__title">
-                                                        <?php echo $portfolioTitle?>
-                                                    </h3>
-                                                    <div class="card-portfolio__info">
-                                                        <?php echo $portfolioContent?>
-                                                    </div>
-                                                </div>
-                                                <div class="card-portfolio__action">
-                                                    <a href="" class="card-portfolio__btn">
-                                                        <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                                            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                                            <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                                        </svg>
-                                                        <span class="card-portfolio__btn-badge">30</span>
-                                                    </a>
-                                                    <a href="" class="card-portfolio__btn">
-                                                        <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                                            <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                                        </svg>
-                                                    </a>
+                    <div class="tab-pane fade <?php echo $contentTabClass; ?>" id="pills-<?php echo  $category->term_id ?>" role="tabpanel" aria-labelledby="pills-<?php echo  $category->term_id ?>-tab">
+                        <div class="wrapper-masonry">    
+                            <div id="masonry<?php echo $iContentTab?>">
+                                    <?php
+                                    $Portfolios = new WP_Query(array(
+                                        'posts_per_page' => -1,
+                                        'post_type' => 'portfolio',
+                                        'tax_query' => array(
+                                            array(
+                                                'taxonomy' => 'portfolio-category',
+                                                'terms' =>  $category->term_id,
+                                                'field' => 'term_id',
+                                            )
+                                        ),
+                                        'order' => 'ASC'
+                                    ));
+                                    $accourdionNumber=0;
+                                    if ($Portfolios->have_posts()) :
+                                        while ($Portfolios->have_posts()) :
+                                            $Portfolios->the_post();
+                                            $portfoliosID= get_the_ID();
+                                            $portfolioLink = get_permalink( $portfoliosID );
+                                            $portfolioTitle = get_the_title($portfoliosID);
+                                            $portfolioContent = get_the_content($portfoliosID);
+                                    ?>
+                                        <div class="card-portfolio">
+                                            <div class="card-portfolio__image-container">
+                                                <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
+                                            </div>
+                                            <div class="card-portfolio__info-container">
+                                                <h3 class="card-portfolio__title">
+                                                    <?php echo $portfolioTitle?>
+                                                </h3>
+                                                <div class="card-portfolio__info">
+                                                    <?php echo $portfolioContent?>
                                                 </div>
                                             </div>
-                                        <?php 
-                                            $accourdionNumber++;
-                                            endwhile;
-                                            wp_reset_postdata();
-                                        else :
-                                        ?>
-                                            <h3 class="text-center">Data Not Found</h3>
-                                        <?php
-                                        endif;
-                                        ?>
-                                    </div>
+                                            <div class="card-portfolio__action">
+                                                <a href="" class="card-portfolio__btn">
+                                                    <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+                                                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                                                        <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
+                                                    </svg>
+                                                    <span class="card-portfolio__btn-badge">30</span>
+                                                </a>
+                                                <a href="" class="card-portfolio__btn">
+                                                    <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php 
+                                        $accourdionNumber++;
+                                        endwhile;
+                                        wp_reset_postdata();
+                                    else :
+                                    ?>
+                                        <h3 class="text-center">Data Not Found</h3>
+                                    <?php
+                                    endif;
+                                    ?>
                                 </div>
-                            </div>
                         </div>
+                    </div>
                 <?php
                     $iContentTab++;
                 endforeach;
                 ?>
-            </div>
-            <div class="wrapper-masonry">
-                <!-- <div id="masonry">
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__info-container">
-                            <h3 class="card-portfolio__title">
-                                Modern Interior Design Studio
-                            </h3>
-                            <div class="card-portfolio__info">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat corporis officiis, ipsa dolore saepe nesciunt id perspiciatis dolorem sunt labore, explicabo exercitationem inventore ex dolores deleniti adipisci temporibus eligendi accusamus.
-                            </div>
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/4f23b935c975ca37fd4e159ea5d74740.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/4f23b935c975ca37fd4e159ea5d74740.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/4f23b935c975ca37fd4e159ea5d74740.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/4f23b935c975ca37fd4e159ea5d74740.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card-portfolio">
-                        <div class="card-portfolio__image-container">
-                            <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
-                        </div>
-                        <div class="card-portfolio__action">
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
-                                    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
-                                <span class="card-portfolio__btn-badge">30</span>
-                            </a>
-                            <a href="" class="card-portfolio__btn">
-                                <svg class="card-portfolio__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
         <div class="portfolio__action">

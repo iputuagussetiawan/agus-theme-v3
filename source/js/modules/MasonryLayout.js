@@ -7,7 +7,12 @@ class MasonryLayout {
     fetchMasonry(container, items, columns) {
         let CONTAINER_EL = document.querySelector("#" + container);
         let WRAPPER_CONTAINER_EL = CONTAINER_EL.parentNode;
-        let ITEMS_ELS = document.querySelectorAll("." + items);
+
+        //console.log(WRAPPER_CONTAINER_EL);
+        let ITEMS_ELS = CONTAINER_EL.querySelectorAll("." + items);
+
+        console.log(ITEMS_ELS)
+
         CONTAINER_EL.parentNode.removeChild(CONTAINER_EL);
         let NEW_CONTAINER_EL = document.createElement('div');
         NEW_CONTAINER_EL.setAttribute('id', container);
