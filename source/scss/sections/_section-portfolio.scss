@@ -1,6 +1,10 @@
 @use '../components/cards/_card-portfolio.scss' as *;
 
 .portfolio{
+
+    .wrapper-masonry{
+        margin-top: 42px;
+    }
     .grid-item {
         margin-bottom: 20px;
         height: auto;

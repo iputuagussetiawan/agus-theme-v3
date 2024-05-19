@@ -28,7 +28,7 @@
                         }
 
                             echo '<li class="nav-item" role="presentation">
-                                    <button class="nav-link '.$menuClass.'" id="pills-' . $category->term_id . '-tab" data-bs-toggle="pill" data-bs-target="#pills-' . $category->term_id . '" type="button" role="tab">' . $category->name . '</button>
+                                    <button class="nav-link '.$menuClass.'" id="pills-' . $category->term_id . '-tab" data-bs-toggle="pill" data-bs-target="#pills-' . $category->term_id . '" type="button" role="tab">  <span class="nav-link__text" >' . $category->name . ' <span class="nav-link__badge">' . $category->count . '</span></span></button>
                                 </li>';
                         
                         $iMenuTab++;

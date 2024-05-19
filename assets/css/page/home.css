@@ -262,6 +262,9 @@
   line-height: 24px;
 }
 
+.portfolio .wrapper-masonry {
+  margin-top: 42px;
+}
 .portfolio .grid-item {
   margin-bottom: 20px;
   height: auto;

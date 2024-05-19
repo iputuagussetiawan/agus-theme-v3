@@ -1364,21 +1364,15 @@ a:hover {
 }
 
 .btn-primary-outline {
-  display: inline;
   position: relative;
   display: inline-block;
   height: auto;
   margin: 0;
-  padding: 0;
   color: inherit;
   background: 0 0;
   border: 0;
-  border-radius: 0;
   font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
   letter-spacing: inherit;
-  line-height: inherit;
   text-align: inherit;
   text-transform: inherit;
   text-indent: inherit;
@@ -1764,6 +1758,31 @@ a:hover {
     transform: translateY(0) translateZ(0);
   }
 }
+.custom-tabs .nav-item {
+  margin-right: 16px;
+}
+.custom-tabs .nav-item:last-child {
+  margin-right: 0px;
+}
+.custom-tabs .nav-item .nav-link {
+  position: relative;
+  padding: 20px 42px;
+  border-radius: 50px;
+  color: #1C1D20;
+  border: 1px solid #D7D7D8;
+  font-size: 18px;
+}
+.custom-tabs .nav-item .nav-link__badge {
+  position: relative;
+  top: -4px;
+  font-size: 14px;
+}
+.custom-tabs .nav-item .nav-link.active {
+  background-color: #1C1D20;
+  color: #fff;
+  border: 1px solid #1C1D20;
+}
+
 .container {
   width: 90%;
   margin: 0 auto;
