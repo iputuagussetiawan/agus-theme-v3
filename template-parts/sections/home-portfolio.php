@@ -74,7 +74,7 @@
                                     ?>
                                         <div class="card-portfolio">
                                             <div class="card-portfolio__image-container">
-                                                <img src="<?php echo get_template_directory_uri()."/assets/images/page/home/0c7561c9fd7b284f8a1e6294077bf0a0.jpg"?>" alt="portfolio" class="card-portfolio__image">
+                                                <img src="<?php echo get_the_post_thumbnail_url($portfoliosID,'full')?>" alt="portfolio" class="card-portfolio__image">
                                             </div>
                                             <div class="card-portfolio__info-container">
                                                 <h3 class="card-portfolio__title">
