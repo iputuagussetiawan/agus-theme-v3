@@ -5,7 +5,7 @@
                 Portfolio
             </h2>
     
-            <div class="section-description">Helping brands to stand out in the digital era. Together we will set the new status quo. No nonsense, always on the cutting edge.</div>
+            <div class="section-description">Elevating brands in the digital era. Together, we will make new innovation. No nonsense, always at the forefront of innovation.</div>
         </div>
 
         <div class="portfolio__inner">
