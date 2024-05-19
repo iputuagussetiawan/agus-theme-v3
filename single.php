@@ -1,10 +1,10 @@
 <?php
 get_header(); 
 ?>
-<main class="page-home" data-barba="container" data-barba-namespace="index">
+<div class="container">
     <h1><?php the_title(); ?></h1>
     <p><?php the_content(); ?></p>
-</main>
+</div>
 <?php
 get_footer();
 ?>

@@ -1783,6 +1783,18 @@ a:hover {
   border: 1px solid #1C1D20;
 }
 
+img {
+  transition: filter 0.5s;
+}
+
+.lazy-img {
+  filter: blur(20px);
+}
+
+.image-parallax {
+  overflow: hidden;
+}
+
 .container {
   width: 90%;
   margin: 0 auto;

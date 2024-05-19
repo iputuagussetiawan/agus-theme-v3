@@ -1,0 +1,36 @@
+@use '../_config.scss' as *;
+.portfolio-header{
+    padding: 150px 0px;
+    &__inner{
+        max-width: 80%;
+        margin: 0 auto;
+    }
+    &__title{
+        max-width: 60%;
+        margin-bottom: 120px;
+        font-size: 100px;
+        font-weight: 400;
+    }
+    &__detail{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 80px;
+    }
+    &__item-label{
+        font-size: 18px;
+        text-transform: uppercase;
+        color: #969798;
+        font-weight: 400;
+        margin-bottom: 32px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid #E0E0E1;
+    }
+    &__value{
+        font-size: 18px;
+        color: #2A2B2E;
+    }
+}
+
+.portfolio-thumbnail{
+    @include imageRatio(1920,1100);
+}

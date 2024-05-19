@@ -70,6 +70,11 @@ function tmdr_script_enqueue() {
         tmdr_print_css('whatWeDoCss', 'page/whatWeDo.css');
         tmdr_print_js('whatWeDoJs', 'page/whatWeDo.js');
     }
+
+    if (is_singular('portfolio')) {
+        tmdr_print_css('singlePortfolioCss', 'page/singlePortfolio.css');
+        tmdr_print_js('singlePortfolioJs', 'page/singlePortfolio.js');
+    }
     
     
     // example code to add CSS and JS to Singular Page
