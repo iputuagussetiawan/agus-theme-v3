@@ -4,7 +4,7 @@
 */
 get_header();
 ?>
-<main class="page-home" data-barba="container" data-barba-namespace="home">
+<main class="page-home">
     <?php
         get_template_part('template-parts/sections/home', 'banner');
         get_template_part('template-parts/sections/home', 'portfolio');

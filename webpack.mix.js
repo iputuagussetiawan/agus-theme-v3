@@ -6,7 +6,8 @@ mix.sass('source/scss/layout.scss', 'assets/css/')
     .sass('source/scss/pages/singlePortfolio.scss', 'assets/css/page/')
     .sourceMaps(true, 'source-map');
 
-mix.js('source/js/pages/home.js', 'assets/js/page/')
+mix.js('source/js/barbaSetup.js', 'assets/js/')
+    .js('source/js/pages/home.js', 'assets/js/page/')
     .js('source/js/pages/whatWeDo.js', 'assets/js/page/')
     .js('source/js/pages/singlePortfolio.js', 'assets/js/page/')
     .sourceMaps(true, 'source-map');

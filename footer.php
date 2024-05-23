@@ -1,4 +1,5 @@
 
+</div><!-- #barba-container -->
     <footer class="footer footer-wrap footer-footer-wrap">
         <div class="footer-rounded-div" >
             <div class="rounded-div-wrap">
@@ -60,6 +61,7 @@
         </div>
 
     </footer>
+   
 
     <?php wp_footer(); ?>
 

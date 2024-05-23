@@ -4,7 +4,7 @@
 */
 get_header();
 ?>
-<main class="page-whatwedo" data-barba="container" data-barba-namespace="whatwedo">
+<main class="page-whatwedo">
     <div class="container">
         <h1>Hallow From What We Do</h1>
     </div>

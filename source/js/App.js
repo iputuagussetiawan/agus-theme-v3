@@ -32,6 +32,15 @@ class App {
         overlapSection.init();
         // magnetic.onInit();
     }
+
+    init(){
+        //alert('test from app init')
+        navbar.onInit();
+        footer.circleAnimation();
+        lazyImage.init();
+        imageParallax.init();
+        overlapSection.init();
+    }
 }
 export default App
 

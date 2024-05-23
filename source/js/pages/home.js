@@ -7,7 +7,6 @@ import { SplitText } from "../modules/splitText";
 import MasonryLayout from "../modules/MasonryLayout";
 //import SectionFeatures from '../sections/SectionFeatures'
 import SectionPortfolio from '../sections/SectionPortfolio'
-import barba from '@barba/core';
 
 //2.Initialization
 const app=new App();
@@ -43,75 +42,6 @@ function Uc (elm, e = {}){
 };
 
 
-function delay(n) {
-    n = n || 2000;
-    return new Promise((done) => {
-        setTimeout(() => {
-            done();
-        }, n);
-    });
-}
-
-function pageTransition() {
-    var tl = gsap.timeline();
-    tl.to(".loading-screen", {
-        duration: 1.2,
-        width: "100%",
-        left: "0%",
-        ease: "Expo.easeInOut",
-    });
-
-    tl.to(".loading-screen", {
-        duration: 1,
-        width: "100%",
-        left: "100%",
-        ease: "Expo.easeInOut",
-        delay: 0.3,
-    });
-    tl.set(".loading-screen", { left: "-100%" });
-}
-
-
-barba.init({
-    sync: true,
-    views: [{
-        namespace: 'home',
-        beforeLeave() {
-        },
-        async beforeEnter() {
-            const text = new SplitText(".topHead__title");
-            var  textAnim=document.querySelectorAll(".aki__word");
-            Uc(textAnim);
-            // sectionFeatured.onInit()
-            //pageTransition();
-        }
-        }, {
-        namespace: 'whatwedo',
-        beforeLeave() {
-            // console.log(data)
-        },
-        beforeEnter(data) {
-            // console.log(data)
-        }
-    }],
-    transitions: [{
-        name: 'opacity-transition',
-        async leave(data) {
-            const done = this.async();
-            pageTransition();
-            await delay(1000);
-            done();
-        },
-
-        // async enter(data) {
-        //     contentAnimation();
-        // },
-
-        // async once(data) {
-        //     contentAnimation();
-        // },
-    }]
-});
 
 function initScrollLetters() {
     let direction = 1; // 1 = forward, -1 = backward scroll

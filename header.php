@@ -11,7 +11,8 @@
     <?php wp_head(); ?>
 </head>
 
-<body data-barba="wrapper">
+<body <?php body_class(); ?> data-barba="wrapper">
+    <div id="barba-container" data-barba="container">
     <?php wp_body_open(); ?>
     <div class="load-container">
         <div class="loading-screen"></div>

@@ -1,1 +1,0 @@
-{"version":3,"file":"/assets/js/home.js","mappings":";;;;;AAAAA,KAAK,CAAC,MAAM,CAAC,C","sources":["webpack:///./source/js/pages/home.js"],"sourcesContent":["alert('home')"],"names":["alert"],"sourceRoot":""}
