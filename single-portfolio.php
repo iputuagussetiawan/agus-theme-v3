@@ -28,6 +28,18 @@ get_header();
                         'description'=>$contentListingInfo,
                         'listing'=> $contentListingData
                     ));
+                elseif( get_row_layout() == 'video_interactive' ): 
+                    $videoInteractiveTitle = get_sub_field('video_interactive_title');
+                    $videoInteractiveSubtitle = get_sub_field('video_interactive_subtitle');
+                    $videoInteractiveInfo = get_sub_field('video_interactive_info');
+                    $videoInteractiveFile = get_sub_field('video_interactive_file');
+                    
+                    get_template_part('template-parts/sections/portfolio/single', 'videoInteractive',array(
+                        'title' => $videoInteractiveTitle,
+                        'subtitle' => $videoInteractiveSubtitle,
+                        'description'=>$videoInteractiveInfo,
+                        'video'=> $videoInteractiveFile
+                    ));
                 endif;
             endwhile;
         endif;

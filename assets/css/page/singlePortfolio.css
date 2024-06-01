@@ -118,6 +118,7 @@
   grid-template-columns: 1fr 3fr;
   gap: 32px;
   padding-bottom: 180px;
+  max-width: 80%;
 }
 .content-listing__subtitle {
   text-transform: uppercase;
@@ -135,6 +136,46 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
+}
+
+.video-interactive {
+  padding-top: 250px;
+  padding-bottom: 300px;
+  position: relative;
+}
+.video-interactive__header {
+  margin-bottom: 80px;
+}
+.video-interactive__title {
+  font-size: 120px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+}
+.video-interactive__info-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 32px;
+  padding-bottom: 180px;
+  max-width: 80%;
+}
+.video-interactive__subtitle {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 400;
+}
+.video-interactive__info {
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  font-size: 30px;
+}
+.video-interactive__video-container {
+  border-radius: 90px;
+  overflow: hidden;
+}
+.video-interactive__video {
+  width: 100%;
 }
 
 /*# sourceMappingURL=singlePortfolio.css.map*/
