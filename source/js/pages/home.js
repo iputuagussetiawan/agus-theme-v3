@@ -21,6 +21,7 @@ sectionPortfolio.onInit()
 //2.Event
 document.addEventListener("DOMContentLoaded", () => {
     portfolio()
+    app.init();
 });
 
 //3.Function

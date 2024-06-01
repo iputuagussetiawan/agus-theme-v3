@@ -5,6 +5,8 @@ import App from '../App';
 const app=new App();
 
 //2.Event
-app.init();
+document.addEventListener("DOMContentLoaded", () => {
+    app.init();
+});
 
 //3.Function

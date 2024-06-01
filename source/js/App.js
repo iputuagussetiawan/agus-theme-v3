@@ -24,15 +24,6 @@ const overlapSection=new OverlapSection();
 // const magnetic = new Magnetic(magneticElm);
 
 class App {
-    constructor() {
-        navbar.onInit();
-        footer.circleAnimation();
-        lazyImage.init();
-        imageParallax.init();
-        overlapSection.init();
-        // magnetic.onInit();
-    }
-
     init(){
         //alert('test from app init')
         navbar.onInit();

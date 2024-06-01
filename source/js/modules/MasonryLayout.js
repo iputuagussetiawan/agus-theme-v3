@@ -11,8 +11,6 @@ class MasonryLayout {
         //console.log(WRAPPER_CONTAINER_EL);
         let ITEMS_ELS = CONTAINER_EL.querySelectorAll("." + items);
 
-        console.log(ITEMS_ELS)
-
         CONTAINER_EL.parentNode.removeChild(CONTAINER_EL);
         let NEW_CONTAINER_EL = document.createElement('div');
         NEW_CONTAINER_EL.setAttribute('id', container);

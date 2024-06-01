@@ -3007,12 +3007,6 @@ var overlapSection = new _modules_OverlapSection__WEBPACK_IMPORTED_MODULE_6__["d
 var App = /*#__PURE__*/function () {
   function App() {
     _classCallCheck(this, App);
-    navbar.onInit();
-    footer.circleAnimation();
-    lazyImage.init();
-    imageParallax.init();
-    overlapSection.init();
-    // magnetic.onInit();
   }
   _createClass(App, [{
     key: "init",
@@ -18686,7 +18680,9 @@ __webpack_require__.r(__webpack_exports__);
 var app = new _App__WEBPACK_IMPORTED_MODULE_0__["default"]();
 
 //2.Event
-app.init();
+document.addEventListener("DOMContentLoaded", function () {
+  app.init();
+});
 
 //3.Function
 })();
