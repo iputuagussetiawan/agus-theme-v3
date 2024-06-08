@@ -67,24 +67,24 @@
                         <div class="menu-box__grid">
                             <div class="-left menu-box__col">
                                 <div class="menu-box__title">Social</div>
-                                <div class="menu-box__socials" data-cursor="-opaque">
-                                    <a class="menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="LinkedIn">LinkedIn</span></em></a>
-                                    <a class="menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="Behance">Behance</span></em></a>
-                                    <a class="menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="Dribbble">Dribbble</span></em></a>
-                                    <a class="menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="Instagram">Instagram</span></em></a>
-                                    <a class="menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="YouTube">YouTube</span></em></a>
-                                    <a class="menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="Twitter">Twitter</span></em></a>
-                                    <a class="menu-box__social" href="" target="_blank" rel="noopener"><em><span data-text="GitHub">GitHub</span></em></a>
+                                <div class="social-media" data-cursor="-opaque">
+                                    <a class="social-media__link" href="" target="_blank" rel="noopener"><em><span data-text="LinkedIn">LinkedIn</span></em></a>
+                                    <a class="social-media__link" href="" target="_blank" rel="noopener"><em><span data-text="Behance">Behance</span></em></a>
+                                    <a class="social-media__link" href="" target="_blank" rel="noopener"><em><span data-text="Dribbble">Dribbble</span></em></a>
+                                    <a class="social-media__link" href="" target="_blank" rel="noopener"><em><span data-text="Instagram">Instagram</span></em></a>
+                                    <a class="social-media__link" href="" target="_blank" rel="noopener"><em><span data-text="YouTube">YouTube</span></em></a>
+                                    <a class="social-media__link" href="" target="_blank" rel="noopener"><em><span data-text="Twitter">Twitter</span></em></a>
+                                    <a class="social-media__link" href="" target="_blank" rel="noopener"><em><span data-text="GitHub">GitHub</span></em></a>
                                 </div>
                             </div>
                             <div class="-right menu-box__col">
                                 <div class="menu-box__title">Menu</div>
-                                <div class="menu-box__navs" role="navigation" data-cursor="-opaque">
-                                    <div class="menu-box__nav"><a class="menu-box__nav-link" href="http://localhost/iputuagussetiawan.com/what-we-do/"><em><span data-text="What we do">What we do</span></em></a></div>
-                                    <div class="menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Projects">Projects</span></em></a></div>
-                                    <div class="menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Company">Company</span></em></a></div>
-                                    <div class="menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Tutorials">Tutorials</span></em></a></div>
-                                    <div class="menu-box__nav"><a class="menu-box__nav-link"  href=""><em><span data-text="Contacts">Contacts</span></em></a></div>
+                                <div class="side-menu" role="navigation" data-cursor="-opaque">
+                                    <div class=side-menu__item"><a class="side-menu__link" href="http://localhost/iputuagussetiawan.com/what-we-do/"><em><span data-text="What we do">What we do</span></em></a></div>
+                                    <div class="side-menu__item"><a class="side-menu__link"  href=""><em><span data-text="Projects">Projects</span></em></a></div>
+                                    <div class="side-menu__item"><a class="side-menu__link"  href=""><em><span data-text="Company">Company</span></em></a></div>
+                                    <div class="side-menu__item"><a class="side-menu__link"  href=""><em><span data-text="Tutorials">Tutorials</span></em></a></div>
+                                    <div class="side-menu__item"><a class="side-menu__link"  href=""><em><span data-text="Contacts">Contacts</span></em></a></div>
                                 </div>
                             </div>
                         </div>
@@ -93,8 +93,8 @@
                 <div class="menu-box__footer">
                     <div class="menu-box__container">
                         <div class="-sm menu-box__title">Get in touch</div>
-                        <div class="menu-box__mail">
-                            <a class="menu-box__mail-link" href="mailto:agussetiawaniputu@gmail.com"><span>agussetiawaniputu@gmail.com</span></a>
+                        <div class="side-mail">
+                            <a class="side-mail__link" href="mailto:agussetiawaniputu@gmail.com"><span>agussetiawaniputu@gmail.com</span></a>
                         </div>
                     </div>
                 </div>

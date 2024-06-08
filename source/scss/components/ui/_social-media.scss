@@ -1,0 +1,47 @@
+.social-media{
+    display: inline-block;
+    margin: -6px 0;
+    &__link {
+        position: relative;
+        display: block;
+        padding: 12px 0;
+        font-size: 16px;
+        line-height: 120%;
+        letter-spacing: 0.00464286em;
+        text-transform: capitalize;
+        text-decoration: none;
+        color: #000000;
+        em {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            font-style: normal;
+            span {
+                display: block;
+                transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+                transform-origin: left center;
+                &:after {
+                    content: attr(data-text);
+                    display: block;
+                    position: absolute;
+                    top: 130%;
+                    transform: skewY(10deg);
+                    transform-origin: left center;
+                    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+                }
+            }
+        }
+        &:focus em span,
+        &:hover em span {
+            transform: translateY(-130%) skewY(5deg);
+        }
+        &:focus em span:after,
+        &:hover em span:after {
+            transform: skewY(-5deg);
+        }
+    }
+    &--white{
+        @extend .social-media;
+        color: #ffffff;
+    }
+}
