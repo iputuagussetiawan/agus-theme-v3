@@ -1,0 +1,63 @@
+.card-work__number {
+  color: #ADAEAF;
+  font-size: 24px;
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #D5D6D7;
+}
+.card-work__title {
+  font-weight: 400;
+  font-size: 42px;
+  margin-bottom: 24px;
+  color: #424345;
+}
+.card-work__info {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #424345;
+}
+
+.about-header {
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.about-header__inner {
+  padding: 0px 80px;
+}
+.about-header__title {
+  padding-bottom: 80px;
+  font-size: 120px;
+  font-weight: 400;
+  border-bottom: 1px solid #EBEBEB;
+  line-height: 1.5;
+}
+
+.my-profile__inner {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 64px;
+}
+.my-profile__left {
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.my-work {
+  padding: 60px 0px 120px 0px;
+  position: relative;
+  background-color: #E9EAEB;
+}
+.my-work__title {
+  font-size: 64px;
+  font-weight: 400;
+  margin-bottom: 80px;
+}
+.my-work__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+}
+
+/*# sourceMappingURL=about.css.map*/

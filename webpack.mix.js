@@ -2,12 +2,14 @@ const mix = require('laravel-mix');
 
 mix.sass('source/scss/layout.scss', 'assets/css/')
     .sass('source/scss/pages/home.scss', 'assets/css/page/')
+    .sass('source/scss/pages/about.scss', 'assets/css/page/')
     .sass('source/scss/pages/whatWeDo.scss', 'assets/css/page/')
     .sass('source/scss/pages/singlePortfolio.scss', 'assets/css/page/')
     .sourceMaps(true, 'source-map');
 
 mix.js('source/js/barbaSetup.js', 'assets/js/')
     .js('source/js/pages/home.js', 'assets/js/page/')
+    .js('source/js/pages/about.js', 'assets/js/page/')
     .js('source/js/pages/whatWeDo.js', 'assets/js/page/')
     .js('source/js/pages/singlePortfolio.js', 'assets/js/page/')
     .sourceMaps(true, 'source-map');

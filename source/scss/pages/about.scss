@@ -1,0 +1,51 @@
+@use '../components/cards/_card-work.scss' as *;
+
+.about-header{
+    position: relative;
+    padding-top: 120px;
+    padding-bottom: 120px;
+
+    &__inner{
+        padding: 0px 80px;
+    }
+    &__title{
+        padding-bottom: 80px;
+        font-size: 120px;
+        font-weight: 400;
+        border-bottom: 1px solid #EBEBEB;
+        line-height: 1.5;
+    }
+}
+
+.my-profile{
+    &__inner{
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 64px;
+    }
+
+    &__left{
+        font-size: 20px;
+        line-height: 1.5;
+        letter-spacing: 1px;
+    }
+}
+
+.my-work{
+    padding: 60px 0px 120px 0px;
+    position: relative;
+    background-color: #E9EAEB;
+
+    &__title{
+        font-size: 64px;
+        font-weight: 400;
+        margin-bottom: 80px;
+    }
+
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 80px;
+    }
+
+}

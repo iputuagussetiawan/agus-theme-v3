@@ -66,6 +66,12 @@ function tmdr_script_enqueue() {
         tmdr_print_js('homeJs', 'page/home.js');
     }
 
+    
+    if (is_page_template('page-about.php')) {
+        tmdr_print_css('aboutCss', 'page/about.css');
+        tmdr_print_js('aboutJs', 'page/about.js');
+    }
+
     if (is_page_template('page-whatwedo.php')) {
         tmdr_print_css('whatWeDoCss', 'page/whatWeDo.css');
         tmdr_print_js('whatWeDoJs', 'page/whatWeDo.js');
