@@ -80,5 +80,21 @@ get_header();
             </div>
         </div>
     </section>
+
+    <section class="my-skill">
+        <div class="my-skill__inner">
+            <div class="wrapperRollingText">
+                <div class="rollingText text">
+                    Ultra high-performance, professional-grade animation for the modern web
+                </div>
+            </div>
+    
+            <div class="wrapperRollingText02">
+                <div class="rollingText02 text">
+                    <span>• GreenSock •</span> Ultra high-performance, professional-grade animation for the modern web
+                </div>
+            </div>  
+        </div>
+    </section>
 </main>
 <?php get_footer(); ?>

@@ -60,4 +60,11 @@
   gap: 80px;
 }
 
+.my-skill {
+  padding: 60px 0px 120px 0px;
+}
+.my-skill__inner {
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=about.css.map*/

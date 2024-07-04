@@ -1861,14 +1861,9 @@ img {
   color: #000;
 }
 
-.topHead__inner {
-  overflow-x: hidden;
-}
-
 .wrapperRollingText {
   position: relative;
   white-space: nowrap;
-  border-top: 1px solid #6f6f6f;
 }
 
 .rollingText {

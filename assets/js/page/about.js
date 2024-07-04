@@ -3575,6 +3575,110 @@ var OverlapSection = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./source/js/modules/ScrollLetters.js":
+/*!********************************************!*\
+  !*** ./source/js/modules/ScrollLetters.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+var ScrollLetters = /*#__PURE__*/function () {
+  function ScrollLetters() {
+    _classCallCheck(this, ScrollLetters);
+    this.direction = 1; // 1 = forward, -1 = backward scroll
+    this.roll1 = null;
+    this.roll2 = null;
+    this.scroll = null;
+  }
+  _createClass(ScrollLetters, [{
+    key: "init",
+    value: function init() {
+      var _this = this;
+      this.roll1 = this.roll(".rollingText", {
+        duration: 18
+      });
+      this.roll2 = this.roll(".rollingText02", {
+        duration: 10
+      }, true);
+      this.scroll = gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_0__.ScrollTrigger.create({
+        trigger: document.querySelector('[data-scroll-container]'),
+        onUpdate: function onUpdate(self) {
+          if (self.direction !== _this.direction) {
+            _this.direction *= -1;
+            gsap__WEBPACK_IMPORTED_MODULE_1__["default"].to([_this.roll1, _this.roll2], {
+              timeScale: _this.direction,
+              overwrite: true
+            });
+          }
+        }
+      });
+    }
+  }, {
+    key: "roll",
+    value: function roll(targets, vars, reverse) {
+      vars = vars || {};
+      vars.ease || (vars.ease = "none");
+      var tl = gsap__WEBPACK_IMPORTED_MODULE_1__["default"].timeline({
+        repeat: -1,
+        onReverseComplete: function onReverseComplete() {
+          this.totalTime(this.rawTime() + this.duration() * 10); // otherwise when the playhead gets back to the beginning, it'd stop. So push the playhead forward 10 iterations (it could be any number)
+        }
+      });
+
+      var elements = gsap__WEBPACK_IMPORTED_MODULE_1__["default"].utils.toArray(targets);
+      var clones = elements.map(function (el) {
+        var clone = el.cloneNode(true);
+        el.parentNode.appendChild(clone);
+        return clone;
+      });
+      var positionClones = function positionClones() {
+        return elements.forEach(function (el, i) {
+          return gsap__WEBPACK_IMPORTED_MODULE_1__["default"].set(clones[i], {
+            position: "absolute",
+            overwrite: false,
+            top: el.offsetTop,
+            left: el.offsetLeft + (reverse ? -el.offsetWidth : el.offsetWidth)
+          });
+        });
+      };
+      positionClones();
+      elements.forEach(function (el, i) {
+        return tl.to([el, clones[i]], _objectSpread({
+          xPercent: reverse ? 100 : -100
+        }, vars), 0);
+      });
+      window.addEventListener("resize", function () {
+        var time = tl.totalTime(); // record the current time
+        tl.totalTime(0); // rewind and clear out the timeline
+        positionClones(); // reposition
+        tl.totalTime(time); // jump back to the proper time
+      });
+
+      return tl;
+    }
+  }]);
+  return ScrollLetters;
+}();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ScrollLetters);
+
+/***/ }),
+
 /***/ "./source/js/sections/Footer.js":
 /*!**************************************!*\
   !*** ./source/js/sections/Footer.js ***!
@@ -18672,19 +18776,19 @@ var __webpack_exports__ = {};
   !*** ./source/js/pages/about.js ***!
   \**********************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../App */ "./source/js/App.js");
+/* harmony import */ var _modules_ScrollLetters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/ScrollLetters */ "./source/js/modules/ScrollLetters.js");
 //1.Import
 
 
 
-gsap__WEBPACK_IMPORTED_MODULE_1__["default"].registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_2__.ScrollTrigger);
 var app = new _App__WEBPACK_IMPORTED_MODULE_0__["default"]();
+var scrollLetters = new _modules_ScrollLetters__WEBPACK_IMPORTED_MODULE_1__["default"]();
 
 //2.Event
 document.addEventListener("DOMContentLoaded", function () {
   app.init();
+  scrollLetters.init();
 });
 })();
 

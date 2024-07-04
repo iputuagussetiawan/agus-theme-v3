@@ -166,6 +166,9 @@
   font-weight: 300;
   line-height: 1.2;
 }
+.topHead__inner {
+  overflow-x: hidden;
+}
 
 .aki__line {
   position: relative;
