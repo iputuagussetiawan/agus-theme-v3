@@ -8,7 +8,7 @@ get_header();
     <?php
         get_template_part('template-parts/sections/home', 'banner');
         get_template_part('template-parts/sections/home', 'portfolio');
-        //get_template_part('template-parts/sections/home', 'features');
+        get_template_part('template-parts/sections/home', 'features');
     ?>
 </main>
 <?php get_footer(); ?>

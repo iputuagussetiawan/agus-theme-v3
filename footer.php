@@ -1,6 +1,6 @@
 
 </div><!-- #barba-container -->
-    <footer class="footer footer-wrap footer-footer-wrap">
+    <footer class="footer footer-wrap footer-footer-wrap" data-cursor="-inverse">
         <div class="footer-rounded-div" >
             <div class="rounded-div-wrap">
                 <div class="rounded-div"></div>
@@ -40,16 +40,24 @@
                         </div>
                         <ul class="footer__social-media-listing">
                             <li class="footer__social-media-item">
-                                <a href="" class="footer__social-media-link">Facebook</a>
+                                <a class="footer__social-media-link"  href="">
+                                    <em><span data-text="Projects">Facebook</span></em>
+                                </a>
                             </li>
                             <li class="footer__social-media-item">
-                                <a href="" class="footer__social-media-link">Instagram</a>
+                                <a class="footer__social-media-link"  href="">
+                                    <em><span data-text="Projects">Instagram</span></em>
+                                </a>
                             </li>
                             <li class="footer__social-media-item">
-                                <a href="" class="footer__social-media-link">Whatsapp</a>
+                                <a class="footer__social-media-link"  href="">
+                                    <em><span data-text="Projects">Whatsapp</span></em>
+                                </a>
                             </li>
                             <li class="footer__social-media-item">
-                                <a href="" class="footer__social-media-link">LinkedIn</a>
+                                <a class="footer__social-media-link"  href="">
+                                    <em><span data-text="Projects">LinkedIn</span></em>
+                                </a>
                             </li>
                         </ul>
                     </div>

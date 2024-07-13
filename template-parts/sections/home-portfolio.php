@@ -28,7 +28,7 @@
                         }
 
                             echo '<li class="nav-item" role="presentation">
-                                    <button class="nav-link '.$menuClass.'" id="pills-' . $category->term_id . '-tab" data-bs-toggle="pill" data-bs-target="#pills-' . $category->term_id . '" type="button" role="tab">  <span class="nav-link__text" >' . $category->name . ' <span class="nav-link__badge">' . $category->count . '</span></span></button>
+                                    <button data-cursor-text="Explore" class="nav-link '.$menuClass.'" id="pills-' . $category->term_id . '-tab" data-bs-toggle="pill" data-bs-target="#pills-' . $category->term_id . '" type="button" role="tab">  <span class="nav-link__text" >' . $category->name . ' <span class="nav-link__badge">' . $category->count . '</span></span></button>
                                 </li>';
                         
                         $iMenuTab++;
@@ -119,7 +119,7 @@
             </div>
         </div>
         <div class="portfolio__action">
-            <a class="btn-primary-outline" href="">
+            <a class="btn-primary-outline" data-cursor-text="Explore" href="">
                 <span class="btn-primary-outline__border"></span>
                 <span class="btn-primary-outline__ripple">
                     <span></span>

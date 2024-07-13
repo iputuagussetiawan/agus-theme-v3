@@ -890,6 +890,40 @@ a:hover {
 }
 .footer__social-media-link {
   color: #fff;
+  position: relative;
+  display: block;
+  padding: 12px 0;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0.00464286em;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+.footer__social-media-link em {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  font-style: normal;
+}
+.footer__social-media-link em span {
+  display: block;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  transform-origin: left center;
+}
+.footer__social-media-link em span:after {
+  content: attr(data-text);
+  display: block;
+  position: absolute;
+  top: 130%;
+  transform: skewY(10deg);
+  transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.footer__social-media-link:focus em span, .footer__social-media-link:hover em span {
+  transform: translateY(-130%) skewY(5deg);
+}
+.footer__social-media-link:focus em span:after, .footer__social-media-link:hover em span:after {
+  transform: skewY(-5deg);
 }
 .footer__social-media-label {
   margin-bottom: 18px;
@@ -1859,6 +1893,11 @@ img {
 
 .mf-cursor.-inverse .mf-cursor-text {
   color: #000;
+}
+
+.mf-cursor.-pointer.-text::before {
+  transform: scale(1.7);
+  opacity: 1;
 }
 
 .wrapperRollingText {
