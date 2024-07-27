@@ -1,4 +1,6 @@
+@use '../_config.scss' as *;
 @use '../components/cards/_card-work.scss' as *;
+
 
 .about-header{
     position: relative;
@@ -18,6 +20,8 @@
 }
 
 .my-profile{
+    @include imageRatio(1037,1430);
+    padding-bottom: clamp(5em, 21vh, 12em);;
     &__inner{
         display: grid;
         grid-template-columns: 400px 1fr;

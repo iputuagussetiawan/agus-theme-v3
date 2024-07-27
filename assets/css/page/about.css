@@ -33,6 +33,23 @@
   line-height: 1.5;
 }
 
+.my-profile {
+  padding-bottom: clamp(5em, 21vh, 12em);
+}
+.my-profile__image-container {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.my-profile__image-container:before {
+  content: "";
+  display: block;
+  padding-top: 137.8977820636%;
+}
+.my-profile__image-container .ratio-item {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .my-profile__inner {
   display: grid;
   grid-template-columns: 400px 1fr;

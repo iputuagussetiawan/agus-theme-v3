@@ -41,22 +41,22 @@
                         <ul class="footer__social-media-listing">
                             <li class="footer__social-media-item">
                                 <a class="footer__social-media-link"  href="">
-                                    <em><span data-text="Projects">Facebook</span></em>
+                                    <em><span data-text="Facebook">Facebook</span></em>
                                 </a>
                             </li>
                             <li class="footer__social-media-item">
                                 <a class="footer__social-media-link"  href="">
-                                    <em><span data-text="Projects">Instagram</span></em>
+                                    <em><span data-text="Instagram">Instagram</span></em>
                                 </a>
                             </li>
                             <li class="footer__social-media-item">
                                 <a class="footer__social-media-link"  href="">
-                                    <em><span data-text="Projects">Whatsapp</span></em>
+                                    <em><span data-text="Whatsapp">Whatsapp</span></em>
                                 </a>
                             </li>
                             <li class="footer__social-media-item">
                                 <a class="footer__social-media-link"  href="">
-                                    <em><span data-text="Projects">LinkedIn</span></em>
+                                    <em><span data-text="LinkedIn">LinkedIn</span></em>
                                 </a>
                             </li>
                         </ul>

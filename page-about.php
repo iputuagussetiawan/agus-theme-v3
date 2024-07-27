@@ -23,7 +23,9 @@ get_header();
                     I help  companies from all over the world with tailor-made solutions. With each project, i push my work to new horizons, always putting quality first.
                 </div>
                 <div class="my-profile__right">
-                    
+                    <div class="my-profile__image-container image-parallax">
+                        <img src="<?php echo get_template_directory_uri()."/assets/images/page/about/DSC07312-2.jpg"?>" alt="" class="my-profile__image ratio-item">
+                    </div>
                 </div>
             </div>
         </div>
