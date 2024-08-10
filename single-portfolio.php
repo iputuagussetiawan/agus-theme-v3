@@ -2,6 +2,17 @@
 get_header();
 ?>
 <main class="single-portfolio" data-barba="container" data-barba-namespace="single-portfolio">
+
+    <section class="text-anime">
+        <div class="container">
+            <h1>Text Anime</h1>
+            <div class="heading_wrap">
+                <h2 class="split-lines">
+                    We Create Best Website For You with authentic creative solution, with a core mission in building strong and provocative relationships between brands
+                </h2>
+            </div>
+        </div>
+    </section>
     <?php
         get_template_part('template-parts/sections/portfolio/single', 'header');
         get_template_part('template-parts/sections/portfolio/single', 'thumbnail');

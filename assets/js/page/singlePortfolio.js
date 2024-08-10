@@ -18607,6 +18607,1447 @@ var MouseFollower = /*#__PURE__*/function () {
 
 
 
+/***/ }),
+
+/***/ "./node_modules/split-type/dist/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/split-type/dist/index.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SplitType)
+/* harmony export */ });
+/**
+ * SplitType
+ * https://github.com/lukePeavey/SplitType
+ * @version 0.3.4
+ * @author Luke Peavey <lwpeavey@gmail.com>
+ */
+
+// Polyfill the following DOM methods that are not supported in IE 11.
+
+(function () {
+  function append() {
+    var length = arguments.length;
+
+    for (var i = 0; i < length; i++) {
+      var node = i < 0 || arguments.length <= i ? undefined : arguments[i];
+      if (node.nodeType === 1 || node.nodeType === 11) this.appendChild(node);else this.appendChild(document.createTextNode(String(node)));
+    }
+  }
+
+  function replaceChildren() {
+    while (this.lastChild) {
+      this.removeChild(this.lastChild);
+    }
+
+    if (arguments.length) this.append.apply(this, arguments);
+  }
+
+  function replaceWith() {
+    var parent = this.parentNode;
+
+    for (var _len = arguments.length, nodes = new Array(_len), _key = 0; _key < _len; _key++) {
+      nodes[_key] = arguments[_key];
+    }
+
+    var i = nodes.length;
+    if (!parent) return;
+    if (!i) parent.removeChild(this);
+
+    while (i--) {
+      var node = nodes[i];
+
+      if (typeof node !== 'object') {
+        node = this.ownerDocument.createTextNode(node);
+      } else if (node.parentNode) {
+        node.parentNode.removeChild(node);
+      }
+
+      if (!i) {
+        parent.replaceChild(node, this);
+      } else {
+        parent.insertBefore(this.previousSibling, node);
+      }
+    }
+  }
+
+  if (typeof Element !== 'undefined') {
+    if (!Element.prototype.append) {
+      Element.prototype.append = append;
+      DocumentFragment.prototype.append = append;
+    }
+
+    if (!Element.prototype.replaceChildren) {
+      Element.prototype.replaceChildren = replaceChildren;
+      DocumentFragment.prototype.replaceChildren = replaceChildren;
+    }
+
+    if (!Element.prototype.replaceWith) {
+      Element.prototype.replaceWith = replaceWith;
+      DocumentFragment.prototype.replaceWith = replaceWith;
+    }
+  }
+})();
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+/**
+ * Shallow merges the properties of an object with the target object. Only
+ * includes properties that exist on the target object. Non-writable properties
+ * on the target object will not be over-written.
+ *
+ * @param {Object} target
+ * @param {Object} object
+ */
+function extend(target, object) {
+  return Object.getOwnPropertyNames(Object(target)).reduce(function (extended, key) {
+    var currentValue = Object.getOwnPropertyDescriptor(Object(target), key);
+    var newValue = Object.getOwnPropertyDescriptor(Object(object), key);
+    return Object.defineProperty(extended, key, newValue || currentValue);
+  }, {});
+}
+
+/**
+ * Checks if given value is a string
+ *
+ * @param {any} value
+ * @return {boolean} `true` if `value` is a string, else `false`
+ */
+function isString(value) {
+  return typeof value === 'string';
+}
+
+function isArray(value) {
+  return Array.isArray(value);
+}
+
+/**
+ * Parses user supplied settings objects.
+ */
+
+function parseSettings() {
+  var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var object = extend(settings); // `split` may be used as an alias for the `types` option
+  // Parse the `types` settings into an array of valid split types.
+  // If `types` is explicitly set to an empty string or array, text will not be
+  // split at all.
+
+  var types;
+
+  if (object.types !== undefined) {
+    types = object.types;
+  } else if (object.split !== undefined) {
+    types = object.split;
+  }
+
+  if (types !== undefined) {
+    object.types = (isString(types) || isArray(types) ? String(types) : '').split(',').map(function (type) {
+      return String(type).trim();
+    }).filter(function (type) {
+      return /((line)|(word)|(char))/i.test(type);
+    });
+  } // Support `position: absolute` as an alias for `absolute: true`
+
+
+  if (object.absolute || object.position) {
+    object.absolute = object.absolute || /absolute/.test(settings.position);
+  }
+
+  return object;
+}
+
+/**
+ * Takes a list of `types` and returns an object
+ *
+ * @param {string | string[]} value a comma separated list of split types
+ * @return {{lines: boolean, words: boolean, chars: boolean}}
+ */
+
+function parseTypes(value) {
+  var types = isString(value) || isArray(value) ? String(value) : '';
+  return {
+    none: !types,
+    lines: /line/i.test(types),
+    words: /word/i.test(types),
+    chars: /char/i.test(types)
+  };
+}
+
+/**
+ * Returns true if `value` is a non-null object.
+ * @param {any} value
+ * @return {boolean}
+ */
+function isObject(value) {
+  return value !== null && typeof value === 'object';
+}
+
+/**
+ * Returns true if `input` is one of the following:
+ * - `Element`
+ * - `Text`
+ * - `DocumentFragment`
+ */
+
+function isNode(input) {
+  return isObject(input) && /^(1|3|11)$/.test(input.nodeType);
+}
+
+/**
+ * Checks if `value` is a valid array-like length.
+ * Original source: Lodash
+ *
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3)
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE)
+ * // => false
+ *
+ * _.isLength(Infinity)
+ * // => false
+ *
+ * _.isLength('3')
+ * // => false
+ */
+
+function isLength(value) {
+  return typeof value === 'number' && value > -1 && value % 1 === 0;
+}
+/**
+ * Checks if `value` is an array-like object
+ * @param {any} value
+ * @return {boolean} true if `value` is array-like`, else `false`
+ * @example
+ * isArrayLike(new Array())
+ * // => true
+ *
+ * isArrayLike(document.querySelectorAll('div'))
+ * // => true
+ *
+ * isArrayLike(document.getElementsByTagName('div'))
+ * // => true
+ *
+ * isArrayLike(() => {})
+ * // => false
+ *
+ * isArrayLike({foo: 'bar'})
+ * // => false
+ *
+ * * isArrayLike(null)
+ * // => false
+ */
+
+
+function isArrayLike(value) {
+  return isObject(value) && isLength(value.length);
+}
+
+/**
+ * Coerces `value` to an `Array`.
+ *
+ * @param {any} value
+ * @return {any[]}
+ * @example
+ * // If `value` is any `Array`, returns original `Array`
+ * let arr = [1, 2]
+ * toArray(arr)
+ * // => arr
+ *
+ * // If `value` is an `ArrayLike`, its equivalent to `Array.from(value)`
+ * let nodeList = document.querySelectorAll('div')
+ * toArray(nodeList)
+ * // => HTMLElement[] s
+ *
+ * // If value is falsy, returns empty array
+ * toArray(null)
+ * // => []
+ *
+ * // For any other type of value, its equivalent to `Array.of(value)`
+ * let element = document.createElement('div')
+ * toArray(element)
+ * // => [element]
+ *
+ */
+
+function toArray(value) {
+  if (isArray(value)) return value;
+  if (value == null) return [];
+  return isArrayLike(value) ? Array.prototype.slice.call(value) : [value];
+}
+
+/**
+ * Processes target elements for the splitType function.
+ *
+ * @param {any} target Can be one of the following:
+ * 1. `string` - A css selector
+ * 2. `HTMLElement` - A single element
+ * 3. `NodeList` - A nodeList
+ * 4. `Element[]` - An array of elements
+ * 5. `Array<NodeList|Element[]>` - An nested array of elements
+ * @returns {Element[]} A flat array HTML elements
+ * @return A flat array of elements or empty array if no elements are found
+ */
+
+function getTargetElements(target) {
+  var elements = target; // If `target` is a selector string...
+
+  if (isString(target)) {
+    if (/^(#[a-z]\w+)$/.test(target.trim())) {
+      // If `target` is an ID, use `getElementById`
+      elements = document.getElementById(target.trim().slice(1));
+    } else {
+      // Else use `querySelectorAll`
+      elements = document.querySelectorAll(target);
+    }
+  } // Return a flattened array of elements
+
+
+  return toArray(elements).reduce(function (result, element) {
+    return [].concat(_toConsumableArray(result), _toConsumableArray(toArray(element).filter(isNode)));
+  }, []);
+}
+
+var entries = Object.entries;
+
+var expando = "_splittype";
+var cache = {};
+var uid = 0;
+/**
+ * Stores data associated with DOM elements or other objects. This is a
+ * simplified version of jQuery's data method.
+ *
+ * @signature Data(owner)
+ * @description Get the data store object for the given owner.
+ * @param {Object} owner the object that data will be associated with.
+ * @return {Object} the data object for given `owner`. If no data exists
+ *     for the given object, creates a new data store and returns it.
+ *
+ * @signature Data(owner, key)
+ * @description Get the value
+ * @param {Object} owner
+ * @param {string} key
+ * @return {any} the value of the provided key. If key does not exist, returns
+ *     undefined.
+ *
+ * @signature Data(owner, key, value)
+ * @description Sets the given key/value pair in data store
+ * @param {Object} owner
+ * @param {string} key
+ * @param {any} value
+ */
+
+function set(owner, key, value) {
+  if (!isObject(owner)) {
+    console.warn('[data.set] owner is not an object');
+    return null;
+  }
+
+  var id = owner[expando] || (owner[expando] = ++uid);
+  var data = cache[id] || (cache[id] = {});
+
+  if (value === undefined) {
+    if (!!key && Object.getPrototypeOf(key) === Object.prototype) {
+      cache[id] = _objectSpread2(_objectSpread2({}, data), key);
+    }
+  } else if (key !== undefined) {
+    data[key] = value;
+  }
+
+  return value;
+}
+function get(owner, key) {
+  var id = isObject(owner) ? owner[expando] : null;
+  var data = id && cache[id] || {};
+
+  if (key === undefined) {
+    return data;
+  }
+
+  return data[key];
+}
+/**
+ * Remove all data associated with the given element
+ */
+
+function remove(element) {
+  var id = element && element[expando];
+
+  if (id) {
+    delete element[id];
+    delete cache[id];
+  }
+}
+/**
+ * Clear all cached data
+ */
+
+function clear() {
+  Object.keys(cache).forEach(function (key) {
+    delete cache[key];
+  });
+}
+/**
+ * Remove all temporary data from the store.
+ */
+
+function cleanup() {
+  entries(cache).forEach(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+        id = _ref2[0],
+        _ref2$ = _ref2[1],
+        isRoot = _ref2$.isRoot,
+        isSplit = _ref2$.isSplit;
+
+    if (!isRoot || !isSplit) {
+      cache[id] = null;
+      delete cache[id];
+    }
+  });
+}
+
+/**
+ * Splits a string into an array of words.
+ *
+ * @param {string} string
+ * @param {string | RegExp} [separator = ' ']
+ * @return {string[]} Array of words
+ */
+function toWords(value) {
+  var separator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ' ';
+  var string = value ? String(value) : '';
+  return string.trim().replace(/\s+/g, ' ').split(separator);
+}
+
+/**
+ * Based on lodash#split <https://lodash.com/license>
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters &
+ * Editors
+ */
+var rsAstralRange = "\\ud800-\\udfff";
+var rsComboMarksRange = "\\u0300-\\u036f\\ufe20-\\ufe23";
+var rsComboSymbolsRange = "\\u20d0-\\u20f0";
+var rsVarRange = "\\ufe0e\\ufe0f";
+/** Used to compose unicode capture groups. */
+
+var rsAstral = "[".concat(rsAstralRange, "]");
+var rsCombo = "[".concat(rsComboMarksRange).concat(rsComboSymbolsRange, "]");
+var rsFitz = "\\ud83c[\\udffb-\\udfff]";
+var rsModifier = "(?:".concat(rsCombo, "|").concat(rsFitz, ")");
+var rsNonAstral = "[^".concat(rsAstralRange, "]");
+var rsRegional = "(?:\\ud83c[\\udde6-\\uddff]){2}";
+var rsSurrPair = "[\\ud800-\\udbff][\\udc00-\\udfff]";
+var rsZWJ = "\\u200d";
+/** Used to compose unicode regexes. */
+
+var reOptMod = "".concat(rsModifier, "?");
+var rsOptVar = "[".concat(rsVarRange, "]?");
+var rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*';
+var rsSeq = rsOptVar + reOptMod + rsOptJoin;
+var rsSymbol = "(?:".concat(["".concat(rsNonAstral).concat(rsCombo, "?"), rsCombo, rsRegional, rsSurrPair, rsAstral].join('|'), "\n)");
+/** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
+
+var reUnicode = RegExp("".concat(rsFitz, "(?=").concat(rsFitz, ")|").concat(rsSymbol).concat(rsSeq), 'g');
+/** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */
+
+var unicodeRange = [rsZWJ, rsAstralRange, rsComboMarksRange, rsComboSymbolsRange, rsVarRange];
+var reHasUnicode = RegExp("[".concat(unicodeRange.join(''), "]"));
+/**
+ * Converts an ASCII `string` to an array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the converted array.
+ */
+
+function asciiToArray(string) {
+  return string.split('');
+}
+/**
+ * Checks if `string` contains Unicode symbols.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {boolean} Returns `true` if a symbol is found, else `false`.
+ */
+
+
+function hasUnicode(string) {
+  return reHasUnicode.test(string);
+}
+/**
+ * Converts a Unicode `string` to an array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the converted array.
+ */
+
+
+function unicodeToArray(string) {
+  return string.match(reUnicode) || [];
+}
+/**
+ * Converts `string` to an array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the converted array.
+ */
+
+
+function stringToArray(string) {
+  return hasUnicode(string) ? unicodeToArray(string) : asciiToArray(string);
+}
+/**
+ * Converts `value` to a string. An empty string is returned for `null`
+ * and `undefined` values.
+ *
+ * @param {*} value The value to process.
+ * @returns {string} Returns the string.
+ * @example
+ *
+ * _.toString(null);
+ * // => ''
+ *
+ * _.toString([1, 2, 3]);
+ * // => '1,2,3'
+ */
+
+function toString(value) {
+  return value == null ? '' : String(value);
+}
+/**
+ * Splits `string` into an array of characters. If `separator` is omitted,
+ * it behaves likes split.split('').
+ *
+ * Unlike native string.split(''), it can split strings that contain unicode
+ * characters like emojis and symbols.
+ *
+ * @param {string} [string=''] The string to split.
+ * @param {RegExp|string} [separator=''] The separator pattern to split by.
+ * @returns {Array} Returns the string segments.
+ * @example
+ * toChars('foo');
+ * // => ['f', 'o', 'o']
+ *
+ * toChars('foo bar');
+ * // => ["f", "o", "o", " ", "b", "a", "r"]
+ *
+ * toChars('f😀o');
+ * // => ['f', '😀', 'o']
+ *
+ * toChars('f-😀-o', /-/);
+ * // => ['f', '😀', 'o']
+ *
+ */
+
+
+function toChars(string) {
+  var separator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  string = toString(string);
+
+  if (string && isString(string)) {
+    if (!separator && hasUnicode(string)) {
+      return stringToArray(string);
+    }
+  }
+
+  return string.split(separator);
+}
+
+/**
+ * Create an HTML element with the the given attributes
+ *
+ * attributes can include standard HTML attribute, as well as the following
+ * "special" properties:
+ *   - children: HTMLElement | ArrayLike<HTMLElement>
+ *   - textContent: string
+ *   - innerHTML: string
+ *
+ * @param {string} name
+ * @param  {Object} [attributes]
+ * @returns {HTMLElement}
+ */
+
+function createElement(name, attributes) {
+  var element = document.createElement(name);
+
+  if (!attributes) {
+    // When called without the second argument, its just return the result
+    // of `document.createElement`
+    return element;
+  }
+
+  Object.keys(attributes).forEach(function (attribute) {
+    var rawValue = attributes[attribute];
+    var value = isString(rawValue) ? rawValue.trim() : rawValue; // Ignore attribute if the value is `null` or an empty string
+
+    if (value === null || value === '') return;
+
+    if (attribute === 'children') {
+      // Children can be one or more Elements or DOM strings
+      element.append.apply(element, _toConsumableArray(toArray(value)));
+    } else {
+      // Handle standard HTML attributes
+      element.setAttribute(attribute, value);
+    }
+  });
+  return element;
+}
+
+var defaults = {
+  splitClass: '',
+  lineClass: 'line',
+  wordClass: 'word',
+  charClass: 'char',
+  types: ['lines', 'words', 'chars'],
+  absolute: false,
+  tagName: 'div'
+};
+
+/**
+ * Splits the text content of a single TextNode into words and/or characters.
+ *
+ * This functions gets called for every text node inside the target element. It
+ * replaces the text node with a document fragment containing the split text.
+ * Returns an array of the split word and character elements from this node.
+ *
+ * @param {TextNode} textNode
+ * @param {Object} settings
+ * @return {{words: Element[], chars: Element[]}}
+ */
+
+function splitWordsAndChars(textNode, settings) {
+  settings = extend(defaults, settings); // The split types
+
+  var types = parseTypes(settings.types); // the tag name for split text nodes
+
+  var TAG_NAME = settings.tagName; // value of the text node
+
+  var VALUE = textNode.nodeValue; // `splitText` is a wrapper to hold the HTML structure
+
+  var splitText = document.createDocumentFragment(); // Arrays of split word and character elements
+
+  var words = [];
+  var chars = [];
+
+  if (/^\s/.test(VALUE)) {
+    splitText.append(' ');
+  } // Create an array of wrapped word elements.
+
+
+  words = toWords(VALUE).reduce(function (result, WORD, idx, arr) {
+    // Let `wordElement` be the wrapped element for the current word
+    var wordElement;
+    var characterElementsForCurrentWord; // -> If splitting text into characters...
+
+    if (types.chars) {
+      // Iterate through the characters in the current word
+      characterElementsForCurrentWord = toChars(WORD).map(function (CHAR) {
+        var characterElement = createElement(TAG_NAME, {
+          "class": "".concat(settings.splitClass, " ").concat(settings.charClass),
+          style: 'display: inline-block;',
+          children: CHAR
+        });
+        set(characterElement, 'isChar', true);
+        chars = [].concat(_toConsumableArray(chars), [characterElement]);
+        return characterElement;
+      });
+    } // END IF;
+
+
+    if (types.words || types.lines) {
+      // -> If Splitting Text Into Words...
+      //    Create an element to wrap the current word. If we are also
+      //    splitting text into characters, the word element will contain the
+      //    wrapped character nodes for this word. If not, it will contain the
+      //    plain text content (WORD)
+      wordElement = createElement(TAG_NAME, {
+        "class": "".concat(settings.wordClass, " ").concat(settings.splitClass),
+        style: "display: inline-block; ".concat(types.words && settings.absolute ? "position: relative;" : ''),
+        children: types.chars ? characterElementsForCurrentWord : WORD
+      });
+      set(wordElement, {
+        isWord: true,
+        isWordStart: true,
+        isWordEnd: true
+      });
+      splitText.appendChild(wordElement);
+    } else {
+      // -> If NOT splitting into words OR lines...
+      //    Append the characters elements directly to splitText.
+      characterElementsForCurrentWord.forEach(function (characterElement) {
+        splitText.appendChild(characterElement);
+      });
+    }
+
+    if (idx < arr.length - 1) {
+      // Add a space after the word.
+      splitText.append(' ');
+    } // If not splitting text into words, we return an empty array
+
+
+    return types.words ? result.concat(wordElement) : result;
+  }, []); // END LOOP;
+  // Add a trailing white space to maintain word spacing
+
+  if (/\s$/.test(VALUE)) {
+    splitText.append(' ');
+  }
+
+  textNode.replaceWith(splitText);
+  return {
+    words: words,
+    chars: chars
+  };
+}
+
+/**
+ * Splits the text content of a target element into words and/or characters.
+ * The function is recursive, it will also split the text content of any child
+ * elements into words/characters, while preserving the nested elements.
+ *
+ * @param {Node} node an HTML Element or Text Node
+ * @param {Object} setting splitType settings
+ */
+
+function split(node, settings) {
+  var type = node.nodeType; // Arrays of split words and characters
+
+  var wordsAndChars = {
+    words: [],
+    chars: []
+  }; // Only proceed if `node` is an `Element`, `Fragment`, or `Text`
+
+  if (!/(1|3|11)/.test(type)) {
+    return wordsAndChars;
+  } // A) IF `node` is TextNode that contains characters other than white space...
+  //    Split the text content of the node into words and/or characters
+  //    return an object containing the split word and character elements
+
+
+  if (type === 3 && /\S/.test(node.nodeValue)) {
+    return splitWordsAndChars(node, settings);
+  } // B) ELSE `node` is an 'Element'
+  //    Iterate through its child nodes, calling the `split` function
+  //    recursively for each child node.
+
+
+  var childNodes = toArray(node.childNodes);
+
+  if (childNodes.length) {
+    set(node, 'isSplit', true); // we need to set a few styles on nested html elements
+
+    if (!get(node).isRoot) {
+      node.style.display = 'inline-block';
+      node.style.position = 'relative'; // To maintain original spacing around nested elements when we are
+      // splitting text into lines, we need to check if the element should
+      // have a space before and after, and store that value for later.
+      // Note: this was necessary to maintain the correct spacing when nested
+      // elements do not align with word boundaries. For example, a nested
+      // element only wraps part of a word.
+
+      var nextSibling = node.nextSibling;
+      var prevSibling = node.previousSibling;
+      var text = node.textContent || '';
+      var textAfter = nextSibling ? nextSibling.textContent : ' ';
+      var textBefore = prevSibling ? prevSibling.textContent : ' ';
+      set(node, {
+        isWordEnd: /\s$/.test(text) || /^\s/.test(textAfter),
+        isWordStart: /^\s/.test(text) || /\s$/.test(textBefore)
+      });
+    }
+  } // Iterate through child nodes, calling `split` recursively
+  // Returns an object containing all split words and chars
+
+
+  return childNodes.reduce(function (result, child) {
+    var _split = split(child, settings),
+        words = _split.words,
+        chars = _split.chars;
+
+    return {
+      words: [].concat(_toConsumableArray(result.words), _toConsumableArray(words)),
+      chars: [].concat(_toConsumableArray(result.chars), _toConsumableArray(chars))
+    };
+  }, wordsAndChars);
+}
+
+/**
+ * Gets the height and position of an element relative to offset parent.
+ * Should be equivalent to offsetTop and offsetHeight, but with sub-pixel
+ * precision.
+ *
+ * TODO needs work
+ */
+function getPosition(node, isWord, settings, scrollPos) {
+  if (!settings.absolute) {
+    return {
+      top: isWord ? node.offsetTop : null
+    };
+  }
+
+  var parent = node.offsetParent;
+
+  var _scrollPos = _slicedToArray(scrollPos, 2),
+      scrollX = _scrollPos[0],
+      scrollY = _scrollPos[1];
+
+  var parentX = 0;
+  var parentY = 0;
+
+  if (parent && parent !== document.body) {
+    var parentRect = parent.getBoundingClientRect();
+    parentX = parentRect.x + scrollX;
+    parentY = parentRect.y + scrollY;
+  }
+
+  var _node$getBoundingClie = node.getBoundingClientRect(),
+      width = _node$getBoundingClie.width,
+      height = _node$getBoundingClie.height,
+      x = _node$getBoundingClie.x,
+      y = _node$getBoundingClie.y;
+
+  var top = y + scrollY - parentY;
+  var left = x + scrollX - parentX;
+  return {
+    width: width,
+    height: height,
+    top: top,
+    left: left
+  };
+}
+
+/**
+ * Recursively "un-splits" text into words.
+ * This is used when splitting text into lines but not words.
+ * We initially split the text into words so we can maintain the correct line
+ * breaks. Once text has been split into lines, we "un-split" the words...
+ * @param {Element}
+ * @return {void}
+ */
+
+function unSplitWords(element) {
+  if (!get(element).isWord) {
+    toArray(element.children).forEach(function (child) {
+      return unSplitWords(child);
+    });
+  } else {
+    remove(element);
+    element.replaceWith.apply(element, _toConsumableArray(element.childNodes));
+  }
+}
+
+var createFragment = function createFragment() {
+  return document.createDocumentFragment();
+};
+
+function repositionAfterSplit(element, settings, scrollPos) {
+  var types = parseTypes(settings.types);
+  var TAG_NAME = settings.tagName;
+  var nodes = element.getElementsByTagName('*');
+  var wordsInEachLine = [];
+  var wordsInCurrentLine = [];
+  var lineOffsetY = null;
+  var elementHeight;
+  var elementWidth;
+  var contentBox;
+  var lines = [];
+  /**------------------------------------------------
+   ** GET STYLES AND POSITIONS
+   **-----------------------------------------------*/
+  // There is no built-in way to detect natural line breaks in text (when a
+  // block of text wraps to fit its container). To split text into lines, we
+  // have to detect line breaks by checking the top offset of words. This is
+  // why text was split into words first. To apply absolute
+  // positioning, its also necessary to record the size and position of every
+  // split node (lines, words, characters).
+  // To consolidate DOM getting/settings, this is all done at the same time,
+  // before actually splitting text into lines, which involves restructuring
+  // the DOM again.
+  // Cache the element's parent and next sibling (for DOM removal).
+
+  var parent = element.parentElement;
+  var nextSibling = element.nextElementSibling; // a wrapper for the new HTML structure
+
+  var splitText = createFragment(); // get the computed style object for the element
+
+  var cs = window.getComputedStyle(element);
+  var align = cs.textAlign;
+  var fontSize = parseFloat(cs.fontSize);
+  var lineThreshold = fontSize * 0.2; // IF using absolute position...
+
+  if (settings.absolute) {
+    // Let contentBox be an object containing the width and offset position of
+    // the element's content box (the area inside padding box). This is needed
+    // (for absolute positioning) to set the width and position of line
+    // elements, which have not been created yet.
+    contentBox = {
+      left: element.offsetLeft,
+      top: element.offsetTop,
+      width: element.offsetWidth
+    }; // Let elementWidth and elementHeight be the actual width/height of the
+    // element. Also check if the element has inline height or width styles
+    // already set. If it does, cache those values for later.
+
+    elementWidth = element.offsetWidth;
+    elementHeight = element.offsetHeight; // Store the original inline height and width of the element
+
+    set(element, {
+      cssWidth: element.style.width,
+      cssHeight: element.style.height
+    });
+  } // Iterate over every node in the target element
+
+
+  toArray(nodes).forEach(function (node) {
+    // node is a word element or custom html element
+    var isWordLike = node.parentElement === element; // TODO needs work
+    // Get te size and position of split text nodes
+
+    var _getPosition = getPosition(node, isWordLike, settings, scrollPos),
+        width = _getPosition.width,
+        height = _getPosition.height,
+        top = _getPosition.top,
+        left = _getPosition.left; // If element is a `<br>` tag return here
+
+
+    if (/^br$/i.test(node.nodeName)) return;
+
+    if (types.lines && isWordLike) {
+      // We compare the top offset of the current word to the top offset of
+      // previous words on the current line. If the difference is greater than
+      // our defined threshold (20%), we assume this word is on a new line.
+      if (lineOffsetY === null || top - lineOffsetY >= lineThreshold) {
+        lineOffsetY = top;
+        wordsInEachLine.push(wordsInCurrentLine = []);
+      } // Add the current word node to the line array
+
+
+      wordsInCurrentLine.push(node);
+    } // END IF
+
+
+    if (settings.absolute) {
+      // Store the size and position split text nodes
+      set(node, {
+        top: top,
+        left: left,
+        width: width,
+        height: height
+      });
+    }
+  }); // END LOOP
+  // Remove the element from the DOM
+
+  if (parent) {
+    parent.removeChild(element);
+  }
+  /**------------------------------------------------
+   ** SPLIT LINES
+   **-----------------------------------------------*/
+
+
+  if (types.lines) {
+    // Iterate over lines of text (see 11 b)
+    // Let `line` be the array of words in the current line.
+    // Return an array of the wrapped line elements (lineElements)
+    lines = wordsInEachLine.map(function (wordsInThisLine) {
+      // Create an element to wrap the current line.
+      var lineElement = createElement(TAG_NAME, {
+        "class": "".concat(settings.splitClass, " ").concat(settings.lineClass),
+        style: "display: block; text-align: ".concat(align, "; width: 100%;")
+      });
+      set(lineElement, 'isLine', true);
+      var lineDimensions = {
+        height: 0,
+        top: 1e4
+      }; // Append the `lineElement` to `container`
+
+      splitText.appendChild(lineElement); // Iterate over the word-level elements in the current line.
+      // Note: wordOrElement can either be a word node or nested element
+
+      wordsInThisLine.forEach(function (wordOrElement, idx, arr) {
+        var _data$get = get(wordOrElement),
+            isWordEnd = _data$get.isWordEnd,
+            top = _data$get.top,
+            height = _data$get.height;
+
+        var next = arr[idx + 1]; // Determine line height / y-position
+        // we use the height and offsetTop of the words which we already
+        // recorded. Because custom nested elements could have their own
+        // styles, the words on a line may not all be the same height or
+        // y position. So we take the greatest height / y - offset of the
+        // words on this line.
+
+        lineDimensions.height = Math.max(lineDimensions.height, height);
+        lineDimensions.top = Math.min(lineDimensions.top, top); // append the current word/element
+
+        lineElement.appendChild(wordOrElement); // Determine if there should space after the current element...
+        // If this is not the last word on the current line.
+        // TODO - logic for handing spacing can be improved
+
+        if (isWordEnd && get(next).isWordStart) {
+          lineElement.append(' ');
+        }
+      }); // END LOOP
+
+      if (settings.absolute) {
+        set(lineElement, {
+          height: lineDimensions.height,
+          top: lineDimensions.top
+        });
+      }
+
+      return lineElement;
+    }); // END LOOP
+
+    if (!types.words) {
+      unSplitWords(splitText);
+    } // 10. Insert the new container
+
+
+    element.replaceChildren(splitText);
+  }
+  /**------------------------------------------------
+   **  SET ABSOLUTE POSITION
+   **-----------------------------------------------*/
+  // Apply absolute positioning to all child elements of the target element.
+  // This includes split lines, words, chars, and custom HTML elements that were
+  // included by the user. The size and position of child elements has already
+  // been recorded before splitting text into lines.
+
+
+  if (settings.absolute) {
+    // Set the width/height of the parent element so it does not collapse
+    // when its children are set to absolute position.
+    element.style.width = "".concat(element.style.width || elementWidth, "px");
+    element.style.height = "".concat(elementHeight, "px"); // Iterate over all child elements
+
+    toArray(nodes).forEach(function (node) {
+      var _data$get2 = get(node),
+          isLine = _data$get2.isLine,
+          top = _data$get2.top,
+          left = _data$get2.left,
+          width = _data$get2.width,
+          height = _data$get2.height;
+
+      var parentData = get(node.parentElement);
+      var isChildOfLineNode = !isLine && parentData.isLine; // Set the top position of the current node.
+      // -> If `node` a line element, we use the top offset of its first child
+      // -> If `node` the child of line element, then its top offset is zero
+
+      node.style.top = "".concat(isChildOfLineNode ? top - parentData.top : top, "px"); // Set the left position of the current node.
+      // -> IF `node` is a line element, this is equal to the position left of
+      //    the content box of the parent element
+      // -> IF `node` is the child of a line element, the value has to adjusted
+      //    so its relative to the line element
+
+      node.style.left = isLine ? "".concat(contentBox.left, "px") : "".concat(left - (isChildOfLineNode ? contentBox.left : 0), "px"); // Set the height of the current node to the cached value.
+
+      node.style.height = "".concat(height, "px"); //  Set the width of the current node.
+      //  If its a line element, width is equal to the width of the contentBox.
+
+      node.style.width = isLine ? "".concat(contentBox.width, "px") : "".concat(width, "px"); // Finally, set the node's position to absolute.
+
+      node.style.position = 'absolute';
+    });
+  } // end if;
+  // 14. Re-attach the element to the DOM
+
+
+  if (parent) {
+    if (nextSibling) parent.insertBefore(element, nextSibling);else parent.appendChild(element);
+  }
+
+  return lines;
+}
+
+var _defaults = extend(defaults, {});
+
+var SplitType = /*#__PURE__*/function () {
+  _createClass(SplitType, null, [{
+    key: "clearData",
+
+    /**
+     * CLears all data
+     */
+    value: function clearData() {
+      clear();
+    }
+    /**
+     * The default settings for all splitType instances
+     * @static
+     */
+
+  }, {
+    key: "setDefaults",
+
+    /**
+     * Sets the default settings for all SplitType instances.
+     * The provided object will be merged with the existing defaults objects.
+     *
+     * @param {Object} settings an object containing the settings to override
+     * @returns {Object} the new default settings
+     * @public
+     * @static
+     * @example
+     * SplitType.setDefaults({ "position": "absolute" })
+     */
+    value: function setDefaults(options) {
+      _defaults = extend(_defaults, parseSettings(options));
+      return defaults;
+    }
+    /**
+     * Revert target elements to their original html content
+     * Has no effect on that
+     *
+     * @param {any} elements The target elements to revert. One of:
+     *  - {string} A css selector
+     *  - {HTMLElement} A single element
+     * -  {NodeList} A NodeList or collection
+     *  - {HTMLElement[]} An array of Elements
+     * -  {Array<HTMLElement|NodeList|HTMLElement[]>} A nested array of elements
+     * @static
+     */
+
+  }, {
+    key: "revert",
+    value: function revert(elements) {
+      getTargetElements(elements).forEach(function (element) {
+        var _data$get = get(element),
+            isSplit = _data$get.isSplit,
+            html = _data$get.html,
+            cssWidth = _data$get.cssWidth,
+            cssHeight = _data$get.cssHeight;
+
+        if (isSplit) {
+          element.innerHTML = html;
+          element.style.width = cssWidth || '';
+          element.style.height = cssHeight || '';
+          remove(element);
+        }
+      });
+    }
+    /**
+     * Creates a new SplitType instance
+     * This static method provides a way to create a `SplitType` instance without
+     * using the `new` keyword.
+     *
+     * @param {any} target The target elements to split. One of:
+     *  - {string} A css selector
+     *  - {HTMLElement} A single element
+     * -  {NodeList} A NodeList or collection
+     *  - {HTMLElement[]} An array of Elements
+     * -  {Array<HTMLElement|NodeList|HTMLElement[]>} A nested array of elements
+     * @param {Object} [options] Settings for the SplitType instance
+     * @return {SplitType} the SplitType instance
+     * @static
+     */
+
+  }, {
+    key: "create",
+    value: function create(target, options) {
+      return new SplitType(target, options);
+    }
+    /**
+     * Creates a new `SplitType` instance
+     *
+     * @param {any} elements The target elements to split. One of:
+     *  - {string} A css selector
+     *  - {HTMLElement} A single element
+     * -  {NodeList} A NodeList or collection
+     *  - {HTMLElement[]} An array of Elements
+     * -  {Array<HTMLElement|NodeList|HTMLElement[]>} A nested array of elements
+     * @param {Object} [options] Settings for the SplitType instance
+     */
+
+  }, {
+    key: "data",
+
+    /**
+     * The internal data store
+     */
+    get: function get() {
+      return cache;
+    }
+  }, {
+    key: "defaults",
+    get: function get() {
+      return _defaults;
+    }
+    /**
+     * Sets the default settings for all SplitType instances.
+     *
+     * Setting `SplitType.defaults` to an object will merge that object with the
+     * existing defaults.
+     *
+     * @param {Object} settings an object containing the settings to override
+     * @deprecated
+     * @static
+     * @example
+     * SplitType.defaults = { "position": "absolute" }
+     */
+    ,
+    set: function set(options) {
+      _defaults = extend(_defaults, parseSettings(options));
+    }
+  }]);
+
+  function SplitType(elements, options) {
+    _classCallCheck(this, SplitType);
+
+    this.isSplit = false;
+    this.settings = extend(_defaults, parseSettings(options));
+    this.elements = getTargetElements(elements); // Start the split process
+
+    this.split();
+  }
+  /**
+   * Splits the text in all target elements. This method is called
+   * automatically when a new SplitType instance is created. It can also be
+   * called manually to re-split text with new options.
+   * @param {Object} options
+   * @public
+   */
+
+
+  _createClass(SplitType, [{
+    key: "split",
+    value: function split$1(options) {
+      var _this = this;
+
+      // Revert target elements (if they are already split)
+      // Note: revert was already called once in the constructor. However, we
+      // need to call it again here so text is reverted when the user manually
+      // calls the `split` method to re-split text.
+      this.revert(); // Store the original html content of each target element
+
+      this.elements.forEach(function (element) {
+        set(element, 'html', element.innerHTML);
+      }); // Create arrays to hold the split lines, words, and characters
+
+      this.lines = [];
+      this.words = [];
+      this.chars = []; // cache vertical scroll position before splitting
+
+      var scrollPos = [window.pageXOffset, window.pageYOffset]; // If new options were passed into the `split()` method, update settings
+
+      if (options !== undefined) {
+        this.settings = extend(this.settings, parseSettings(options));
+      }
+
+      var types = parseTypes(this.settings.types); // If the `types` option is set to an empty array, text will not be split.
+      // @example new SplitType('#target', { types: [] })
+
+      if (types.none) {
+        return;
+      } // Split text in each target element
+
+
+      this.elements.forEach(function (element) {
+        // Add the split text nodes from this element to the arrays of all split
+        // text nodes for this instance.
+        set(element, 'isRoot', true);
+
+        var _split2 = split(element, _this.settings),
+            words = _split2.words,
+            chars = _split2.chars;
+
+        _this.words = [].concat(_toConsumableArray(_this.words), _toConsumableArray(words));
+        _this.chars = [].concat(_toConsumableArray(_this.chars), _toConsumableArray(chars));
+      });
+      this.elements.forEach(function (element) {
+        if (types.lines || _this.settings.absolute) {
+          var lines = repositionAfterSplit(element, _this.settings, scrollPos);
+          _this.lines = [].concat(_toConsumableArray(_this.lines), _toConsumableArray(lines));
+        }
+      }); // Set isSplit to true for the SplitType instance
+
+      this.isSplit = true; // Set scroll position to cached value.
+
+      window.scrollTo(scrollPos[0], scrollPos[1]); // Clean up stored data
+
+      cleanup();
+    }
+    /**
+     * Reverts target element(s) back to their original html content
+     * Deletes all stored data associated with the target elements
+     * Resets the properties on the splitType instance
+     *
+     * @public
+     */
+
+  }, {
+    key: "revert",
+    value: function revert() {
+      if (this.isSplit) {
+        // Reset instance properties if necessary
+        this.lines = null;
+        this.words = null;
+        this.chars = null;
+        this.isSplit = false;
+      }
+
+      SplitType.revert(this.elements);
+    }
+  }]);
+
+  return SplitType;
+}();
+
+
+
+
 /***/ })
 
 /******/ 	});
@@ -18672,19 +20113,135 @@ var __webpack_exports__ = {};
   !*** ./source/js/pages/singlePortfolio.js ***!
   \********************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../App */ "./source/js/App.js");
+/* harmony import */ var split_type__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! split-type */ "./node_modules/split-type/dist/index.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_ScrollToPlugin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap/ScrollToPlugin */ "./node_modules/gsap/ScrollToPlugin.js");
+/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../App */ "./source/js/App.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 //1.Import
 
 
+
+
+gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.registerPlugin(gsap_ScrollToPlugin__WEBPACK_IMPORTED_MODULE_2__.ScrollToPlugin);
+gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_3__.ScrollTrigger);
+
+
 //2.Initialization
-var app = new _App__WEBPACK_IMPORTED_MODULE_0__["default"]();
+var app = new _App__WEBPACK_IMPORTED_MODULE_4__["default"]();
+var text;
 
 //2.Event
 document.addEventListener("DOMContentLoaded", function () {
   app.init();
+  runSplit();
+  runTextOnScrollAnime();
+});
+window.addEventListener('resize', function (event) {
+  // Your code here
+  text.revert();
+  runSplit();
+  runTextOnScrollAnime();
 });
 
 //3.Function
+function runSplit() {
+  text = new split_type__WEBPACK_IMPORTED_MODULE_0__["default"](".split-lines", {
+    types: "lines, words"
+  });
+
+  // Select all elements with the class 'line'
+  var lines = document.querySelectorAll('.line');
+
+  // Loop through each 'line' element
+  lines.forEach(function (line) {
+    // Create a new div element
+    var textWrapper = document.createElement('div');
+
+    // Add the class 'line-mask' to the new div
+    textWrapper.classList.add('line-mask');
+
+    // Append the new div as a child of the current 'line' element
+    line.appendChild(textWrapper);
+  });
+}
+// Select all elements with the class 'trigger-class'
+
+function runTextOnScrollAnime() {
+  var _console;
+  var lines = document.querySelectorAll('.line');
+  /* eslint-disable */
+  (_console = console).log.apply(_console, _toConsumableArray(oo_oo("1401959969_51_4_51_22_4", lines)));
+  lines.forEach(function (triggerElement, index) {
+    // Find the target element with the class 'line-mask' within the current 'trigger-class' element
+    var targetElement = triggerElement.querySelector('.line-mask');
+
+    // Create the GSAP timeline with the ScrollTrigger plugin
+    var tl = gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        start: "top center",
+        end: "bottom center",
+        scrub: 1
+      }
+    });
+
+    // Define the animation for the target element
+    tl.to(targetElement, {
+      width: "0%",
+      duration: 1
+    });
+  });
+}
+
+/* istanbul ignore next */ /* c8 ignore start */ /* eslint-disable */
+;
+function oo_cm() {
+  try {
+    return (0, eval)("globalThis._console_ninja") || (0, eval)("/* https://github.com/wallabyjs/console-ninja#how-does-it-work */'use strict';var _0x2fc1fe=_0x3a0c;(function(_0x54d87f,_0x55bd47){var _0x10f2f3=_0x3a0c,_0x3c45ef=_0x54d87f();while(!![]){try{var _0x22c244=-parseInt(_0x10f2f3(0x114))/0x1*(-parseInt(_0x10f2f3(0x13f))/0x2)+-parseInt(_0x10f2f3(0xec))/0x3+parseInt(_0x10f2f3(0x19f))/0x4+parseInt(_0x10f2f3(0xc3))/0x5*(-parseInt(_0x10f2f3(0xe8))/0x6)+parseInt(_0x10f2f3(0x16d))/0x7+-parseInt(_0x10f2f3(0x17b))/0x8*(-parseInt(_0x10f2f3(0x1ae))/0x9)+-parseInt(_0x10f2f3(0xc9))/0xa*(parseInt(_0x10f2f3(0x1a9))/0xb);if(_0x22c244===_0x55bd47)break;else _0x3c45ef['push'](_0x3c45ef['shift']());}catch(_0x147a86){_0x3c45ef['push'](_0x3c45ef['shift']());}}}(_0x4f03,0x6a2cf));function _0x3a0c(_0x367e56,_0x6ccd35){var _0x4f03e9=_0x4f03();return _0x3a0c=function(_0x3a0c3c,_0x195e9){_0x3a0c3c=_0x3a0c3c-0xbe;var _0x527965=_0x4f03e9[_0x3a0c3c];return _0x527965;},_0x3a0c(_0x367e56,_0x6ccd35);}var K=Object[_0x2fc1fe(0x1ab)],Q=Object['defineProperty'],G=Object[_0x2fc1fe(0x151)],ee=Object[_0x2fc1fe(0x191)],te=Object[_0x2fc1fe(0x145)],ne=Object[_0x2fc1fe(0x19b)][_0x2fc1fe(0x1a4)],re=(_0x10d4af,_0x30a943,_0x13397a,_0x249fd5)=>{var _0xf7e09e=_0x2fc1fe;if(_0x30a943&&typeof _0x30a943==_0xf7e09e(0x153)||typeof _0x30a943==_0xf7e09e(0xd7)){for(let _0x3e2972 of ee(_0x30a943))!ne[_0xf7e09e(0x17f)](_0x10d4af,_0x3e2972)&&_0x3e2972!==_0x13397a&&Q(_0x10d4af,_0x3e2972,{'get':()=>_0x30a943[_0x3e2972],'enumerable':!(_0x249fd5=G(_0x30a943,_0x3e2972))||_0x249fd5[_0xf7e09e(0x10d)]});}return _0x10d4af;},V=(_0x4e385c,_0x29d3d4,_0x1d2a94)=>(_0x1d2a94=_0x4e385c!=null?K(te(_0x4e385c)):{},re(_0x29d3d4||!_0x4e385c||!_0x4e385c[_0x2fc1fe(0xd1)]?Q(_0x1d2a94,_0x2fc1fe(0xc4),{'value':_0x4e385c,'enumerable':!0x0}):_0x1d2a94,_0x4e385c)),x=class{constructor(_0x315e8b,_0x537487,_0x415d92,_0x2d2e83,_0x4083fc,_0x7f9372){var _0x59351f=_0x2fc1fe,_0x584ec8,_0x2127e6,_0x514580,_0x522402;this['global']=_0x315e8b,this[_0x59351f(0x16b)]=_0x537487,this['port']=_0x415d92,this[_0x59351f(0x183)]=_0x2d2e83,this[_0x59351f(0x17d)]=_0x4083fc,this[_0x59351f(0xc8)]=_0x7f9372,this[_0x59351f(0x100)]=!0x0,this['_allowedToConnectOnSend']=!0x0,this[_0x59351f(0x141)]=!0x1,this[_0x59351f(0xc2)]=!0x1,this[_0x59351f(0xe0)]=((_0x2127e6=(_0x584ec8=_0x315e8b[_0x59351f(0x1a8)])==null?void 0x0:_0x584ec8[_0x59351f(0x19a)])==null?void 0x0:_0x2127e6[_0x59351f(0x176)])==='edge',this[_0x59351f(0xff)]=!((_0x522402=(_0x514580=this[_0x59351f(0x13a)]['process'])==null?void 0x0:_0x514580[_0x59351f(0xf2)])!=null&&_0x522402['node'])&&!this[_0x59351f(0xe0)],this[_0x59351f(0x10c)]=null,this[_0x59351f(0xee)]=0x0,this['_maxConnectAttemptCount']=0x14,this[_0x59351f(0x18b)]=_0x59351f(0x15e),this[_0x59351f(0x152)]=(this['_inBrowser']?'Console\\x20Ninja\\x20failed\\x20to\\x20send\\x20logs,\\x20refreshing\\x20the\\x20page\\x20may\\x20help;\\x20also\\x20see\\x20':_0x59351f(0xf9))+this['_webSocketErrorDocsLink'];}async[_0x2fc1fe(0xeb)](){var _0x34182e=_0x2fc1fe,_0x45f184,_0x37beb0;if(this[_0x34182e(0x10c)])return this[_0x34182e(0x10c)];let _0xa8f8b5;if(this[_0x34182e(0xff)]||this['_inNextEdge'])_0xa8f8b5=this[_0x34182e(0x13a)][_0x34182e(0x150)];else{if((_0x45f184=this[_0x34182e(0x13a)][_0x34182e(0x1a8)])!=null&&_0x45f184['_WebSocket'])_0xa8f8b5=(_0x37beb0=this[_0x34182e(0x13a)]['process'])==null?void 0x0:_0x37beb0[_0x34182e(0x11f)];else try{let _0x1ea871=await import(_0x34182e(0xc0));_0xa8f8b5=(await import((await import(_0x34182e(0x158)))[_0x34182e(0x13b)](_0x1ea871['join'](this[_0x34182e(0x183)],_0x34182e(0xfb)))[_0x34182e(0x180)]()))[_0x34182e(0xc4)];}catch{try{_0xa8f8b5=require(require(_0x34182e(0xc0))[_0x34182e(0x11d)](this[_0x34182e(0x183)],'ws'));}catch{throw new Error('failed\\x20to\\x20find\\x20and\\x20load\\x20WebSocket');}}}return this[_0x34182e(0x10c)]=_0xa8f8b5,_0xa8f8b5;}[_0x2fc1fe(0x181)](){var _0x4d3d63=_0x2fc1fe;this[_0x4d3d63(0xc2)]||this[_0x4d3d63(0x141)]||this['_connectAttemptCount']>=this[_0x4d3d63(0x1a1)]||(this['_allowedToConnectOnSend']=!0x1,this[_0x4d3d63(0xc2)]=!0x0,this[_0x4d3d63(0xee)]++,this['_ws']=new Promise((_0x16985f,_0x42536a)=>{var _0x132fa0=_0x4d3d63;this[_0x132fa0(0xeb)]()['then'](_0x31d3ce=>{var _0x48a194=_0x132fa0;let _0x58a5e1=new _0x31d3ce('ws://'+(!this[_0x48a194(0xff)]&&this[_0x48a194(0x17d)]?'gateway.docker.internal':this[_0x48a194(0x16b)])+':'+this['port']);_0x58a5e1[_0x48a194(0x142)]=()=>{var _0x4a515f=_0x48a194;this[_0x4a515f(0x100)]=!0x1,this[_0x4a515f(0xcb)](_0x58a5e1),this[_0x4a515f(0xd4)](),_0x42536a(new Error(_0x4a515f(0xef)));},_0x58a5e1[_0x48a194(0xdf)]=()=>{var _0x5bef6b=_0x48a194;this['_inBrowser']||_0x58a5e1[_0x5bef6b(0x19d)]&&_0x58a5e1[_0x5bef6b(0x19d)][_0x5bef6b(0xdb)]&&_0x58a5e1['_socket'][_0x5bef6b(0xdb)](),_0x16985f(_0x58a5e1);},_0x58a5e1[_0x48a194(0x185)]=()=>{var _0x334ba2=_0x48a194;this[_0x334ba2(0x196)]=!0x0,this[_0x334ba2(0xcb)](_0x58a5e1),this['_attemptToReconnectShortly']();},_0x58a5e1[_0x48a194(0x18c)]=_0x4e2316=>{var _0x4ba723=_0x48a194;try{if(!(_0x4e2316!=null&&_0x4e2316[_0x4ba723(0x116)])||!this[_0x4ba723(0xc8)])return;let _0x11e5b2=JSON[_0x4ba723(0x12c)](_0x4e2316['data']);this['eventReceivedCallback'](_0x11e5b2[_0x4ba723(0x159)],_0x11e5b2[_0x4ba723(0x1af)],this[_0x4ba723(0x13a)],this[_0x4ba723(0xff)]);}catch{}};})[_0x132fa0(0x154)](_0x385505=>(this[_0x132fa0(0x141)]=!0x0,this[_0x132fa0(0xc2)]=!0x1,this['_allowedToConnectOnSend']=!0x1,this['_allowedToSend']=!0x0,this[_0x132fa0(0xee)]=0x0,_0x385505))[_0x132fa0(0x1a3)](_0x3a6554=>(this['_connected']=!0x1,this[_0x132fa0(0xc2)]=!0x1,console[_0x132fa0(0x163)]('logger\\x20failed\\x20to\\x20connect\\x20to\\x20host,\\x20see\\x20'+this[_0x132fa0(0x18b)]),_0x42536a(new Error('failed\\x20to\\x20connect\\x20to\\x20host:\\x20'+(_0x3a6554&&_0x3a6554[_0x132fa0(0x144)])))));}));}[_0x2fc1fe(0xcb)](_0x14199d){var _0x331e14=_0x2fc1fe;this[_0x331e14(0x141)]=!0x1,this['_connecting']=!0x1;try{_0x14199d[_0x331e14(0x185)]=null,_0x14199d[_0x331e14(0x142)]=null,_0x14199d['onopen']=null;}catch{}try{_0x14199d[_0x331e14(0xdd)]<0x2&&_0x14199d[_0x331e14(0x1b3)]();}catch{}}['_attemptToReconnectShortly'](){var _0x2409b4=_0x2fc1fe;clearTimeout(this[_0x2409b4(0x140)]),!(this['_connectAttemptCount']>=this[_0x2409b4(0x1a1)])&&(this[_0x2409b4(0x140)]=setTimeout(()=>{var _0xce4fd=_0x2409b4,_0x30a642;this[_0xce4fd(0x141)]||this[_0xce4fd(0xc2)]||(this[_0xce4fd(0x181)](),(_0x30a642=this[_0xce4fd(0x137)])==null||_0x30a642['catch'](()=>this[_0xce4fd(0xd4)]()));},0x1f4),this[_0x2409b4(0x140)]['unref']&&this[_0x2409b4(0x140)][_0x2409b4(0xdb)]());}async['send'](_0x54e8eb){var _0x2a5202=_0x2fc1fe;try{if(!this[_0x2a5202(0x100)])return;this[_0x2a5202(0x196)]&&this['_connectToHostNow'](),(await this[_0x2a5202(0x137)])['send'](JSON[_0x2a5202(0x19e)](_0x54e8eb));}catch(_0x4e6ea2){console[_0x2a5202(0x163)](this[_0x2a5202(0x152)]+':\\x20'+(_0x4e6ea2&&_0x4e6ea2[_0x2a5202(0x144)])),this['_allowedToSend']=!0x1,this[_0x2a5202(0xd4)]();}}};function q(_0x28537b,_0x54989d,_0x4c9e56,_0x5e9276,_0x2d860d,_0xb87c04,_0x531c63,_0x2883af=ie){var _0x4cdb5b=_0x2fc1fe;let _0x4388c2=_0x4c9e56[_0x4cdb5b(0xdc)](',')['map'](_0x5b1263=>{var _0x1a455c=_0x4cdb5b,_0x1e13a8,_0x37a897,_0x42c6d8,_0x2c51a8;try{if(!_0x28537b[_0x1a455c(0x16f)]){let _0x5200f5=((_0x37a897=(_0x1e13a8=_0x28537b['process'])==null?void 0x0:_0x1e13a8[_0x1a455c(0xf2)])==null?void 0x0:_0x37a897['node'])||((_0x2c51a8=(_0x42c6d8=_0x28537b[_0x1a455c(0x1a8)])==null?void 0x0:_0x42c6d8[_0x1a455c(0x19a)])==null?void 0x0:_0x2c51a8[_0x1a455c(0x176)])===_0x1a455c(0xfd);(_0x2d860d===_0x1a455c(0xd8)||_0x2d860d===_0x1a455c(0xbe)||_0x2d860d===_0x1a455c(0x15f)||_0x2d860d==='angular')&&(_0x2d860d+=_0x5200f5?_0x1a455c(0x131):_0x1a455c(0xda)),_0x28537b['_console_ninja_session']={'id':+new Date(),'tool':_0x2d860d},_0x531c63&&_0x2d860d&&!_0x5200f5&&console[_0x1a455c(0x121)](_0x1a455c(0x149)+(_0x2d860d['charAt'](0x0)['toUpperCase']()+_0x2d860d[_0x1a455c(0x102)](0x1))+',',_0x1a455c(0x175),_0x1a455c(0x107));}let _0x2f5a57=new x(_0x28537b,_0x54989d,_0x5b1263,_0x5e9276,_0xb87c04,_0x2883af);return _0x2f5a57[_0x1a455c(0x128)]['bind'](_0x2f5a57);}catch(_0x1cdd60){return console['warn']('logger\\x20failed\\x20to\\x20connect\\x20to\\x20host',_0x1cdd60&&_0x1cdd60[_0x1a455c(0x144)]),()=>{};}});return _0x4d0a8e=>_0x4388c2['forEach'](_0x90cf90=>_0x90cf90(_0x4d0a8e));}function _0x4f03(){var _0x1e4fa1=['_p_','_capIfString','strLength','','see\\x20https://tinyurl.com/2vt8jxzw\\x20for\\x20more\\x20info.','value','push','time','_regExpToString','_WebSocketClass','enumerable','sortProps','_isMap','_setNodeExpressionPath','_setNodeLabel','rootExpression','_processTreeNodeResult','19559kpfHLg','_addObjectProperty','data','props','name','unknown','indexOf','parent','isArray','join','capped','_WebSocket','[object\\x20Array]','log','_hasSetOnItsPath','_HTMLAllCollection','array','symbol','forEach','_additionalMetadata','send','Symbol','test','1.0.0','parse','_isPrimitiveType','now','location','elapsed','\\x20server','performance','_sortProps','POSITIVE_INFINITY','_isSet','_p_length','_ws','autoExpandLimit','undefined','global','pathToFileURL','_numberRegExp','disabledTrace','valueOf','38pXnYeF','_reconnectTimeout','_connected','onerror','RegExp','message','getPrototypeOf','[object\\x20BigInt]','1723253010146','console','%c\\x20Console\\x20Ninja\\x20extension\\x20is\\x20connected\\x20to\\x20','string','isExpressionToEvaluate','_addFunctionsNode','Boolean','[object\\x20Date]','_setNodeQueryPath','WebSocket','getOwnPropertyDescriptor','_sendErrorMessage','object','then','_undefined','pop','_isArray','url','method','trace','error','cappedProps','reload','https://tinyurl.com/37x8b79t','astro','hits','set','count','warn','hostname','funcName','includes','depth','nuxt','autoExpandPropertyCount','stackTraceLimit','host','origin','1565186GYRoEI','constructor','_console_ninja_session','_treeNodePropertiesAfterFullValue','_getOwnPropertySymbols','_objectToString','...','expressionsToEvaluate','background:\\x20rgb(30,30,30);\\x20color:\\x20rgb(255,213,92)','NEXT_RUNTIME','replace','1','_property','bigint','5199848dGWWlA','concat','dockerizedApp','_Symbol','call','toString','_connectToHostNow','negativeZero','nodeModules','_cleanNode','onclose','_treeNodePropertiesBeforeFullValue','Error','Buffer','_getOwnPropertyNames','toLowerCase','_webSocketErrorDocsLink','onmessage','root_exp_id','get','hrtime','serialize','getOwnPropertyNames','[object\\x20Set]','_getOwnPropertyDescriptor','length','negativeInfinity','_allowedToConnectOnSend','disabledLog','index','type','env','prototype','127.0.0.1','_socket','stringify','1548024zVEtMb','_hasSymbolPropertyOnItsPath','_maxConnectAttemptCount','sort','catch','hasOwnProperty','reduceLimits','getOwnPropertySymbols','_isUndefined','process','4245043VccHLV','HTMLAllCollection','create','totalStrLength','root_exp','9OWmUZH','args','String','NEGATIVE_INFINITY','_setNodeId','close','remix','number','path',[\"localhost\",\"127.0.0.1\",\"example.cypress.io\",\"AG\",\"192.168.1.12\"],'_connecting','32345dsKBca','default','[object\\x20Map]','_blacklistedProperty','perf_hooks','eventReceivedCallback','10MPfDjv','_setNodeExpandableState','_disposeWebsocket','autoExpand','match','timeStamp','level','slice','__es'+'Module','null','setter','_attemptToReconnectShortly','_propertyName','_hasMapOnItsPath','function','next.js','resolveGetters','\\x20browser','unref','split','readyState','positiveInfinity','onopen','_inNextEdge','Number','_type','_console_ninja','_addLoadNode','date','current','_p_name','12vvrQAX','autoExpandMaxDepth','_consoleNinjaAllowedToStart','getWebSocketClass','2395380MUpbHf','node','_connectAttemptCount','logger\\x20websocket\\x20error','elements','cappedElements','versions','boolean','nan','_isNegativeZero','Map','stack','noFunctions','Console\\x20Ninja\\x20failed\\x20to\\x20send\\x20logs,\\x20restarting\\x20the\\x20process\\x20may\\x20help;\\x20also\\x20see\\x20','Set','ws/index.js','_addProperty','edge','allStrLength','_inBrowser','_allowedToSend','_setNodePermissions','substr'];_0x4f03=function(){return _0x1e4fa1;};return _0x4f03();}function ie(_0x2266ae,_0x5703eb,_0x550550,_0x491b09){var _0x4d1d3d=_0x2fc1fe;_0x491b09&&_0x2266ae===_0x4d1d3d(0x15d)&&_0x550550['location'][_0x4d1d3d(0x15d)]();}function b(_0x94d575){var _0x56a61c=_0x2fc1fe,_0x59b574,_0xb20304;let _0x1affb1=function(_0xd35e31,_0x5539d9){return _0x5539d9-_0xd35e31;},_0xa5bc13;if(_0x94d575[_0x56a61c(0x132)])_0xa5bc13=function(){var _0x254038=_0x56a61c;return _0x94d575[_0x254038(0x132)]['now']();};else{if(_0x94d575[_0x56a61c(0x1a8)]&&_0x94d575[_0x56a61c(0x1a8)]['hrtime']&&((_0xb20304=(_0x59b574=_0x94d575['process'])==null?void 0x0:_0x59b574['env'])==null?void 0x0:_0xb20304[_0x56a61c(0x176)])!=='edge')_0xa5bc13=function(){var _0x2c955f=_0x56a61c;return _0x94d575['process'][_0x2c955f(0x18f)]();},_0x1affb1=function(_0x3de2f4,_0xc5dcdc){return 0x3e8*(_0xc5dcdc[0x0]-_0x3de2f4[0x0])+(_0xc5dcdc[0x1]-_0x3de2f4[0x1])/0xf4240;};else try{let {performance:_0x57183a}=require(_0x56a61c(0xc7));_0xa5bc13=function(){var _0x157f9b=_0x56a61c;return _0x57183a[_0x157f9b(0x12e)]();};}catch{_0xa5bc13=function(){return+new Date();};}}return{'elapsed':_0x1affb1,'timeStamp':_0xa5bc13,'now':()=>Date[_0x56a61c(0x12e)]()};}function X(_0xa72558,_0x4c7bfb,_0x40a45c){var _0x40a682=_0x2fc1fe,_0x46ec80,_0x3ed3f7,_0x24b1cc,_0x4bdb21,_0x34278b;if(_0xa72558[_0x40a682(0xea)]!==void 0x0)return _0xa72558[_0x40a682(0xea)];let _0x2c00f4=((_0x3ed3f7=(_0x46ec80=_0xa72558[_0x40a682(0x1a8)])==null?void 0x0:_0x46ec80[_0x40a682(0xf2)])==null?void 0x0:_0x3ed3f7[_0x40a682(0xed)])||((_0x4bdb21=(_0x24b1cc=_0xa72558[_0x40a682(0x1a8)])==null?void 0x0:_0x24b1cc[_0x40a682(0x19a)])==null?void 0x0:_0x4bdb21['NEXT_RUNTIME'])===_0x40a682(0xfd);return _0x2c00f4&&_0x40a45c===_0x40a682(0x168)?_0xa72558[_0x40a682(0xea)]=!0x1:_0xa72558[_0x40a682(0xea)]=_0x2c00f4||!_0x4c7bfb||((_0x34278b=_0xa72558[_0x40a682(0x12f)])==null?void 0x0:_0x34278b['hostname'])&&_0x4c7bfb[_0x40a682(0x166)](_0xa72558[_0x40a682(0x12f)][_0x40a682(0x164)]),_0xa72558[_0x40a682(0xea)];}function H(_0x30b1b1,_0x373848,_0x6ec684,_0x5cb203){var _0x284004=_0x2fc1fe;_0x30b1b1=_0x30b1b1,_0x373848=_0x373848,_0x6ec684=_0x6ec684,_0x5cb203=_0x5cb203;let _0x514e04=b(_0x30b1b1),_0x53f46b=_0x514e04[_0x284004(0x130)],_0x2a87b2=_0x514e04['timeStamp'];class _0x2511f1{constructor(){var _0x93bd58=_0x284004;this['_keyStrRegExp']=/^(?!(?:do|if|in|for|let|new|try|var|case|else|enum|eval|false|null|this|true|void|with|break|catch|class|const|super|throw|while|yield|delete|export|import|public|return|static|switch|typeof|default|extends|finally|package|private|continue|debugger|function|arguments|interface|protected|implements|instanceof)$)[_$a-zA-Z\\xA0-\\uFFFF][_$a-zA-Z0-9\\xA0-\\uFFFF]*$/,this[_0x93bd58(0x13c)]=/^(0|[1-9][0-9]*)$/,this['_quotedRegExp']=/'([^\\\\']|\\\\')*'/,this[_0x93bd58(0x155)]=_0x30b1b1[_0x93bd58(0x139)],this[_0x93bd58(0x123)]=_0x30b1b1[_0x93bd58(0x1aa)],this[_0x93bd58(0x193)]=Object[_0x93bd58(0x151)],this['_getOwnPropertyNames']=Object[_0x93bd58(0x191)],this[_0x93bd58(0x17e)]=_0x30b1b1[_0x93bd58(0x129)],this['_regExpToString']=RegExp['prototype'][_0x93bd58(0x180)],this['_dateToString']=Date[_0x93bd58(0x19b)]['toString'];}[_0x284004(0x190)](_0x5ea3e2,_0x1f67e1,_0x154d99,_0x17d423){var _0x29e6e8=_0x284004,_0x210df3=this,_0x1b96a1=_0x154d99[_0x29e6e8(0xcc)];function _0x4f3740(_0x374d7a,_0x5394c2,_0x18e93a){var _0x4750cb=_0x29e6e8;_0x5394c2[_0x4750cb(0x199)]=_0x4750cb(0x119),_0x5394c2[_0x4750cb(0x15b)]=_0x374d7a['message'],_0xe545fa=_0x18e93a[_0x4750cb(0xed)][_0x4750cb(0xe6)],_0x18e93a[_0x4750cb(0xed)]['current']=_0x5394c2,_0x210df3[_0x4750cb(0x186)](_0x5394c2,_0x18e93a);}try{_0x154d99[_0x29e6e8(0xcf)]++,_0x154d99[_0x29e6e8(0xcc)]&&_0x154d99['autoExpandPreviousObjects'][_0x29e6e8(0x109)](_0x1f67e1);var _0x2c214c,_0xa8dc31,_0x3cfa46,_0x5d3c7d,_0x2f17a1=[],_0x5b3828=[],_0x58a4fd,_0x1d98f7=this[_0x29e6e8(0xe2)](_0x1f67e1),_0x28c6d9=_0x1d98f7===_0x29e6e8(0x124),_0x2ebd23=!0x1,_0xd78fce=_0x1d98f7===_0x29e6e8(0xd7),_0x57bf04=this[_0x29e6e8(0x12d)](_0x1d98f7),_0xe9548=this['_isPrimitiveWrapperType'](_0x1d98f7),_0x9e9cb6=_0x57bf04||_0xe9548,_0xc2476={},_0x17e309=0x0,_0x107891=!0x1,_0xe545fa,_0x39938d=/^(([1-9]{1}[0-9]*)|0)$/;if(_0x154d99['depth']){if(_0x28c6d9){if(_0xa8dc31=_0x1f67e1[_0x29e6e8(0x194)],_0xa8dc31>_0x154d99[_0x29e6e8(0xf0)]){for(_0x3cfa46=0x0,_0x5d3c7d=_0x154d99[_0x29e6e8(0xf0)],_0x2c214c=_0x3cfa46;_0x2c214c<_0x5d3c7d;_0x2c214c++)_0x5b3828[_0x29e6e8(0x109)](_0x210df3[_0x29e6e8(0xfc)](_0x2f17a1,_0x1f67e1,_0x1d98f7,_0x2c214c,_0x154d99));_0x5ea3e2[_0x29e6e8(0xf1)]=!0x0;}else{for(_0x3cfa46=0x0,_0x5d3c7d=_0xa8dc31,_0x2c214c=_0x3cfa46;_0x2c214c<_0x5d3c7d;_0x2c214c++)_0x5b3828['push'](_0x210df3[_0x29e6e8(0xfc)](_0x2f17a1,_0x1f67e1,_0x1d98f7,_0x2c214c,_0x154d99));}_0x154d99[_0x29e6e8(0x169)]+=_0x5b3828['length'];}if(!(_0x1d98f7==='null'||_0x1d98f7===_0x29e6e8(0x139))&&!_0x57bf04&&_0x1d98f7!==_0x29e6e8(0x1b0)&&_0x1d98f7!==_0x29e6e8(0x188)&&_0x1d98f7!==_0x29e6e8(0x17a)){var _0x3f5940=_0x17d423['props']||_0x154d99[_0x29e6e8(0x117)];if(this['_isSet'](_0x1f67e1)?(_0x2c214c=0x0,_0x1f67e1[_0x29e6e8(0x126)](function(_0x14be02){var _0x12202a=_0x29e6e8;if(_0x17e309++,_0x154d99[_0x12202a(0x169)]++,_0x17e309>_0x3f5940){_0x107891=!0x0;return;}if(!_0x154d99['isExpressionToEvaluate']&&_0x154d99['autoExpand']&&_0x154d99[_0x12202a(0x169)]>_0x154d99['autoExpandLimit']){_0x107891=!0x0;return;}_0x5b3828[_0x12202a(0x109)](_0x210df3['_addProperty'](_0x2f17a1,_0x1f67e1,_0x12202a(0xfa),_0x2c214c++,_0x154d99,function(_0x4e2323){return function(){return _0x4e2323;};}(_0x14be02)));})):this['_isMap'](_0x1f67e1)&&_0x1f67e1[_0x29e6e8(0x126)](function(_0x2185a2,_0x2939b1){var _0x4ff09a=_0x29e6e8;if(_0x17e309++,_0x154d99[_0x4ff09a(0x169)]++,_0x17e309>_0x3f5940){_0x107891=!0x0;return;}if(!_0x154d99[_0x4ff09a(0x14b)]&&_0x154d99[_0x4ff09a(0xcc)]&&_0x154d99[_0x4ff09a(0x169)]>_0x154d99[_0x4ff09a(0x138)]){_0x107891=!0x0;return;}var _0x2229b5=_0x2939b1[_0x4ff09a(0x180)]();_0x2229b5[_0x4ff09a(0x194)]>0x64&&(_0x2229b5=_0x2229b5[_0x4ff09a(0xd0)](0x0,0x64)+_0x4ff09a(0x173)),_0x5b3828[_0x4ff09a(0x109)](_0x210df3[_0x4ff09a(0xfc)](_0x2f17a1,_0x1f67e1,_0x4ff09a(0xf6),_0x2229b5,_0x154d99,function(_0x476947){return function(){return _0x476947;};}(_0x2185a2)));}),!_0x2ebd23){try{for(_0x58a4fd in _0x1f67e1)if(!(_0x28c6d9&&_0x39938d[_0x29e6e8(0x12a)](_0x58a4fd))&&!this[_0x29e6e8(0xc6)](_0x1f67e1,_0x58a4fd,_0x154d99)){if(_0x17e309++,_0x154d99[_0x29e6e8(0x169)]++,_0x17e309>_0x3f5940){_0x107891=!0x0;break;}if(!_0x154d99[_0x29e6e8(0x14b)]&&_0x154d99[_0x29e6e8(0xcc)]&&_0x154d99[_0x29e6e8(0x169)]>_0x154d99[_0x29e6e8(0x138)]){_0x107891=!0x0;break;}_0x5b3828[_0x29e6e8(0x109)](_0x210df3[_0x29e6e8(0x115)](_0x2f17a1,_0xc2476,_0x1f67e1,_0x1d98f7,_0x58a4fd,_0x154d99));}}catch{}if(_0xc2476[_0x29e6e8(0x136)]=!0x0,_0xd78fce&&(_0xc2476[_0x29e6e8(0xe7)]=!0x0),!_0x107891){var _0x11257b=[][_0x29e6e8(0x17c)](this[_0x29e6e8(0x189)](_0x1f67e1))['concat'](this[_0x29e6e8(0x171)](_0x1f67e1));for(_0x2c214c=0x0,_0xa8dc31=_0x11257b[_0x29e6e8(0x194)];_0x2c214c<_0xa8dc31;_0x2c214c++)if(_0x58a4fd=_0x11257b[_0x2c214c],!(_0x28c6d9&&_0x39938d[_0x29e6e8(0x12a)](_0x58a4fd[_0x29e6e8(0x180)]()))&&!this[_0x29e6e8(0xc6)](_0x1f67e1,_0x58a4fd,_0x154d99)&&!_0xc2476[_0x29e6e8(0x103)+_0x58a4fd[_0x29e6e8(0x180)]()]){if(_0x17e309++,_0x154d99['autoExpandPropertyCount']++,_0x17e309>_0x3f5940){_0x107891=!0x0;break;}if(!_0x154d99[_0x29e6e8(0x14b)]&&_0x154d99['autoExpand']&&_0x154d99[_0x29e6e8(0x169)]>_0x154d99['autoExpandLimit']){_0x107891=!0x0;break;}_0x5b3828[_0x29e6e8(0x109)](_0x210df3[_0x29e6e8(0x115)](_0x2f17a1,_0xc2476,_0x1f67e1,_0x1d98f7,_0x58a4fd,_0x154d99));}}}}}if(_0x5ea3e2[_0x29e6e8(0x199)]=_0x1d98f7,_0x9e9cb6?(_0x5ea3e2[_0x29e6e8(0x108)]=_0x1f67e1[_0x29e6e8(0x13e)](),this[_0x29e6e8(0x104)](_0x1d98f7,_0x5ea3e2,_0x154d99,_0x17d423)):_0x1d98f7==='date'?_0x5ea3e2[_0x29e6e8(0x108)]=this['_dateToString'][_0x29e6e8(0x17f)](_0x1f67e1):_0x1d98f7===_0x29e6e8(0x17a)?_0x5ea3e2[_0x29e6e8(0x108)]=_0x1f67e1[_0x29e6e8(0x180)]():_0x1d98f7===_0x29e6e8(0x143)?_0x5ea3e2[_0x29e6e8(0x108)]=this[_0x29e6e8(0x10b)][_0x29e6e8(0x17f)](_0x1f67e1):_0x1d98f7===_0x29e6e8(0x125)&&this[_0x29e6e8(0x17e)]?_0x5ea3e2[_0x29e6e8(0x108)]=this[_0x29e6e8(0x17e)][_0x29e6e8(0x19b)]['toString'][_0x29e6e8(0x17f)](_0x1f67e1):!_0x154d99[_0x29e6e8(0x167)]&&!(_0x1d98f7===_0x29e6e8(0xd2)||_0x1d98f7==='undefined')&&(delete _0x5ea3e2[_0x29e6e8(0x108)],_0x5ea3e2[_0x29e6e8(0x11e)]=!0x0),_0x107891&&(_0x5ea3e2[_0x29e6e8(0x15c)]=!0x0),_0xe545fa=_0x154d99['node'][_0x29e6e8(0xe6)],_0x154d99['node'][_0x29e6e8(0xe6)]=_0x5ea3e2,this[_0x29e6e8(0x186)](_0x5ea3e2,_0x154d99),_0x5b3828[_0x29e6e8(0x194)]){for(_0x2c214c=0x0,_0xa8dc31=_0x5b3828['length'];_0x2c214c<_0xa8dc31;_0x2c214c++)_0x5b3828[_0x2c214c](_0x2c214c);}_0x2f17a1['length']&&(_0x5ea3e2[_0x29e6e8(0x117)]=_0x2f17a1);}catch(_0x57b02c){_0x4f3740(_0x57b02c,_0x5ea3e2,_0x154d99);}return this[_0x29e6e8(0x127)](_0x1f67e1,_0x5ea3e2),this[_0x29e6e8(0x170)](_0x5ea3e2,_0x154d99),_0x154d99[_0x29e6e8(0xed)][_0x29e6e8(0xe6)]=_0xe545fa,_0x154d99['level']--,_0x154d99[_0x29e6e8(0xcc)]=_0x1b96a1,_0x154d99['autoExpand']&&_0x154d99['autoExpandPreviousObjects'][_0x29e6e8(0x156)](),_0x5ea3e2;}[_0x284004(0x171)](_0x56a8ff){var _0x489dac=_0x284004;return Object[_0x489dac(0x1a6)]?Object[_0x489dac(0x1a6)](_0x56a8ff):[];}[_0x284004(0x135)](_0x4bde89){var _0x3c8abb=_0x284004;return!!(_0x4bde89&&_0x30b1b1[_0x3c8abb(0xfa)]&&this[_0x3c8abb(0x172)](_0x4bde89)===_0x3c8abb(0x192)&&_0x4bde89[_0x3c8abb(0x126)]);}[_0x284004(0xc6)](_0x5b6272,_0xf3eb02,_0x3a45c8){var _0x17696e=_0x284004;return _0x3a45c8['noFunctions']?typeof _0x5b6272[_0xf3eb02]==_0x17696e(0xd7):!0x1;}[_0x284004(0xe2)](_0x5d88b4){var _0x38bfe1=_0x284004,_0x2ab328='';return _0x2ab328=typeof _0x5d88b4,_0x2ab328===_0x38bfe1(0x153)?this[_0x38bfe1(0x172)](_0x5d88b4)==='[object\\x20Array]'?_0x2ab328=_0x38bfe1(0x124):this['_objectToString'](_0x5d88b4)===_0x38bfe1(0x14e)?_0x2ab328=_0x38bfe1(0xe5):this[_0x38bfe1(0x172)](_0x5d88b4)===_0x38bfe1(0x146)?_0x2ab328='bigint':_0x5d88b4===null?_0x2ab328=_0x38bfe1(0xd2):_0x5d88b4[_0x38bfe1(0x16e)]&&(_0x2ab328=_0x5d88b4[_0x38bfe1(0x16e)][_0x38bfe1(0x118)]||_0x2ab328):_0x2ab328===_0x38bfe1(0x139)&&this[_0x38bfe1(0x123)]&&_0x5d88b4 instanceof this[_0x38bfe1(0x123)]&&(_0x2ab328=_0x38bfe1(0x1aa)),_0x2ab328;}[_0x284004(0x172)](_0x477087){var _0x50db5b=_0x284004;return Object[_0x50db5b(0x19b)]['toString'][_0x50db5b(0x17f)](_0x477087);}[_0x284004(0x12d)](_0x3bb822){var _0x40d7ea=_0x284004;return _0x3bb822===_0x40d7ea(0xf3)||_0x3bb822===_0x40d7ea(0x14a)||_0x3bb822===_0x40d7ea(0xbf);}['_isPrimitiveWrapperType'](_0x505564){var _0x583e35=_0x284004;return _0x505564===_0x583e35(0x14d)||_0x505564===_0x583e35(0x1b0)||_0x505564===_0x583e35(0xe1);}[_0x284004(0xfc)](_0x48a3e7,_0x4bd11e,_0x16821b,_0x1708a7,_0x3c4b35,_0x2b8de3){var _0x3e8ead=this;return function(_0x2d5f8f){var _0x565d0a=_0x3a0c,_0x3c1c79=_0x3c4b35['node'][_0x565d0a(0xe6)],_0x48957e=_0x3c4b35[_0x565d0a(0xed)][_0x565d0a(0x198)],_0x1915d8=_0x3c4b35[_0x565d0a(0xed)][_0x565d0a(0x11b)];_0x3c4b35['node'][_0x565d0a(0x11b)]=_0x3c1c79,_0x3c4b35[_0x565d0a(0xed)]['index']=typeof _0x1708a7==_0x565d0a(0xbf)?_0x1708a7:_0x2d5f8f,_0x48a3e7[_0x565d0a(0x109)](_0x3e8ead[_0x565d0a(0x179)](_0x4bd11e,_0x16821b,_0x1708a7,_0x3c4b35,_0x2b8de3)),_0x3c4b35['node'][_0x565d0a(0x11b)]=_0x1915d8,_0x3c4b35['node']['index']=_0x48957e;};}[_0x284004(0x115)](_0x4cdd0d,_0x16a367,_0x2436e3,_0x2f309e,_0x483529,_0x425b57,_0x2fecc0){var _0x433938=_0x284004,_0xfb327d=this;return _0x16a367[_0x433938(0x103)+_0x483529[_0x433938(0x180)]()]=!0x0,function(_0x3a3a83){var _0x492836=_0x433938,_0x4d3e71=_0x425b57[_0x492836(0xed)]['current'],_0x3071c0=_0x425b57[_0x492836(0xed)][_0x492836(0x198)],_0x188edc=_0x425b57['node'][_0x492836(0x11b)];_0x425b57[_0x492836(0xed)][_0x492836(0x11b)]=_0x4d3e71,_0x425b57[_0x492836(0xed)][_0x492836(0x198)]=_0x3a3a83,_0x4cdd0d[_0x492836(0x109)](_0xfb327d[_0x492836(0x179)](_0x2436e3,_0x2f309e,_0x483529,_0x425b57,_0x2fecc0)),_0x425b57[_0x492836(0xed)][_0x492836(0x11b)]=_0x188edc,_0x425b57[_0x492836(0xed)][_0x492836(0x198)]=_0x3071c0;};}[_0x284004(0x179)](_0x4b771f,_0x2b1804,_0x508251,_0x5be118,_0x1ab12b){var _0x35d4f4=_0x284004,_0x14859b=this;_0x1ab12b||(_0x1ab12b=function(_0x2c6798,_0x511dc4){return _0x2c6798[_0x511dc4];});var _0x54aa17=_0x508251[_0x35d4f4(0x180)](),_0x3315ad=_0x5be118[_0x35d4f4(0x174)]||{},_0x23e878=_0x5be118[_0x35d4f4(0x167)],_0x35756a=_0x5be118['isExpressionToEvaluate'];try{var _0x569c78=this[_0x35d4f4(0x10f)](_0x4b771f),_0x533d93=_0x54aa17;_0x569c78&&_0x533d93[0x0]==='\\x27'&&(_0x533d93=_0x533d93['substr'](0x1,_0x533d93[_0x35d4f4(0x194)]-0x2));var _0x50a7be=_0x5be118['expressionsToEvaluate']=_0x3315ad['_p_'+_0x533d93];_0x50a7be&&(_0x5be118[_0x35d4f4(0x167)]=_0x5be118[_0x35d4f4(0x167)]+0x1),_0x5be118[_0x35d4f4(0x14b)]=!!_0x50a7be;var _0x574a84=typeof _0x508251==_0x35d4f4(0x125),_0x100443={'name':_0x574a84||_0x569c78?_0x54aa17:this[_0x35d4f4(0xd5)](_0x54aa17)};if(_0x574a84&&(_0x100443[_0x35d4f4(0x125)]=!0x0),!(_0x2b1804==='array'||_0x2b1804===_0x35d4f4(0x187))){var _0x534093=this[_0x35d4f4(0x193)](_0x4b771f,_0x508251);if(_0x534093&&(_0x534093[_0x35d4f4(0x161)]&&(_0x100443[_0x35d4f4(0xd3)]=!0x0),_0x534093[_0x35d4f4(0x18e)]&&!_0x50a7be&&!_0x5be118[_0x35d4f4(0xd9)]))return _0x100443['getter']=!0x0,this['_processTreeNodeResult'](_0x100443,_0x5be118),_0x100443;}var _0xd8253e;try{_0xd8253e=_0x1ab12b(_0x4b771f,_0x508251);}catch(_0x80c97d){return _0x100443={'name':_0x54aa17,'type':_0x35d4f4(0x119),'error':_0x80c97d[_0x35d4f4(0x144)]},this['_processTreeNodeResult'](_0x100443,_0x5be118),_0x100443;}var _0x2801aa=this[_0x35d4f4(0xe2)](_0xd8253e),_0xfd2b72=this[_0x35d4f4(0x12d)](_0x2801aa);if(_0x100443['type']=_0x2801aa,_0xfd2b72)this['_processTreeNodeResult'](_0x100443,_0x5be118,_0xd8253e,function(){var _0x4de8e0=_0x35d4f4;_0x100443['value']=_0xd8253e['valueOf'](),!_0x50a7be&&_0x14859b[_0x4de8e0(0x104)](_0x2801aa,_0x100443,_0x5be118,{});});else{var _0x1b7612=_0x5be118['autoExpand']&&_0x5be118[_0x35d4f4(0xcf)]<_0x5be118[_0x35d4f4(0xe9)]&&_0x5be118['autoExpandPreviousObjects'][_0x35d4f4(0x11a)](_0xd8253e)<0x0&&_0x2801aa!=='function'&&_0x5be118[_0x35d4f4(0x169)]<_0x5be118['autoExpandLimit'];_0x1b7612||_0x5be118[_0x35d4f4(0xcf)]<_0x23e878||_0x50a7be?(this[_0x35d4f4(0x190)](_0x100443,_0xd8253e,_0x5be118,_0x50a7be||{}),this[_0x35d4f4(0x127)](_0xd8253e,_0x100443)):this[_0x35d4f4(0x113)](_0x100443,_0x5be118,_0xd8253e,function(){var _0x55c8ce=_0x35d4f4;_0x2801aa==='null'||_0x2801aa===_0x55c8ce(0x139)||(delete _0x100443['value'],_0x100443[_0x55c8ce(0x11e)]=!0x0);});}return _0x100443;}finally{_0x5be118[_0x35d4f4(0x174)]=_0x3315ad,_0x5be118[_0x35d4f4(0x167)]=_0x23e878,_0x5be118[_0x35d4f4(0x14b)]=_0x35756a;}}[_0x284004(0x104)](_0x1fd688,_0x5de22f,_0x25d445,_0x39bd6a){var _0x4c7686=_0x284004,_0x29f732=_0x39bd6a['strLength']||_0x25d445[_0x4c7686(0x105)];if((_0x1fd688===_0x4c7686(0x14a)||_0x1fd688===_0x4c7686(0x1b0))&&_0x5de22f[_0x4c7686(0x108)]){let _0x1231c6=_0x5de22f[_0x4c7686(0x108)][_0x4c7686(0x194)];_0x25d445['allStrLength']+=_0x1231c6,_0x25d445[_0x4c7686(0xfe)]>_0x25d445['totalStrLength']?(_0x5de22f[_0x4c7686(0x11e)]='',delete _0x5de22f['value']):_0x1231c6>_0x29f732&&(_0x5de22f[_0x4c7686(0x11e)]=_0x5de22f['value'][_0x4c7686(0x102)](0x0,_0x29f732),delete _0x5de22f[_0x4c7686(0x108)]);}}[_0x284004(0x10f)](_0x22f3e2){var _0x5c39f0=_0x284004;return!!(_0x22f3e2&&_0x30b1b1[_0x5c39f0(0xf6)]&&this[_0x5c39f0(0x172)](_0x22f3e2)===_0x5c39f0(0xc5)&&_0x22f3e2[_0x5c39f0(0x126)]);}[_0x284004(0xd5)](_0x4673b0){var _0x3032e2=_0x284004;if(_0x4673b0[_0x3032e2(0xcd)](/^\\d+$/))return _0x4673b0;var _0x2bf586;try{_0x2bf586=JSON[_0x3032e2(0x19e)](''+_0x4673b0);}catch{_0x2bf586='\\x22'+this[_0x3032e2(0x172)](_0x4673b0)+'\\x22';}return _0x2bf586[_0x3032e2(0xcd)](/^\"([a-zA-Z_][a-zA-Z_0-9]*)\"$/)?_0x2bf586=_0x2bf586[_0x3032e2(0x102)](0x1,_0x2bf586['length']-0x2):_0x2bf586=_0x2bf586[_0x3032e2(0x177)](/'/g,'\\x5c\\x27')[_0x3032e2(0x177)](/\\\\\"/g,'\\x22')['replace'](/(^\"|\"$)/g,'\\x27'),_0x2bf586;}['_processTreeNodeResult'](_0x3ddcf2,_0x1010f7,_0x15ce14,_0x28dc42){var _0x301b48=_0x284004;this[_0x301b48(0x186)](_0x3ddcf2,_0x1010f7),_0x28dc42&&_0x28dc42(),this[_0x301b48(0x127)](_0x15ce14,_0x3ddcf2),this[_0x301b48(0x170)](_0x3ddcf2,_0x1010f7);}[_0x284004(0x186)](_0x599eb4,_0x4c41e4){var _0x540268=_0x284004;this['_setNodeId'](_0x599eb4,_0x4c41e4),this[_0x540268(0x14f)](_0x599eb4,_0x4c41e4),this[_0x540268(0x110)](_0x599eb4,_0x4c41e4),this[_0x540268(0x101)](_0x599eb4,_0x4c41e4);}['_setNodeId'](_0x278ebb,_0x328e8a){}['_setNodeQueryPath'](_0x2f7a03,_0x353e54){}['_setNodeLabel'](_0x20d80c,_0x5267ee){}[_0x284004(0x1a7)](_0x3713d7){var _0x515865=_0x284004;return _0x3713d7===this[_0x515865(0x155)];}[_0x284004(0x170)](_0x134d04,_0x5ca722){var _0x9f459c=_0x284004;this[_0x9f459c(0x111)](_0x134d04,_0x5ca722),this['_setNodeExpandableState'](_0x134d04),_0x5ca722[_0x9f459c(0x10e)]&&this[_0x9f459c(0x133)](_0x134d04),this[_0x9f459c(0x14c)](_0x134d04,_0x5ca722),this['_addLoadNode'](_0x134d04,_0x5ca722),this[_0x9f459c(0x184)](_0x134d04);}[_0x284004(0x127)](_0x3e6eac,_0x2f547e){var _0x3bce23=_0x284004;let _0x54a1b1;try{_0x30b1b1[_0x3bce23(0x148)]&&(_0x54a1b1=_0x30b1b1[_0x3bce23(0x148)][_0x3bce23(0x15b)],_0x30b1b1[_0x3bce23(0x148)][_0x3bce23(0x15b)]=function(){}),_0x3e6eac&&typeof _0x3e6eac[_0x3bce23(0x194)]==_0x3bce23(0xbf)&&(_0x2f547e['length']=_0x3e6eac['length']);}catch{}finally{_0x54a1b1&&(_0x30b1b1[_0x3bce23(0x148)][_0x3bce23(0x15b)]=_0x54a1b1);}if(_0x2f547e[_0x3bce23(0x199)]==='number'||_0x2f547e[_0x3bce23(0x199)]===_0x3bce23(0xe1)){if(isNaN(_0x2f547e[_0x3bce23(0x108)]))_0x2f547e[_0x3bce23(0xf4)]=!0x0,delete _0x2f547e[_0x3bce23(0x108)];else switch(_0x2f547e[_0x3bce23(0x108)]){case Number[_0x3bce23(0x134)]:_0x2f547e[_0x3bce23(0xde)]=!0x0,delete _0x2f547e[_0x3bce23(0x108)];break;case Number['NEGATIVE_INFINITY']:_0x2f547e[_0x3bce23(0x195)]=!0x0,delete _0x2f547e[_0x3bce23(0x108)];break;case 0x0:this[_0x3bce23(0xf5)](_0x2f547e['value'])&&(_0x2f547e[_0x3bce23(0x182)]=!0x0);break;}}else _0x2f547e[_0x3bce23(0x199)]===_0x3bce23(0xd7)&&typeof _0x3e6eac['name']==_0x3bce23(0x14a)&&_0x3e6eac[_0x3bce23(0x118)]&&_0x2f547e[_0x3bce23(0x118)]&&_0x3e6eac[_0x3bce23(0x118)]!==_0x2f547e[_0x3bce23(0x118)]&&(_0x2f547e[_0x3bce23(0x165)]=_0x3e6eac[_0x3bce23(0x118)]);}[_0x284004(0xf5)](_0x229506){var _0x4b9fcc=_0x284004;return 0x1/_0x229506===Number[_0x4b9fcc(0x1b1)];}[_0x284004(0x133)](_0x54264a){var _0x3216f3=_0x284004;!_0x54264a[_0x3216f3(0x117)]||!_0x54264a[_0x3216f3(0x117)]['length']||_0x54264a[_0x3216f3(0x199)]===_0x3216f3(0x124)||_0x54264a[_0x3216f3(0x199)]==='Map'||_0x54264a['type']==='Set'||_0x54264a[_0x3216f3(0x117)][_0x3216f3(0x1a2)](function(_0x43a884,_0x4de0cb){var _0x31afc1=_0x3216f3,_0x21cc06=_0x43a884[_0x31afc1(0x118)][_0x31afc1(0x18a)](),_0x524654=_0x4de0cb[_0x31afc1(0x118)][_0x31afc1(0x18a)]();return _0x21cc06<_0x524654?-0x1:_0x21cc06>_0x524654?0x1:0x0;});}[_0x284004(0x14c)](_0x372dbc,_0x57ebb1){var _0x4592fb=_0x284004;if(!(_0x57ebb1[_0x4592fb(0xf8)]||!_0x372dbc[_0x4592fb(0x117)]||!_0x372dbc['props'][_0x4592fb(0x194)])){for(var _0x4faa82=[],_0x464f3c=[],_0xbe2560=0x0,_0x3a6e64=_0x372dbc[_0x4592fb(0x117)][_0x4592fb(0x194)];_0xbe2560<_0x3a6e64;_0xbe2560++){var _0x1787ce=_0x372dbc['props'][_0xbe2560];_0x1787ce[_0x4592fb(0x199)]===_0x4592fb(0xd7)?_0x4faa82[_0x4592fb(0x109)](_0x1787ce):_0x464f3c[_0x4592fb(0x109)](_0x1787ce);}if(!(!_0x464f3c[_0x4592fb(0x194)]||_0x4faa82[_0x4592fb(0x194)]<=0x1)){_0x372dbc[_0x4592fb(0x117)]=_0x464f3c;var _0x51f783={'functionsNode':!0x0,'props':_0x4faa82};this[_0x4592fb(0x1b2)](_0x51f783,_0x57ebb1),this[_0x4592fb(0x111)](_0x51f783,_0x57ebb1),this[_0x4592fb(0xca)](_0x51f783),this[_0x4592fb(0x101)](_0x51f783,_0x57ebb1),_0x51f783['id']+='\\x20f',_0x372dbc[_0x4592fb(0x117)]['unshift'](_0x51f783);}}}[_0x284004(0xe4)](_0x92e0d7,_0xf36c7c){}[_0x284004(0xca)](_0xfd61f3){}[_0x284004(0x157)](_0x50f03e){var _0x1b72a1=_0x284004;return Array[_0x1b72a1(0x11c)](_0x50f03e)||typeof _0x50f03e==_0x1b72a1(0x153)&&this[_0x1b72a1(0x172)](_0x50f03e)===_0x1b72a1(0x120);}['_setNodePermissions'](_0x435918,_0x462755){}[_0x284004(0x184)](_0x386b3f){var _0x3456fd=_0x284004;delete _0x386b3f[_0x3456fd(0x1a0)],delete _0x386b3f[_0x3456fd(0x122)],delete _0x386b3f[_0x3456fd(0xd6)];}['_setNodeExpressionPath'](_0x1b4e08,_0x80f359){}}let _0x2b5e4c=new _0x2511f1(),_0x5c9f98={'props':0x64,'elements':0x64,'strLength':0x400*0x32,'totalStrLength':0x400*0x32,'autoExpandLimit':0x1388,'autoExpandMaxDepth':0xa},_0x58ee1c={'props':0x5,'elements':0x5,'strLength':0x100,'totalStrLength':0x100*0x3,'autoExpandLimit':0x1e,'autoExpandMaxDepth':0x2};function _0x5a2b85(_0x367b74,_0x545559,_0x14618f,_0x14d4e3,_0x579a35,_0xf4010c){var _0x42b2e9=_0x284004;let _0xed63fb,_0x51bb6b;try{_0x51bb6b=_0x2a87b2(),_0xed63fb=_0x6ec684[_0x545559],!_0xed63fb||_0x51bb6b-_0xed63fb['ts']>0x1f4&&_0xed63fb[_0x42b2e9(0x162)]&&_0xed63fb[_0x42b2e9(0x10a)]/_0xed63fb[_0x42b2e9(0x162)]<0x64?(_0x6ec684[_0x545559]=_0xed63fb={'count':0x0,'time':0x0,'ts':_0x51bb6b},_0x6ec684[_0x42b2e9(0x160)]={}):_0x51bb6b-_0x6ec684['hits']['ts']>0x32&&_0x6ec684[_0x42b2e9(0x160)][_0x42b2e9(0x162)]&&_0x6ec684[_0x42b2e9(0x160)][_0x42b2e9(0x10a)]/_0x6ec684['hits'][_0x42b2e9(0x162)]<0x64&&(_0x6ec684['hits']={});let _0x3e7475=[],_0x5426ba=_0xed63fb[_0x42b2e9(0x1a5)]||_0x6ec684[_0x42b2e9(0x160)][_0x42b2e9(0x1a5)]?_0x58ee1c:_0x5c9f98,_0x49f9cf=_0x9e4318=>{var _0x1880a6=_0x42b2e9;let _0x46e22a={};return _0x46e22a[_0x1880a6(0x117)]=_0x9e4318['props'],_0x46e22a['elements']=_0x9e4318[_0x1880a6(0xf0)],_0x46e22a[_0x1880a6(0x105)]=_0x9e4318[_0x1880a6(0x105)],_0x46e22a['totalStrLength']=_0x9e4318[_0x1880a6(0x1ac)],_0x46e22a[_0x1880a6(0x138)]=_0x9e4318['autoExpandLimit'],_0x46e22a[_0x1880a6(0xe9)]=_0x9e4318['autoExpandMaxDepth'],_0x46e22a['sortProps']=!0x1,_0x46e22a[_0x1880a6(0xf8)]=!_0x373848,_0x46e22a[_0x1880a6(0x167)]=0x1,_0x46e22a[_0x1880a6(0xcf)]=0x0,_0x46e22a['expId']=_0x1880a6(0x18d),_0x46e22a[_0x1880a6(0x112)]=_0x1880a6(0x1ad),_0x46e22a[_0x1880a6(0xcc)]=!0x0,_0x46e22a['autoExpandPreviousObjects']=[],_0x46e22a[_0x1880a6(0x169)]=0x0,_0x46e22a[_0x1880a6(0xd9)]=!0x0,_0x46e22a[_0x1880a6(0xfe)]=0x0,_0x46e22a[_0x1880a6(0xed)]={'current':void 0x0,'parent':void 0x0,'index':0x0},_0x46e22a;};for(var _0x28883c=0x0;_0x28883c<_0x579a35['length'];_0x28883c++)_0x3e7475[_0x42b2e9(0x109)](_0x2b5e4c['serialize']({'timeNode':_0x367b74===_0x42b2e9(0x10a)||void 0x0},_0x579a35[_0x28883c],_0x49f9cf(_0x5426ba),{}));if(_0x367b74===_0x42b2e9(0x15a)){let _0x525302=Error['stackTraceLimit'];try{Error['stackTraceLimit']=0x1/0x0,_0x3e7475[_0x42b2e9(0x109)](_0x2b5e4c[_0x42b2e9(0x190)]({'stackNode':!0x0},new Error()[_0x42b2e9(0xf7)],_0x49f9cf(_0x5426ba),{'strLength':0x1/0x0}));}finally{Error[_0x42b2e9(0x16a)]=_0x525302;}}return{'method':_0x42b2e9(0x121),'version':_0x5cb203,'args':[{'ts':_0x14618f,'session':_0x14d4e3,'args':_0x3e7475,'id':_0x545559,'context':_0xf4010c}]};}catch(_0x5cd2a4){return{'method':_0x42b2e9(0x121),'version':_0x5cb203,'args':[{'ts':_0x14618f,'session':_0x14d4e3,'args':[{'type':_0x42b2e9(0x119),'error':_0x5cd2a4&&_0x5cd2a4['message']}],'id':_0x545559,'context':_0xf4010c}]};}finally{try{if(_0xed63fb&&_0x51bb6b){let _0x12a6a7=_0x2a87b2();_0xed63fb[_0x42b2e9(0x162)]++,_0xed63fb[_0x42b2e9(0x10a)]+=_0x53f46b(_0x51bb6b,_0x12a6a7),_0xed63fb['ts']=_0x12a6a7,_0x6ec684[_0x42b2e9(0x160)][_0x42b2e9(0x162)]++,_0x6ec684['hits'][_0x42b2e9(0x10a)]+=_0x53f46b(_0x51bb6b,_0x12a6a7),_0x6ec684['hits']['ts']=_0x12a6a7,(_0xed63fb[_0x42b2e9(0x162)]>0x32||_0xed63fb[_0x42b2e9(0x10a)]>0x64)&&(_0xed63fb[_0x42b2e9(0x1a5)]=!0x0),(_0x6ec684[_0x42b2e9(0x160)][_0x42b2e9(0x162)]>0x3e8||_0x6ec684['hits']['time']>0x12c)&&(_0x6ec684['hits']['reduceLimits']=!0x0);}}catch{}}}return _0x5a2b85;}((_0x5bcb14,_0x2aae84,_0xb8c56,_0x2d6e2d,_0xd4659e,_0x2644ef,_0x236889,_0x58ba1c,_0x4d73d1,_0x1cb32d,_0x21e45e)=>{var _0x5b23aa=_0x2fc1fe;if(_0x5bcb14['_console_ninja'])return _0x5bcb14[_0x5b23aa(0xe3)];if(!X(_0x5bcb14,_0x58ba1c,_0xd4659e))return _0x5bcb14[_0x5b23aa(0xe3)]={'consoleLog':()=>{},'consoleTrace':()=>{},'consoleTime':()=>{},'consoleTimeEnd':()=>{},'autoLog':()=>{},'autoLogMany':()=>{},'autoTraceMany':()=>{},'coverage':()=>{},'autoTrace':()=>{},'autoTime':()=>{},'autoTimeEnd':()=>{}},_0x5bcb14[_0x5b23aa(0xe3)];let _0x562ef1=b(_0x5bcb14),_0x3581b7=_0x562ef1[_0x5b23aa(0x130)],_0x4ce459=_0x562ef1[_0x5b23aa(0xce)],_0x21eed3=_0x562ef1[_0x5b23aa(0x12e)],_0x5cb1d3={'hits':{},'ts':{}},_0x85469b=H(_0x5bcb14,_0x4d73d1,_0x5cb1d3,_0x2644ef),_0x367de0=_0x527d5e=>{_0x5cb1d3['ts'][_0x527d5e]=_0x4ce459();},_0x5e6aa1=(_0xe9078b,_0x1f2f18)=>{let _0x4e7fd1=_0x5cb1d3['ts'][_0x1f2f18];if(delete _0x5cb1d3['ts'][_0x1f2f18],_0x4e7fd1){let _0x943002=_0x3581b7(_0x4e7fd1,_0x4ce459());_0x159fce(_0x85469b('time',_0xe9078b,_0x21eed3(),_0x4f1d30,[_0x943002],_0x1f2f18));}},_0x455e63=_0x80de4c=>{var _0x33b436=_0x5b23aa,_0x592686;return _0xd4659e===_0x33b436(0xd8)&&_0x5bcb14[_0x33b436(0x16c)]&&((_0x592686=_0x80de4c==null?void 0x0:_0x80de4c[_0x33b436(0x1af)])==null?void 0x0:_0x592686[_0x33b436(0x194)])&&(_0x80de4c[_0x33b436(0x1af)][0x0][_0x33b436(0x16c)]=_0x5bcb14['origin']),_0x80de4c;};_0x5bcb14[_0x5b23aa(0xe3)]={'consoleLog':(_0x4c1843,_0x5396ff)=>{var _0x5a39ac=_0x5b23aa;_0x5bcb14[_0x5a39ac(0x148)][_0x5a39ac(0x121)][_0x5a39ac(0x118)]!==_0x5a39ac(0x197)&&_0x159fce(_0x85469b(_0x5a39ac(0x121),_0x4c1843,_0x21eed3(),_0x4f1d30,_0x5396ff));},'consoleTrace':(_0x1508e4,_0x320dfe)=>{var _0x5185bc=_0x5b23aa;_0x5bcb14[_0x5185bc(0x148)][_0x5185bc(0x121)][_0x5185bc(0x118)]!==_0x5185bc(0x13d)&&_0x159fce(_0x455e63(_0x85469b(_0x5185bc(0x15a),_0x1508e4,_0x21eed3(),_0x4f1d30,_0x320dfe)));},'consoleTime':_0x178af2=>{_0x367de0(_0x178af2);},'consoleTimeEnd':(_0x43956a,_0x524e07)=>{_0x5e6aa1(_0x524e07,_0x43956a);},'autoLog':(_0x5d5b60,_0x1a1221)=>{var _0x2e0cb4=_0x5b23aa;_0x159fce(_0x85469b(_0x2e0cb4(0x121),_0x1a1221,_0x21eed3(),_0x4f1d30,[_0x5d5b60]));},'autoLogMany':(_0x31b7ca,_0x35bce4)=>{var _0x108090=_0x5b23aa;_0x159fce(_0x85469b(_0x108090(0x121),_0x31b7ca,_0x21eed3(),_0x4f1d30,_0x35bce4));},'autoTrace':(_0x465285,_0x492122)=>{var _0x52744a=_0x5b23aa;_0x159fce(_0x455e63(_0x85469b(_0x52744a(0x15a),_0x492122,_0x21eed3(),_0x4f1d30,[_0x465285])));},'autoTraceMany':(_0x3ee62d,_0x97d13f)=>{_0x159fce(_0x455e63(_0x85469b('trace',_0x3ee62d,_0x21eed3(),_0x4f1d30,_0x97d13f)));},'autoTime':(_0x5c684c,_0x3d8782,_0x33a635)=>{_0x367de0(_0x33a635);},'autoTimeEnd':(_0x435a57,_0x1e0339,_0x5cd53d)=>{_0x5e6aa1(_0x1e0339,_0x5cd53d);},'coverage':_0x10f609=>{_0x159fce({'method':'coverage','version':_0x2644ef,'args':[{'id':_0x10f609}]});}};let _0x159fce=q(_0x5bcb14,_0x2aae84,_0xb8c56,_0x2d6e2d,_0xd4659e,_0x1cb32d,_0x21e45e),_0x4f1d30=_0x5bcb14[_0x5b23aa(0x16f)];return _0x5bcb14[_0x5b23aa(0xe3)];})(globalThis,_0x2fc1fe(0x19c),'52145',\"c:\\\\Users\\\\ThinkPad P53\\\\.vscode\\\\extensions\\\\wallabyjs.console-ninja-1.0.332\\\\node_modules\",'webpack',_0x2fc1fe(0x12b),_0x2fc1fe(0x147),_0x2fc1fe(0xc1),_0x2fc1fe(0x106),'',_0x2fc1fe(0x178));");
+  } catch (e) {}
+}
+; /* istanbul ignore next */
+function oo_oo(i) {
+  for (var _len = arguments.length, v = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    v[_key - 1] = arguments[_key];
+  }
+  try {
+    oo_cm().consoleLog(i, v);
+  } catch (e) {}
+  return v;
+}
+; /* istanbul ignore next */
+function oo_tr(i) {
+  for (var _len2 = arguments.length, v = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    v[_key2 - 1] = arguments[_key2];
+  }
+  try {
+    oo_cm().consoleTrace(i, v);
+  } catch (e) {}
+  return v;
+}
+; /* istanbul ignore next */
+function oo_ts(v) {
+  try {
+    oo_cm().consoleTime(v);
+  } catch (e) {}
+  return v;
+}
+; /* istanbul ignore next */
+function oo_te(v, i) {
+  try {
+    oo_cm().consoleTimeEnd(v, i);
+  } catch (e) {}
+  return v;
+}
+; /*eslint unicorn/no-abusive-eslint-disable:,eslint-comments/disable-enable-pair:,eslint-comments/no-unlimited-disable:,eslint-comments/no-aggregating-enable:,eslint-comments/no-duplicate-disable:,eslint-comments/no-unused-disable:,eslint-comments/no-unused-enable:,*/
 })();
 
 /******/ })()

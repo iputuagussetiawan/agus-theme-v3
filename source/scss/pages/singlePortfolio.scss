@@ -1,5 +1,26 @@
 @use '../_config.scss' as *;
 @use '../components/cards/_card-portfolioListing.scss' as *;
+.heading_wrap{
+    max-width: 50%;
+    .split-lines{
+        font-size: 100px;
+    }
+
+    .line{
+        position: relative;
+    }
+
+    .line-mask{ 
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: #fff;
+        opacity: 0.65;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+}
 .portfolio-header{
     padding: 150px 0px;
     &__inner{
