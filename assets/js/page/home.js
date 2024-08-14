@@ -3025,6 +3025,216 @@ var App = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./source/js/modules/Divider.js":
+/*!**************************************!*\
+  !*** ./source/js/modules/Divider.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__.ScrollTrigger);
+var Divider = /*#__PURE__*/function () {
+  function Divider(el) {
+    _classCallCheck(this, Divider);
+    this.el = el;
+    this.svg = this.el.querySelector("svg");
+    this.injectSvg();
+    this.bindMouseMove();
+    this.bindResizeObserver();
+  }
+  _createClass(Divider, [{
+    key: "onInit",
+    value: function onInit() {
+      try {
+        this.magicShow();
+        return Promise.resolve();
+      } catch (e) {
+        return Promise.reject(e);
+      }
+    }
+  }, {
+    key: "magicShow",
+    value: function magicShow() {
+      var timeline = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline();
+      // Set the initial state of the element
+      timeline.set(this.svg, {
+        transformOrigin: "left center"
+      });
+
+      // Animate the element with GSAP
+      timeline.from(this.svg, {
+        scaleX: 0,
+        duration: 3,
+        ease: "expo.out"
+      });
+    }
+  }, {
+    key: "getPathD",
+    value: function getPathD(controlX, controlY, endX) {
+      controlX = controlX || this.el.offsetWidth / 2;
+      controlY = controlY || 100;
+      endX = endX === undefined ? this.el.offsetWidth : endX;
+      return "M0,100 Q".concat(controlX, ",").concat(controlY, " ").concat(endX, ",100");
+    }
+  }, {
+    key: "injectSvg",
+    value: function injectSvg() {
+      this.el.innerHTML = "<svg><path d='".concat(this.getPathD(), "'/></svg>");
+      this.svg = this.el.querySelector("svg");
+      this.path = this.el.querySelector("path");
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.killTweensOf(this.path);
+      this.path.setAttribute("d", this.getPathD());
+    }
+  }, {
+    key: "bindMouseMove",
+    value: function bindMouseMove() {
+      var _this = this;
+      if ('ontouchstart' in window) return;
+      var controlYOffset = 0;
+      this.el.addEventListener("mousemove", function (event) {
+        var rect = _this.svg.getBoundingClientRect();
+        var mouseX = event.pageX - window.pageXOffset - rect.left;
+        var mouseY = event.pageY - window.pageYOffset - rect.top;
+        controlYOffset = controlYOffset || (mouseY < 100 ? 50 : -50);
+        var controlX = mouseX;
+        var controlY = 2 * mouseY - 100 + controlYOffset;
+        gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.to(_this.path, {
+          attr: {
+            d: _this.getPathD(controlX, controlY)
+          },
+          duration: 0.2,
+          overwrite: true
+        });
+      });
+      this.el.addEventListener("mouseleave", function () {
+        controlYOffset = 0;
+        gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.to(_this.path, {
+          attr: {
+            d: _this.getPathD()
+          },
+          duration: 2,
+          ease: "elastic.out(1, 0.2)"
+        });
+      });
+    }
+  }, {
+    key: "bindResizeObserver",
+    value: function bindResizeObserver() {
+      var _this2 = this;
+      this.updateDebounced = debounce(this.update.bind(this), 30);
+      this.resizeObserver = new ResizeObserver(function () {
+        return _this2.updateDebounced();
+      });
+      this.resizeObserver.observe(this.el);
+    }
+  }]);
+  return Divider;
+}(); // Utility function: Debounce implementation for update throttling
+function debounce(func, wait) {
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var timeout, lastArgs, lastThis, result;
+  var lastCallTime,
+    lastInvokeTime = 0;
+  var leading = options.leading || false;
+  var maxWait = options.maxWait || false;
+  var trailing = options.trailing !== false;
+  function invokeFunc(time) {
+    var args = lastArgs;
+    var thisArg = lastThis;
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+  function leadingEdge(time) {
+    lastInvokeTime = time;
+    timeout = setTimeout(timerExpired, wait);
+    return leading ? invokeFunc(time) : result;
+  }
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime;
+    var timeSinceLastInvoke = time - lastInvokeTime;
+    var timeWaiting = wait - timeSinceLastCall;
+    return maxWait ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
+  }
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime;
+    var timeSinceLastInvoke = time - lastInvokeTime;
+    return lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxWait && timeSinceLastInvoke >= maxWait;
+  }
+  function timerExpired() {
+    var time = Date.now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    timeout = setTimeout(timerExpired, remainingWait(time));
+  }
+  function trailingEdge(time) {
+    timeout = undefined;
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+  function cancel() {
+    if (timeout !== undefined) {
+      clearTimeout(timeout);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timeout = undefined;
+  }
+  function flush() {
+    return timeout === undefined ? result : trailingEdge(Date.now());
+  }
+  function debounced() {
+    var time = Date.now();
+    var isInvoking = shouldInvoke(time);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    lastArgs = args;
+    lastThis = this;
+    lastCallTime = time;
+    if (isInvoking) {
+      if (timeout === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxWait) {
+        timeout = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timeout === undefined) {
+      timeout = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Divider);
+
+/***/ }),
+
 /***/ "./source/js/modules/ImageParallax.js":
 /*!********************************************!*\
   !*** ./source/js/modules/ImageParallax.js ***!
@@ -19186,6 +19396,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_MasonryLayout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../modules/MasonryLayout */ "./source/js/modules/MasonryLayout.js");
 /* harmony import */ var _sections_SectionPortfolio__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../sections/SectionPortfolio */ "./source/js/sections/SectionPortfolio.js");
 /* harmony import */ var _modules_ScrollLetters__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../modules/ScrollLetters */ "./source/js/modules/ScrollLetters.js");
+/* harmony import */ var _modules_Divider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../modules/Divider */ "./source/js/modules/Divider.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -19200,6 +19411,7 @@ gsap__WEBPACK_IMPORTED_MODULE_0__["default"].registerPlugin(gsap_ScrollTrigger__
 
 
 //import SectionFeatures from '../sections/SectionFeatures'
+
 
 
 
@@ -19311,6 +19523,13 @@ function portfolio() {
     masonryLayout.fetchMasonry("masonry".concat(i), 'card-portfolio', 4);
   }
 }
+document.addEventListener("DOMContentLoaded", function () {
+  var dividerElement = document.querySelector('.divider-container');
+  if (dividerElement) {
+    var divider = new _modules_Divider__WEBPACK_IMPORTED_MODULE_7__["default"](dividerElement);
+    divider.onInit(); // This will start the animation and setup
+  }
+});
 })();
 
 /******/ })()

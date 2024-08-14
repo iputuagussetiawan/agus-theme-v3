@@ -1,3 +1,34 @@
 @use '../sections/_section-feature.scss' as *;
 @use '../sections/_section-top-head.scss' as *;
 @use '../sections/_section-portfolio.scss' as *;
+
+.divider-container{
+    position: relative;
+    //height: 1px;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -20px;
+        left: 0;
+        right: 0;
+        height: 40px;
+    }
+
+    svg {
+        // position: absolute;
+        // top: -100px;
+        // left: 0;
+        // right: 0;
+        width: 100%;
+        height: 200px;
+        pointer-events: none;
+    }
+
+    svg path {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1;
+    }
+}

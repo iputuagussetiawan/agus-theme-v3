@@ -8,6 +8,7 @@ import MasonryLayout from "../modules/MasonryLayout";
 //import SectionFeatures from '../sections/SectionFeatures'
 import SectionPortfolio from '../sections/SectionPortfolio'
 import ScrollLetters  from "../modules/ScrollLetters";
+import Divider from "../modules/Divider";
 
 //2.Initialization
 const app=new App();
@@ -104,6 +105,14 @@ function portfolio(){
         masonryLayout.fetchMasonry(`masonry${i}`, 'card-portfolio', 4);
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const dividerElement = document.querySelector('.divider-container');
+    if (dividerElement) {
+        const divider = new Divider(dividerElement);
+        divider.onInit(); // This will start the animation and setup
+    }
+});
 
 
 
