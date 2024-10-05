@@ -12,6 +12,7 @@
 @use './components/ui/_tab.scss' as *;
 @use './components/ui/_lazy-image.scss' as *;
 @use './components/ui/_social-media.scss' as *;
+@use './components/ui/_modal.scss' as *;
 @import "~mouse-follower/dist/mouse-follower.min.css";
 
 // |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| //
@@ -50,6 +51,18 @@
     .mf-cursor.-opaque:before {
         background: #fff;
     }
+}
+
+.cb-svgsprite {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+}
+
+.mf-cursor{
+    z-index: 25000;
 }
 .mf-cursor.-pointer:before {
     transform: scale(0.15);
@@ -153,12 +166,4 @@
 }
 
 
-.word{
-    overflow: hidden;
-    position: relative;
 
-    .word-inner{
-        display: inline-block;
-        position: relative;
-    }
-}

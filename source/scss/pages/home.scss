@@ -2,6 +2,11 @@
 @use '../sections/_section-top-head.scss' as *;
 @use '../sections/_section-portfolio.scss' as *;
 
+.cb-screenshot{
+    position: relative;
+    overflow: hidden;
+}
+
 .divider-container{
     position: relative;
     //height: 1px;

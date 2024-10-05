@@ -3,6 +3,17 @@
 
 .topHead{
     padding-top: 80px;
+    .word{
+        margin-top: -48px;
+        overflow: hidden;
+        position: relative;
+    
+        .word-inner{
+            display: inline-block;
+            position: relative;
+            padding: 16px;
+        }
+    }
     &__title-wrapper {
         max-width: 70%;
     }
@@ -10,7 +21,7 @@
     &__title{
         font-size: 120px;
         font-weight: 300;
-        line-height: 1.2;
+        line-height: 1;
         text-align: right;
     }
 

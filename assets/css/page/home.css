@@ -158,13 +158,23 @@
 .topHead {
   padding-top: 80px;
 }
+.topHead .word {
+  margin-top: -48px;
+  overflow: hidden;
+  position: relative;
+}
+.topHead .word .word-inner {
+  display: inline-block;
+  position: relative;
+  padding: 16px;
+}
 .topHead__title-wrapper {
   max-width: 70%;
 }
 .topHead__title {
   font-size: 120px;
   font-weight: 300;
-  line-height: 1.2;
+  line-height: 1;
   text-align: right;
 }
 .topHead__inner {
@@ -312,6 +322,11 @@
 .portfolio__action {
   margin-top: 42px;
   text-align: center;
+}
+
+.cb-screenshot {
+  position: relative;
+  overflow: hidden;
 }
 
 .divider-container {

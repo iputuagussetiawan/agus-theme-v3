@@ -2,16 +2,20 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import App from '../App';
+import Modal from "../modules/Modal";
 import HomeBanner from "../sections/HomeBanner";
+import HomePreviews from "../sections/HomePreviews";
 
+const modal = new Modal();
 const homeBanner = new HomeBanner();
+const homePreviews = new HomePreviews();
 const app=new App();
 gsap.registerPlugin(ScrollTrigger);
 
-
 homeBanner.onInit();
-
 homeBanner.play();
+
+homePreviews.onInit();
 
 
 

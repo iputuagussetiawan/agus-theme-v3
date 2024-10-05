@@ -3273,6 +3273,7 @@ gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPAC
 mouse_follower__WEBPACK_IMPORTED_MODULE_3__["default"].registerGSAP(gsap__WEBPACK_IMPORTED_MODULE_0__.gsap);
 var Navbar = /*#__PURE__*/function () {
   function Navbar(el) {
+    var _MouseFollower;
     _classCallCheck(this, Navbar);
     this.el = el;
     this.opened = false;
@@ -3285,15 +3286,42 @@ var Navbar = /*#__PURE__*/function () {
     this.content = document.querySelector(".menu-box__content");
     this.tlClose = this.tlHide();
     this.tlOpen = this.tlShow();
-    this.cursor = new mouse_follower__WEBPACK_IMPORTED_MODULE_3__["default"]({
-      skewing: 1.5,
+    this.cursor = new mouse_follower__WEBPACK_IMPORTED_MODULE_3__["default"]((_MouseFollower = {
+      className: "mf-cursor",
+      innerClassName: "mf-cursor-inner",
+      textClassName: "mf-cursor-text",
+      mediaClassName: "mf-cursor-media",
+      mediaBoxClassName: "mf-cursor-media-box",
+      iconSvgClassName: "mf-svgsprite",
+      iconSvgNamePrefix: "-",
+      iconSvgSrc: "",
+      dataAttr: "cursor",
+      hiddenState: "-hidden",
+      textState: "-text",
+      iconState: "-icon",
+      activeState: "-active",
+      mediaState: "-media",
+      stateDetection: {
+        "-pointer": "a,button"
+      },
+      visible: !0,
+      visibleOnState: !1,
+      speed: 0.55,
+      ease: "expo.out",
+      overwrite: !0,
+      //skewing: 0,
       skewingText: 2,
       skewingIcon: 2,
-      skewingMedia: 2,
+      //skewingMedia: 2,
       skewingDelta: 0.001,
       skewingDeltaMax: 0.15,
-      stickDelta: 0.15
-    });
+      stickDelta: 0.15,
+      showTimeout: 0,
+      hideOnLeave: !0,
+      hideTimeout: 300,
+      hideMediaTimeout: 300,
+      initialPos: [-window.innerWidth, -window.innerHeight]
+    }, _defineProperty(_MouseFollower, "iconSvgClassName", "cb-svgsprite"), _defineProperty(_MouseFollower, "iconSvgSrc", "http://iputuagussetiawan.test/wp-content/themes/agswptheme/assets/images/svgsprites.svg?2"), _defineProperty(_MouseFollower, "skewing", 1.5), _defineProperty(_MouseFollower, "skewingMedia", 0.5), _MouseFollower));
   }
   _createClass(Navbar, [{
     key: "onInit",
