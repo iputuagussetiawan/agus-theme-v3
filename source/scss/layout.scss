@@ -152,3 +152,13 @@
     z-index: 1;
 }
 
+
+.word{
+    overflow: hidden;
+    position: relative;
+
+    .word-inner{
+        display: inline-block;
+        position: relative;
+    }
+}

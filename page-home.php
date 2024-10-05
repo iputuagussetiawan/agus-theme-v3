@@ -7,8 +7,8 @@ get_header();
 <main class="page-home">
     <?php
         get_template_part('template-parts/sections/home', 'banner');
-        get_template_part('template-parts/sections/home', 'portfolio');
-        get_template_part('template-parts/sections/home', 'features');
+        // get_template_part('template-parts/sections/home', 'portfolio');
+        // get_template_part('template-parts/sections/home', 'features');
     ?>
 
     <section class="divider-new">

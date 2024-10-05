@@ -162,9 +162,10 @@
   max-width: 70%;
 }
 .topHead__title {
-  font-size: 100px;
+  font-size: 120px;
   font-weight: 300;
   line-height: 1.2;
+  text-align: right;
 }
 .topHead__inner {
   overflow-x: hidden;

@@ -1958,4 +1958,13 @@ img {
   z-index: 1;
 }
 
+.word {
+  overflow: hidden;
+  position: relative;
+}
+.word .word-inner {
+  display: inline-block;
+  position: relative;
+}
+
 /*# sourceMappingURL=layout.css.map*/
