@@ -74,6 +74,7 @@
 .featured {
   position: relative;
   color: #fff;
+  z-index: 2;
 }
 .featured__fill {
   position: absolute;

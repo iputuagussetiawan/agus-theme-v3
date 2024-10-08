@@ -8,11 +8,9 @@
         color: #222;
     }
 
-    &__top{
-        border-bottom: 1px solid #fff;
-        margin-bottom: 80px;
-        padding-bottom: 32px;
-    }
+    // &__top{
+    //     margin-bottom: 80px;
+    // }
 
     &__title{
         font-size: 90px;
@@ -92,6 +90,31 @@
         font-size: 14px;
         text-align: center;
         font-weight: 300;
+    }
+
+    &__divider-container{
+        position: relative;
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+        }
+
+        svg {
+            width: 100%;
+            height: 200px;
+            pointer-events: none;
+
+            path {
+                fill: none;
+                stroke: #ffffff;
+                stroke-width: 1;
+            }
+        }
     }
 
 }

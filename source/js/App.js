@@ -27,7 +27,7 @@ class App {
     init(){
         //alert('test from app init')
         navbar.onInit();
-        footer.circleAnimation();
+        footer.onInit();
         lazyImage.init();
         imageParallax.init();
         overlapSection.init();

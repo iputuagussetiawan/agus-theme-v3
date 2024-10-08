@@ -1,16 +1,24 @@
 
-</div><!-- #barba-container -->
-    <footer class="footer footer-wrap footer-footer-wrap" data-cursor="-inverse">
+
+    <!-- <section class="position-relative">
         <div class="footer-rounded-div" >
             <div class="rounded-div-wrap">
                 <div class="rounded-div"></div>
             </div>
         </div>
+    </section> -->
+    <footer class="footer footer-wrap footer-footer-wrap" data-cursor="-inverse">
+        <!-- <div class="footer-rounded-div" >
+            <div class="rounded-div-wrap">
+                <div class="rounded-div"></div>
+            </div>
+        </div> -->
         <div class="container">
             <div class="footer__top">
                 <h2 class="footer__title">
                     Let's Work Together
                 </h2>
+                <div class="footer__divider-container"></div>
             </div>
             <div class="footer__info">
                 <div class="footer__info-left">

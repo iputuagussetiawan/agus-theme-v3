@@ -3,6 +3,7 @@
 .featured{
     position: relative;
     color: #fff;
+    z-index: 2;
     &__fill{
         position: absolute;
         top: 0;

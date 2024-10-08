@@ -34,6 +34,11 @@ get_header();
         </div>
     </div>
 
+    <?php
+        get_template_part('template-parts/sections/home', 'portfolio');
+        get_template_part('template-parts/sections/home', 'features');
+    ?>
+
     <section class="divider-new">
         <h1>Divider</h1>
         <div class="container">
