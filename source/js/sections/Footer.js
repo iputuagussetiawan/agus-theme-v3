@@ -31,7 +31,7 @@ class Footer {
                     start: "top bottom",
                     end: "bottom bottom",
                     scrub: true,
-                    markers:true
+                    //markers:true
                 });
             }
         });
@@ -75,9 +75,10 @@ class Footer {
                 const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: triggerElement,
-                    start: "100 100%",
+                    start: "150 100%",
                     end: "100% 100%",
                     scrub: 0,
+                    markers: true,
                 }
                 });
                 tl.to(targetElementRound, {

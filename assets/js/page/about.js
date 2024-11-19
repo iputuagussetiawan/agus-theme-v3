@@ -3990,8 +3990,8 @@ var Footer = /*#__PURE__*/function () {
             trigger: _this.footer,
             start: "top bottom",
             end: "bottom bottom",
-            scrub: true,
-            markers: true
+            scrub: true
+            //markers:true
           });
         }
       });
@@ -4048,9 +4048,10 @@ var Footer = /*#__PURE__*/function () {
           var tl = gsap__WEBPACK_IMPORTED_MODULE_1__.gsap.timeline({
             scrollTrigger: {
               trigger: triggerElement,
-              start: "100 100%",
+              start: "150 100%",
               end: "100% 100%",
-              scrub: 0
+              scrub: 0,
+              markers: true
             }
           });
           tl.to(targetElementRound, {

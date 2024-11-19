@@ -407,6 +407,11 @@ figure {
   margin: 0 0 1rem;
 }
 
+img,
+svg {
+  vertical-align: middle;
+}
+
 table {
   caption-side: bottom;
   border-collapse: collapse;
@@ -2036,7 +2041,7 @@ img {
 .footer-rounded-div {
   width: 100%;
   position: absolute;
-  top: 0px;
+  top: 100%;
   display: block;
   z-index: 2;
 }
@@ -2050,7 +2055,7 @@ img {
   width: 100%;
   top: 0;
   position: relative;
-  height: 10vh;
+  height: 25vh;
   overflow: hidden;
 }
 

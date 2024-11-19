@@ -7,7 +7,7 @@
             </div>
         </div>
     </section> -->
-    <footer class="footer footer-wrap footer-footer-wrap" data-cursor="-inverse">
+    <footer class="footer footer-footer-wrap" data-cursor="-inverse">
         <!-- <div class="footer-rounded-div" >
             <div class="rounded-div-wrap">
                 <div class="rounded-div"></div>

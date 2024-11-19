@@ -38,11 +38,15 @@ get_header();
         get_template_part('template-parts/sections/home', 'portfolio');
         get_template_part('template-parts/sections/home', 'features');
     ?>
-
     <section class="divider-new">
         <h1>Divider</h1>
         <div class="container">
             <div class="divider-container"></div>
+        </div>
+        <div class="footer-rounded-div" >
+            <div class="rounded-div-wrap">
+                <div class="rounded-div"></div>
+            </div>
         </div>
     </section>
 </main>
