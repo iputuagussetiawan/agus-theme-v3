@@ -6,6 +6,7 @@ import Modal from "../modules/Modal";
 import HomeBanner from "../sections/HomeBanner";
 import HomePreviews from "../sections/HomePreviews";
 
+
 const modal = new Modal();
 const homeBanner = new HomeBanner();
 const homePreviews = new HomePreviews();
@@ -38,6 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
     portfolio()
     app.init();
     scrollLetters.init();
+
+    const dividerElement = document.querySelector('.divider-container');
+    if (dividerElement) {
+        const divider = new Divider(dividerElement);
+        divider.onInit(); // This will start the animation and setup
+    }
 });
 
 //3.Function
@@ -50,13 +57,9 @@ function portfolio(){
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const dividerElement = document.querySelector('.divider-container');
-    if (dividerElement) {
-        const divider = new Divider(dividerElement);
-        divider.onInit(); // This will start the animation and setup
-    }
-});
+
+
+
 
 
 

@@ -3,23 +3,17 @@ class Modal {
         this.showTimeout = 30;
         this.hideTimeout = 600;
         this.el=document.querySelector('.cb-modal');
-        // Select modal dialog element
         this.dialog = this.el.querySelector("[data-modal-dialog]");
-        // Bind event listeners for opening and closing
         this.bindCloses();
         this.bindOpens();
-
-        // console.log(this.el);
     }
 
-    // Bind close buttons to the hide method
     bindCloses() {
         this.el.querySelectorAll("[data-modal-close]").forEach((closeButton) => {
             closeButton.addEventListener("click", () => this.hide());
         });
     }
 
-    // Bind open buttons to the show method
     bindOpens() {
         if (this.el && this.el.id) {
             document.querySelectorAll(`[data-modal-open='#${this.el.id}']`).forEach((openButton) => {
@@ -30,7 +24,7 @@ class Modal {
         }
     }
 
-    // Show the modal
+
     show() {
         this.el.classList.add("-show");
         document.documentElement.classList.add("modal");

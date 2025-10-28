@@ -3,6 +3,8 @@ import gsap from "gsap";
 import LazyImage from './modules/LazyImage';
 const lazyImage=new LazyImage();
 
+alert('test from barbaSetup')
+
 function loadjscssfile(filename, filetype) {
     if (filetype == "js") {
         //if filename is a external JavaScript file

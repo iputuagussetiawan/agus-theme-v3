@@ -29,6 +29,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var lazyImage = new _modules_LazyImage__WEBPACK_IMPORTED_MODULE_1__["default"]();
+alert('test from barbaSetup');
 function loadjscssfile(filename, filetype) {
   if (filetype == "js") {
     //if filename is a external JavaScript file

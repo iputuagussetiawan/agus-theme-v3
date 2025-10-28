@@ -34,8 +34,8 @@
 // default styling, please delete when making theme for wordpress
 .navbar-brand {
     display: inline-block;
-    width: 114px;
-    height: 58px;
+    width: 52px;
+    height: 44px;
     img {
         width: 100%;
         height: auto;
@@ -163,6 +163,13 @@
     border-radius: 50%;
     transform: translate(-50%, -86.666%);
     z-index: 1;
+}
+
+#my-scrollbar {
+    width: 500px;
+    height: 500px;
+    overflow: auto;
+    background-color: red;
 }
 
 

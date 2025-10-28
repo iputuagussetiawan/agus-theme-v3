@@ -11,10 +11,10 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> data-barba="wrapper">
+<body>
     <?php wp_body_open(); ?>
     <div class="load-container">
-        <div class="loading-screen"></div>
+        <div class="loading-screen"></div> 
     </div>
     <nav class="cb-menu custom-menu">
         <div class="cb-menu-logo">

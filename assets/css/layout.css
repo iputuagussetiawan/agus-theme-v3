@@ -735,6 +735,7 @@ body {
   position: relative;
   font-family: "Roboto", sans-serif;
   margin: 0px;
+  background-color: #F8F8F8;
 }
 body.no-scroll {
   overflow: hidden;
@@ -822,7 +823,7 @@ a:hover {
   background-color: #F1F1F1;
   font-size: 14px;
   letter-spacing: 2px;
-  border-radius: 50px;
+  border-radius: 8px;
 }
 .nav-search__input:focus {
   outline: none;
@@ -831,7 +832,8 @@ a:hover {
 .custom-menu {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 15px;
+  padding: 10px 24px;
 }
 
 .main-menu {
@@ -1944,8 +1946,8 @@ img {
 
 .navbar-brand {
   display: inline-block;
-  width: 114px;
-  height: 58px;
+  width: 52px;
+  height: 44px;
 }
 .navbar-brand img {
   width: 100%;
@@ -2070,6 +2072,13 @@ img {
   border-radius: 50%;
   transform: translate(-50%, -86.666%);
   z-index: 1;
+}
+
+#my-scrollbar {
+  width: 500px;
+  height: 500px;
+  overflow: auto;
+  background-color: red;
 }
 
 /*# sourceMappingURL=layout.css.map*/

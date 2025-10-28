@@ -10,6 +10,8 @@ import Footer from './sections/Footer'
 import LazyImage from './modules/LazyImage';
 import OverlapSection from './modules/OverlapSection';
 import ImageParallax from './modules/ImageParallax';
+import Scrollbar from 'smooth-scrollbar';
+
 
 //2.Initialization
 gsap.registerPlugin(ScrollTrigger);

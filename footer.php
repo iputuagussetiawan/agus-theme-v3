@@ -75,12 +75,8 @@
             © <?php echo date('Y')?> AG'Design. All rights reserved.
             </div>
         </div>
-
     </footer>
-   
-
     <?php wp_footer(); ?>
-
 </body>
 
 </html>

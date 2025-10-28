@@ -22,8 +22,10 @@
         "@barba/core": "^2.9.7",
         "gsap": "file:gsap-bonus.tgz",
         "jquery": "^3.7.1",
+        "maplibre-gl": "^5.6.1",
         "masonry-layout": "^4.2.2",
         "mouse-follower": "^1.1.2",
+        "smooth-scrollbar": "^8.8.4",
         "split-type": "^0.3.4"
     }
 }
